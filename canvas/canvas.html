@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>canvas</title>
+</head>
+<body>
+    <canvas id="myCanvas">您的浏览器版本过低</canvas>
+
+
+    <script>
+        var c = document.querySelector('#myCanvas');
+        var ctx = c.getContext('2d');
+        ctx.beginPath();
+        ctx.lineWidth = 10;
+        ctx.moveTo(0,0);
+        ctx.lineJoin = 'round';
+        ctx.lineTo(100.,100)
+        ctx.lineTo(50,100);
+        ctx.lineTo(100,150);
+
+        var a = ctx.createLinearGradient(0,0,100,100);
+        a.addColorStop(0,'green');
+        a.addColorStop(1,'blue')
+        ctx.strokeStyle = a
+
+        ctx.rect(40,40,50,50);
+
+        ctx.fillStyle = a;
+        ctx.fillRect(0,60,50,50)
+
+        ctx.strokeRect(80,10,50,50);
+        
+        // ctx.stroke();
+    </script>
+</body>
+</html>
