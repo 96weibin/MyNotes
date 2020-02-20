@@ -128,6 +128,18 @@ from <表名1>[,<表名>]
 
   '之后对rs进行遍历
 
+8. join 
+
+```
+SELECT
+	*
+FROM
+	question_table AS qu
+LEFT JOIN answer_table AS an ON an.question_ID = qu.ID
+LEFT JOIN author_table AS au ON an.author_ID = au.ID
+
+```
+
 ## 数据类型
 
 ### 1.Character 字符串
