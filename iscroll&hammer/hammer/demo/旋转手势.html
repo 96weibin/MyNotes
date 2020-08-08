@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            margin:30px auto;
+            background-color: gray;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <script src="../js/hammer.min.js"></script>
+    <script>
+        window.onload = ()=>{
+            let box = document.querySelector('.box')
+            let hammer = new Hammer(box);
+            let config = hammer.get('rotate')
+            config.set({enable:true})
+            hammer.on('rotatemove',e=>{
+                // alert(e.rotation)
+                box.style.transform = `rotate(${e.rotation}deg)`
+            })
+        }
+    </script>
+</body>
+</html>

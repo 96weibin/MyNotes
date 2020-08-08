@@ -199,7 +199,7 @@ os.cpus()
         //getAll(key)          获取
         //delete 
     ```
-
+    [express formdate 拖拽上传demo](https://www.cnblogs.com/96weibin/p/12169016.html)
 
 ### uuid
 
@@ -420,7 +420,6 @@ os.cpus()
 
     ```
 
-
 ### webscocket
 
 - h5多端即时通信
@@ -446,13 +445,14 @@ os.cpus()
         socket.on('msg',str=>{
             addMsg(str)
         })
-        socket.on('disconnect',()=>{ //监听链接断开
-            document.getElementById('warning').style.display = 'block'
-        })
-        socket.on('connect',()=>{	//监听链接成功
-            document.getElementById('warning').style.display = 'none'
-        })
+        socket.on('disconnect',()=>{
+            $('#warning').css('display','block')
+        })
+        socket.on('connect',()=>{
+            $('#warning').css('display','none')
+        })
 
+       
     ```
 
     ```js

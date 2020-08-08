@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        .box{
+            width: 100px;
+            height: 100px;
+            margin-top: 20px;
+            margin-left: 10px;
+            transform: translate(0px,0px);
+            background: rgba(0, 0, 0, .4);
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="box" draggable="true"></div>
+
+    <script>
+        let box = document.querySelector('.box')
+        let x = 0,      //初始translate
+            y = 0;
+        box.ontouchstart=function(e){
+            let dir = '';
+            //clientX  到浏览器边缘的距离
+            //点击点 到  div边的距离  = clientX - 偏移
+            let skewX = e.targetTouches[0].clientX - x;
+            let skewY = e.targetTouches[0].clientY - y;
+
+            let startX = e.targetTouches[0].clientX;
+            let startY = e.targetTouches[0].clientY;
+    
+            box.ontouchmove = function(e){
+                //最后偏移  =  clientX - 到div边缘距离
+
+                if(!dir){   //判断方向  
+
+                    if(Math.floor(Math.abs(e.targetTouches[0].clientX - startX)) > 5){
+                        dir = 'x'
+                    } else if(Math.floor(Math.abs(e.targetTouches[0].clientY - startY)) > 5){
+                        dir = 'y'
+                    }
+                }
+                // console.log(dir)
+                // console.log(x,y)
+                if(dir == 'x'){
+                    x = e.targetTouches[0].clientX - skewX;
+
+                } else if(dir == 'y'){
+                    y = e.targetTouches[0].clientY - skewY;
+                }
+                this.style.transform = `translate(${x}px,${y}px)`;
+            }
+            box.ontouchend = function(e){
+                box.ontouchmove = null;
+                box.ontouchend = null;
+            }
+        }
+    </script>
+</body>
+</html>

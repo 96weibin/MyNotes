@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>淘宝 淘！你喜欢</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+        html{
+            font-size: 10px;
+        }
+        header{
+            width: 32rem;
+            height: 3.7rem;
+            background: rgb(255, 133, 42);
+            overflow: hidden;
+            position: relative;
+
+        }
+        header h1{
+            width: 3rem;
+            height: 2.3rem;
+            text-indent: -9999px;
+            margin-top: 0.8rem;
+            margin-left: 0.8rem;
+            background-image: url('./img/icon.png');
+            background-size: 100%,100%;
+   
+        }
+        .load{
+            height: 5rem;
+            text-align: center;
+            line-height: 5rem;
+        }
+        section{
+            height: 400px;
+            position: relative;
+            top: -5rem;
+        }
+        section .banner{
+            height: 10rem;
+            overflow: hidden;
+            position: relative;
+        }
+        section .banner ul{
+            height: 10rem;
+            width: 9999px;
+            transform: translate(-32rem, 0);
+        }
+        section .banner ul li{
+            height: 10rem;
+            width: 32rem;
+            float: left;
+            background-size: 100%, 100%;
+        }
+        section .banner ol {
+            position: absolute;
+            bottom: .8rem;
+            right: 3rem;
+        }
+        section .banner ol li{
+            height: .8rem;
+            width: .8rem;
+            float: left;
+            border-radius: 50%;
+            background:white;
+            margin:0.2rem;
+        }
+        section .banner ol .active{
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>淘宝网</h1>
+    </header>
+    <div class="load">下拉刷新</div>
+    <section>
+        <div class="banner">
+            <ul>
+                <li style="background-image: url('./img/1.jpg');"></li>
+                <li style="background-image: url('./img/2.jpg');"></li>
+                <li style="background-image: url('./img/3.jpg');"></li>
+                <li style="background-image: url('./img/4.jpg');"></li>
+                <li style="background-image: url('./img/5.jpg');"></li>
+            </ul>
+            <ol>
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ol>
+        </div>
+
+        <nav>
+            导航栏
+        </nav>
+        <input type="text">
+    </section>
+    
+
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+    <script>
+
+        //媒体查询
+        function media (){
+            //320设计图  10px  则 100%为32rem
+            //获取 屏幕宽度  font-size = client-width / 32
+            document.documentElement.style.fontSize = document.documentElement.clientWidth / 32 + 'px';
+        }
+        media()
+        window.onresize=()=>{
+            media()
+        }
+
+
+        //拖拽轮播
+        let banner = document.querySelector('.banner')
+        let ulWidth = +getComputedStyle(banner.children[0].children[0]).width.replace('px','')
+        let tx = -ulWidth,      //初始translate
+            ty = 0;
+        banner.ontouchstart = function(e){
+            let startX = e.targetTouches[0].clientX;
+            let startY = e.targetTouches[0].clientY;
+
+            let skewX = startX - tx;
+            let skewY = startY - ty;
+
+            let dir = ''
+
+            this.children[0].style.transition = null; //清除重复过程动画
+
+            
+
+            this.ontouchmove = function(e){
+                //方向判断
+                if(!dir){
+                    if(Math.abs(e.targetTouches[0].clientX - startX) > 5){
+                        dir = 'x';
+                    } else if(Math.abs(e.targetTouches[0].clientY - startY) > 5){
+                        dir = 'y'
+                    }
+                }
+                if(dir == 'x') {
+                    tx = e.targetTouches[0].clientX - skewX
+                } else if(dir == 'y'){
+                    ty = e.targetTouches[0].clientY - skewY
+                }
+                if(ty > 0){
+                    ty = ty / 3;
+                }
+                this.children[0].style.transform = `translate(${tx}px, ${ty}px)`
+
+            }
+            this.ontouchend = function(e){
+                this.ontouchmove = null;
+                this.ontouchend = null;
+
+                //拖拽 判定
+                tx = Math.round(tx / ulWidth)*ulWidth;
+                ty = 0;
+                // console.log(tx/320)
+                
+                this.children[0].style.transition = `0.3s all ease-in-out`
+                this.children[0].style.transform = `translate(${tx}px, ${ty}px)`
+
+
+                //边界  取消过度切换
+                if(tx == 0){
+                    this.children[0].style.transition = null;
+                    tx = (this.children[0].children.length - 2) * -ulWidth 
+                    this.children[0].style.transform = `translate(${tx}px, ${ty}px)`
+                } else if(tx == -ulWidth * this.children[0].children.length){
+                    this.children[0].style.transition = null;
+                    tx = -ulWidth 
+                    this.children[0].style.transform = `translate(${tx}px, ${ty}px)`
+                }
+
+                let olList = Array.from(this.children[1].children)
+                olList.forEach((li,index)=>{
+                    if(index == Math.abs(tx/ulWidth) - 1){
+                        li.setAttribute('class','active') 
+                    }else {
+                        li.setAttribute('class','')
+                    }
+                })
+                // this.children[1].children[Math.abs(tx / 320) - 1].setAttribute('class','active') 
+            }
+        }
+
+        //轮播
+
+        let oUl = banner.children[0]
+
+        //前插入一个
+        oUl.appendChild(oUl.children[0].cloneNode(true))
+        oUl.insertBefore(oUl.children[oUl.children.length  - 2].cloneNode(true),oUl.children[0])
+
+        /*
+            end的时候  如果 -320  偏移到 倒数第二张图
+                       如果  拖到 最后一张图   偏移到  整数第二张图
+
+
+        */
+    </script>
+</body>
+</html>

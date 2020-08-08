@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding:0
+        }
+        .wrapper{
+            margin:100px;
+            transform: perspective(500px) rotateY(30deg);
+            backface-visibility: hidden;
+            transform-style: preserve-3d;
+            width: 300px;
+            height: 300px;
+            border: 1px solid black;
+            animation-name: sport;
+            animation-timing-function: ease-in-out;
+            animation-duration: 3s;
+            animation-iteration-count: infinite;
+            animation-play-state: running;
+        }
+        .wrapper div{
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            box-sizing: border-box;
+            background: rgba(0, 0, 0, .2);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -50px;
+            margin-left: -50px;
+        }
+        .top{
+            transform-origin: 0 0;
+            transform: rotateX(-90deg) ;
+        }
+        .bottom{
+            transform-origin: 100px 100px;
+            transform: rotateX(90deg);
+        }
+        .right{
+            transform-origin: 100px 100px;
+            transform: rotateY(-90deg);
+        }
+        .left{
+            transform-origin: 0 100px;
+            transform: rotateY(90deg);
+        }
+        .front{
+
+        }
+        .back{
+            transform: translateZ(-100px);
+        }
+
+        @keyframes sport {
+            0%{
+                transform: rotateX(0) rotateY(0);
+            }
+            100%{
+                transform: rotateX(360deg) rotateY(360deg);
+            }
+        }
+    </style>
+
+</head>
+<body>
+    
+    <div class="wrapper">
+        <div class="top">上</div>
+        <div class="bottom">下</div>
+        <div class="left">左</div>
+        <div class="right">右</div>
+        <div class="back">后</div>
+        <div class="front">前</div>
+    </div>
+    <script>
+
+    </script>
+</body>
+</html>

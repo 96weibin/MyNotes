@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .wrapper{
+            width: 200px;
+            height: 400px;
+            overflow: hidden;
+            border: 1px solid black;
+            margin-top: 20px;
+            margin: auto;
+        }
+        ul{
+            width: 300px;
+        }
+        li{
+            list-style-type: none;
+            width: 300px;
+            height: 100px;
+            background: rgba(0, 0, 0, .2);
+            border: 1px solid pink;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="wrapper">
+        <ul>
+            <li>00000000000001--000000001</li>
+            <li>00000000000002--000000002</li>
+            <li>00000000000003--000000003</li>
+            <li>00000000000004--000000004</li>
+            <li>00000000000005--000000005</li>
+        </ul>
+    </div>
+
+    <script src="./js/iscroll.js"></script>
+    <script>
+        let scroll = new IScroll('.wrapper',{
+        //   bounce:true,
+          bounceTime: 200,
+          scrollY: true,
+          scrollX: true,
+        //   freeScroll:true,
+        })
+        console.log(scroll.options)
+    </script>
+</body>
+</html>

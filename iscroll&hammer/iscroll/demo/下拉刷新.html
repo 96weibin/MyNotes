@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .wrapper{
+        width: 200px;
+        height: 400px;
+        border: 1px solid black;
+        margin: 30px auto;
+        overflow: hidden;
+        position: relative;
+    }
+    .child{
+        width: 100%;
+        position: relative;
+        z-index: 1;
+        background-color: #fff;
+    }
+    .dropdown{
+        height: 40px;
+        line-height: 40px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        text-align: center;
+        width: 100%;
+        background-color: #eee;
+    }
+    .loadmore{
+        height: 40px;
+        line-height: 40px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        text-align: center;
+        width: 100%;
+        background-color: #eee;
+    }
+</style>
+<body>
+    <div class="wrapper">
+        <div class="child">
+            李忱原名李怡，其父唐宪宗有20个儿子，李忱排行13，其母亲是地位卑微的宫女，要当上皇帝，概率很低。
+
+            少时候，李忱话不多，宫里的人都认为他不是一个“聪明”的人。李忱目睹残酷的政治斗争，长大之后更加寡言。他历经两朝，两位皇帝都喜欢故意在宴会上逼他说话，看他笑话。不过由于他的傻，每次宫廷政变，他都不会受到牵连。
+
+            公元846年，李忱的侄子、唐武宗李炎驾崩，宦官马元贽认为李忱易控制，于是扶持他当上皇帝。这算是“傻人自有傻福”。不过李忱可一点儿都不傻。
+
+            李忱一登基，就像变了一个人。说话思路清晰，做事干脆利落。又一次，李忱赏赐给马元贽一根“通天犀带”，没想到马元贽转手把他送给了宰相马值。过了几天，李忱认出那根宝带。第二天，李忱就把马值免了，意在避免宦官和朝廷大臣交往过密。马元贽是扶持李忱登基的“功臣”，但是李忱并没有成为其傀儡，表面上无比荣耀，实际上权力不大。
+        </div>
+        <div class="dropdown">下拉刷新</div>
+        <div class="loadmore">加载更多</div>
+    </div>
+
+    <script src="../js/iscroll-probe.js"></script>
+    <script>
+        
+        let wrapper = document.querySelector('.wrapper')
+        let dropdown = document.querySelector('.dropdown')
+        let loadmore = document.querySelector('.loadmore')
+        let scroll = new IScroll(wrapper,{
+            probeType: 3, //
+        })
+        let diffHei = parseInt(getComputedStyle(wrapper.children[0]).height) - parseInt(getComputedStyle(wrapper).height)
+        console.log(diffHei)
+        scroll.on('scroll',(data)=>{
+
+            if(scroll.y >= 50){
+                dropdown.innerHTML = '松开刷新'
+            } else {
+                dropdown.innerHTML = '下拉刷新'
+            }
+            if(- scroll.y >= diffHei + 50){
+                loadmore.innerHTML = '正在加载'
+            } else {
+                loadmore.innerHTML = '加载更多'
+            }
+        })
+    </script>
+</body>
+
+</html>
