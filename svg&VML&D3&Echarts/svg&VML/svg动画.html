@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    <svg width="800" height="600">
+        <line id="l1" x1="100" y1="100" x2="200" y2="200" stroke-width="20" stroke="blue"></line>
+    </svg>
+    <script>
+        let oL = document.querySelector('#l1');
+        oL.onclick=function(){
+            requestAnimationFrame(next)
+            let frameCount = 0,
+                that = this;
+            function next(){
+                let x1 = that.getAttribute('x1')
+                if(frameCount % 4 == 0){
+                    that.setAttribute('x1', parseInt(x1) + 1)
+                }                                        
+                if(x1 >= 200) {
+                    return
+                }                
+                frameCount ++;
+                requestAnimationFrame(next)
+            }
+        }
+    </script>
+</body>
+</html>

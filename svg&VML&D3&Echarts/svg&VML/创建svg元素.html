@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      
+    </style>
+</head>
+<body>
+    <svg width="800" height="600"></svg>
+
+    <script>
+        let oS = document.querySelector('svg');
+        let oL = document.createElementNS('http://www.w3.org/2000/svg','line');
+        oL.setAttribute('x1',100)
+        oL.setAttribute('y1',100)
+        oL.setAttribute('x2',300)
+        oL.setAttribute('y2',300)
+        oL.style.stroke="red"
+        oS.appendChild(oL)
+    </script>
+</body>
+</html>

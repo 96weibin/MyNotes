@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+        .container{
+            width: 800px;
+            height: 600px;
+            margin: 10px auto;
+            border: 1px solid;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container"></div>
+    <script src="../js/echarts.min.js"></script>
+    <script>
+        let $ = document.querySelector.bind(document)
+        let chart = echarts.init($('.container'));
+        let option = {
+            title:{
+                text:'角色能力图',
+                subtext:'鬼剑士'
+            },
+            legend:{
+                data:[
+                    '狂战士',
+                    '鬼泣',
+                    '阿修罗',
+                    '剑魂'
+                ]
+            },
+            radar:{
+                name:{
+                    textStyle:{
+                        color: '#fff',
+                        backgroundColor: '#999',
+                        borderRadius: 3,
+                        padding: [3, 5]
+                    }
+                },
+                indicator:[
+                    { name:'攻击', max:100 },
+                    { name:'防御', max:100 },
+                    { name:'速度', max:100 },
+                    { name:'控制', max:100 },
+                    { name:'辅助', max:100 },
+
+                ]
+
+            },
+            series:[
+                {
+                    name:'鬼剑士职业比较',
+                    type:'radar',
+                    data:[
+
+                        {
+                            name: '狂战士',
+                            value:[100,60,80,10,20]
+                        },
+                        {
+                            name:'剑魂',
+                            value:[80, 50, 90, 40, 40]
+                        },
+                        {
+                            name:'鬼泣',
+                            value:[70, 40, 69, 60, 50]
+                        },
+                        {
+                            name:'阿修罗',
+                            value:[70, 90, 60, 80, 50]
+                        }
+
+                    ]
+                }
+            ]
+        }
+        
+        chart.setOption(option)
+    </script>
+</body>
+</html>

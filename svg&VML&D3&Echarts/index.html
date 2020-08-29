@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #l1{
+            stroke-width: 20;
+            stroke: pink;
+        }
+    </style>
+</head>
+<body>
+    <svg width='800' height="600">
+        <line x1='100' y1='100' x2='200' y2 = '200' id="l1"></line>
+    </svg>
+
+    <script>
+        let oL1 = document.querySelector('#l1');
+        oL1.addEventListener('click',function(){
+            console.log(this)
+            this.setAttribute('x1','50')
+            this.style.stroke = 'red'
+        })
+    </script>
+</body>
+</html>

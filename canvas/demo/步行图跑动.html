@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas width="800px" height="600px"></canvas>
+
+    <script>
+        let c = document.querySelector('canvas')
+        let ctx = c.getContext('2d')
+        ctx.font = '45px Arial'
+        ctx.fillText('点击暂停', 60, 45)
+
+        let frameCount = 0;
+        let pause = false;
+        let sx = 0,
+            sy = 0,
+            dx = 100;
+        let dir = 'l'
+        let oImg = new Image()
+        oImg.src = './run.jpg';
+        oImg.onload = () => {
+            requestAnimationFrame(next)
+
+            function next() {
+                if (!pause) {
+                    if (frameCount % 32 == 0) {
+                        if (dx == 0) {
+                            dir = 'r'
+                        }
+                        if (dx == 800 - 220) {
+                            dir = 'l'
+                        }
+                        ctx.clearRect(0, 50, c.width, c.height)
+                        if (dir == 'l') {
+                            sy = 0;
+                            ctx.drawImage(oImg,
+                                sx, sy, 225, 225,
+                                dx, 100, 225, 225
+                            )
+                            sx += 225;
+                            dx -= 20;
+                        } else {
+                            sy = 675;
+                            ctx.drawImage(oImg,
+                                sx, sy, 225, 225,
+                                dx, 100, 225, 225
+                            )
+                            sx += 225;
+                            dx += 20
+                        }
+                    }
+                    if (sx == 225 * 4) sx = 0
+                    frameCount++
+                }
+
+                document.onclick = ()=>{
+                    pause = !pause
+                }
+                requestAnimationFrame(next)
+
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container"></div>
+
+    <script src="../js/raphael-min.js"></script>
+
+    <!-- 不重复生成  path 方法很重要 -->
+    <script>
+        window.onload = ()=>{
+            function getClockAng(){
+                let d = new Date(),
+                    h = d.getHours()
+                    m = d.getMinutes()
+                    s = d.getSeconds()
+                return {
+                    hAng : h % 12 / 12 * 2 * Math.PI + 2 * Math.PI / 12 / 60 * m + 2 * Math.PI / 12 / 60 /60 * s,
+                    mAng : m / 60 * 2 * Math.PI + 2 * Math.PI / 60 / 60 * s,
+                    sAng : s / 60 * 2 * Math.PI
+                }
+            }
+            function drawClock(ang,r,c){
+
+                let path = paper.path();
+                path.attr({
+                    'stroke-width' : 20,
+                    stroke :c
+                })
+                /*
+                    将 创建路径 拆分为 style 和 path 部分
+                    将path 部分 封装 cacle  放到 生成path对象上
+                    return path
+                */
+
+
+                calc(ang, true);
+                function calc(ang, isFirst){
+                    if(isFirst || ang == 0){
+                        path.attr({'path':`M ${x} ${y - r} A ${r} ${r} 0 ${ang > Math.PI ? 1 : 0} 1 ${x + r * Math.sin(ang)} ${y - r * Math.cos(ang)}`})
+                    } else {
+                        path.animate({'path':`M ${x} ${y - r} A ${r} ${r} 0 ${ang > Math.PI ? 1 : 0} 1 ${x + r * Math.sin(ang)} ${y - r * Math.cos(ang)}`}, 500, 'ease-in-out')
+                    }
+                }
+                path.calc = calc;
+                return path
+            }
+            function runClock(){
+                let d = getClockAng();
+                if(!paths.length){
+                    paths = [
+                            drawClock(d.hAng, 150, "red"),
+                            drawClock(d.mAng, 100, "green"),
+                            drawClock(d.sAng, 50, "blue")
+                        ]
+                } else {
+                    paths[0].calc(d.hAng)
+                    paths[1].calc(d.mAng)
+                    paths[2].calc(d.sAng)
+                }   
+            }
+
+
+            let x = 400, y=300;
+            let paper = new Raphael('container',800,600)
+            let paths = [];
+
+
+            runClock()  //定时器  延迟执行  所以先自己运行一遍
+            setInterval(() => { runClock() }, 500);
+
+
+            
+            let dot = paper.circle(x,y,5).attr({
+                fill:'pink'
+            })
+
+        }
+       
+    </script>
+</body>
+</html>

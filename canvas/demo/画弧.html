@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            text-align: center;
+        }
+        canvas{
+            margin-top: 20px;
+            border: solid;
+        }
+    </style>
+</head>
+<body>
+    
+    <canvas width="800" height="600"></canvas>
+
+    <script>
+        let c = document.querySelector('canvas')
+        let ctx = c.getContext('2d')
+        ctx.moveTo(400,300)
+        ctx.lineTo(550,300)
+        ctx.arc(400,300,150,0, d2a(90),false)
+        ctx.closePath()
+        ctx.stroke()
+
+        function d2a(d){
+            return d/180 * Math.PI
+        }
+    </script>
+
+</body>
+</html>

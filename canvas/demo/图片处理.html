@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            background-color: black;
+            text-align: center;
+        }
+        canvas{
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    
+    <canvas width="800" height="600"></canvas>
+
+    <script>
+        let c = document.querySelector('canvas')
+        let ctx = c.getContext('2d')
+        let oImg = new Image()
+        oImg.src = './6.jpg'
+        oImg.onload = ()=>{
+            ctx.drawImage(oImg,
+                223, 0, 130, 130,
+                100,100,300,300
+            )
+        }
+
+            /*
+                ctx.drasImage(  截取图片资源绘制到canvas
+                    oImg,               base64、 video 、 Img对象
+                    sx, sy, sw, sh,     原图x,y,w,h
+                    dx, dy, dw, dh      绘制到canvas上时的 x,y,w,h
+                )
+            */
+
+    </script>
+</body>
+</html>

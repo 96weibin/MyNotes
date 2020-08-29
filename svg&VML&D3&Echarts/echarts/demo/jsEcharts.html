@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            width: 800px;
+            height: 600px;
+            border: solid;
+            margin: 10px auto;
+        }
+        .left{
+            width: 500px;
+            height: 600px;
+            float: left;
+            background:rgba(0, 0, 0, .2);
+        }
+        .right{
+            width: 300px;
+            height: 600px;
+            float: left;
+            background:rgba(0, 0, 0, .1);
+
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+
+    <script src="../js/echarts.min.js"></script>
+    <script>
+        let datas = [
+            {   name:'黑龙江',
+                total:'1300',
+                sub:{
+                    第一产业:'400',
+                    第二产业:'200',
+                    第三产业:'700'
+                }
+                
+            },
+            {
+                name:'吉林',
+                total:'1400',
+                sub:{
+                    第一产业:'200',
+                    第二产业:'700',
+                    第三产业:'500'
+                }
+ 
+            },
+            {   
+                name:'辽宁',
+                total:'2000',
+                sub:{
+                    第一产业:'300',
+                    第二产业:'800',
+                    第三产业:'900'
+                }
+
+            },
+        ]
+
+        let $ = document.querySelector.bind(document);
+        let chartL = echarts.init($('.left'))
+        let chartR = echarts.init($('.right'))
+        //初始化连个  chart  不要在事件里面创建导致多绘图 叠加
+        
+        let sData = datas.map((data)=>{return{name:data.name,value:data.total}})
+        let option = {
+            title:{
+                text:'东北三省生产总值对比',
+                subtext:'1900年'
+            },
+            series:[
+                {
+                    name:'东北三省',
+                    type:'pie',
+                    radius:'50%',
+                    center:['50%','50%'],
+                    data:sData
+                }
+            ]
+        };
+        chartL.setOption(option)
+
+        chartL.on('click',function(e){
+            setCity(e.name)
+        })
+        setCity(sData[0].name)          //默认显示  第一个省份数据
+        function setCity(name){
+            let subData = getSubData(name);
+            let option = {
+                // title:{
+                //     text:`${subData.name}`
+                // },
+                series:[
+                    {
+                        name:`${name}`,
+                        type:'pie',
+                        radius:'50%',
+                        center:['50%','50%'],
+                        data:subData
+                    }
+                ]
+            }
+            chartR.setOption(option)    //设置  sub
+
+        }
+        function getSubData(name){
+            let arr = []
+            datas.forEach( data=> {
+                if(data.name == name){
+                   for(n in data.sub){
+                       arr.push({
+                        name:n,
+                        value:data.sub[n]
+                       })
+                   }
+                }
+            });
+            return arr
+        }
+    </script>
+</body>
+</html>

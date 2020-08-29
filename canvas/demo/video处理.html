@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            background-color: black;
+            text-align: center;
+        }
+        canvas{
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <video src="./video.mp4" muted autoplay loop controls></video>
+    <canvas width="320" height="176"></canvas>
+
+    <script>
+        //滤镜处理
+        let c = document.querySelector('canvas')
+        let ctx = c.getContext('2d')
+        let v = document.querySelector('video')
+        
+        requestAnimationFrame(next)
+        function next(){
+            ctx.drawImage(v,0,0,320,176)    //绘制video一次
+
+            let imageData = ctx.getImageData(0,0,320,176)   
+            let data = imageData.data;
+            let W = imageData.width;
+            let H = imageData.height;
+            for(let r = 0; r < H; r++){
+                for(let l = 0; l < W; l++){ //黑白处理
+                    data[(r * W + l)*4 + 0] = data[(r * W + l)*4 + 1] = data[(r * W + l)*4 + 2] = (data[(r * W + l)*4 + 0] + data[(r * W + l)*4 + 0] + data[(r * W + l)*4 + 0]) / 3
+                }
+            }
+
+            ctx.putImageData(imageData,0,0) //绘图
+            requestAnimationFrame(next)
+        }
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>react</title>
+</head>
+<body>
+    <div id="container"></div>
+    <script src="../js/raphael-min.js"></script>
+    <script>
+        let paper = new Raphael('container', 800, 600);
+        let arr = [],
+        cx = 400,
+        cy = 300,
+        rx = 150,
+        ry = 50;
+        let dot = paper.circle(cx,cy,5).attr({ fill:'blue', stroke:'none'})
+        let elipse1 = paper.path(`M ${cx} ${cy - ry} A ${rx} ${ry} 0 1 1 ${cx} ${cy - ry - 0.001}`).attr({'stroke':"blue", "stroke-width" : 20,"transform":`t150,50`})
+        let elipse2 = paper.path(`M ${cx} ${cy - ry} A ${rx} ${ry} 0 1 1 ${cx} ${cy - ry - 0.001}`).attr({'stroke':"blue", "stroke-width" : 20,"transform":'t150,50,r-120'})
+        let elipse3 = paper.path(`M ${cx} ${cy - ry} A ${rx} ${ry} 0 1 1 ${cx} ${cy - ry - 0.001}`).attr({'stroke':"blue", "stroke-width" : 20,"transform":'t150,50,r120'})
+        // let elipse2 = paper.ellipse(400,300,400,100)
+        // let elipse3 = paper.ellipse(400,300,400,100)
+    </script>
+</body>
+</html>

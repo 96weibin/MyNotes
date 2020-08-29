@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>饼图</title>
+    <style>
+        svg{
+            vertical-align: top;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" name="val" id="val">
+    <input type="button" value="添加" id="add">
+    <svg width="800" height="600" >
+    </svg>
+    <script>
+        var oBtn = document.querySelector('#add');
+        var oVal = document.querySelector('#val');
+        var oSvg = document.querySelector('svg')
+        oBtn.addEventListener('click',createPie)
+
+        let allArr = [];
+        function createPie(){
+            let allCount = 0;
+            oSvg.innerHTML = '';
+            allArr.push(oVal.value);
+
+
+            console.log(allArr)
+            allArr.forEach(i => {
+                allCount += +i;
+            });
+            console.log(allCount)
+            var x = 200,    //初始化
+                y = 200,
+                r = 100,
+                ang1 = 0;
+
+            allArr.forEach(i => {
+                ang2 = ang1 + i / allCount * 2 * Math.PI;
+                drawPie(x,y,r,ang1,ang2)
+                ang1 = ang2
+
+            });
+        }
+
+        function drawPie(x,y,r,ang1,ang2){
+            console.log('drawpie',x ,y, r, ang1,ang2)
+            var oL = document.createElementNS('http://www.w3.org/2000/svg','path');
+            var arr = [],
+            x1 = x + r * Math.sin(ang1);
+            y1 = y - r * Math.cos(ang1);
+            x2 = x + r * Math.sin(ang2);
+            y2 = y - r * Math.cos(ang2)
+            console.log('x1',x1,'y1',y1)
+            console.log('x2',x2,'y2',y2)
+            arr.push(`M ${x} ${y} L ${x1} ${y1} A ${r} ${r} 0 ${Math.abs(ang2 - ang1) > Math.PI ? 1 : 0} 1 ${x2} ${y2} Z`)
+
+            oL.setAttribute('d', arr[0])
+            oL.setAttribute('stroke', 'pink')
+            oL.setAttribute('fill', `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`)
+            oSvg.appendChild(oL)
+            
+            
+            // oL.addEventListener('mouseover',function(){
+            //     let frameCount = 0,
+            //         targetR = 200;
+            //     requestAnimationFrame(next)
+            
+
+            //     function next(){
+            //         this.getAttribute('')
+
+
+            //     }
+            // })
+        }
+    </script>
+</body>
+</html>

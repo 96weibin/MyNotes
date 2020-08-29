@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            text-align: center;
+        }
+        canvas{
+            border: solid;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="800" height="600"></canvas>
+    
+    <script>
+        let cs = document.querySelector('canvas')
+        let ctx = cs.getContext('2d')
+        let r = 0;
+        let r2 = 0;
+        requestAnimationFrame(next)
+        function next(){
+            ctx.clearRect(0,0,cs.width,cs.height); //清屏
+
+            ctx.save()  // translate 属性会叠加  save 没有translate的环境
+            ctx.beginPath()
+            ctx.translate(200,150)   //图形  100,100  
+            ctx.rotate(r)              //旋转
+            ctx.strokeRect(-100,-50,200,100)    //先操作 最后绘图
+            /*
+                因为 canvas 以canvas左上角 为原点进行旋转  
+                要使图形   以自身中心旋转    则将图形中心移至  canvas左上角
+            */
+            ctx.restore()   //将环境恢复为 没有translate的
+
+            ctx.beginPath()
+            ctx.save()
+            ctx.translate(50 + 300, 100 + 50)
+            ctx.rotate(r2)
+            ctx.fillRect(-50,-50,100,100)
+            ctx.restore()
+
+            
+            r += Math.PI / 180;
+            r2 -= Math.PI /180;
+            requestAnimationFrame(next)
+        }
+    </script>
+</body>
+</html>

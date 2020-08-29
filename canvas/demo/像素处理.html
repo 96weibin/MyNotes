@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            background-color: black;
+            text-align: center;
+        }
+        canvas{
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    
+    <canvas width="640" height="200"></canvas>
+
+    <script>
+        //滤镜处理
+        let c = document.querySelector('canvas')
+        let ctx = c.getContext('2d')
+        let oImg = new Image();
+        oImg.src = './6.jpg';
+        oImg.onload = function(){
+            ctx.drawImage(oImg,0,0,c.width,c.height)
+
+            let imageData = ctx.getImageData(0,0,oImg.width,oImg.height)
+            //获取 imageData对象
+            let data = imageData.data;
+            for(let i = 0; i < imageData.height; i ++){
+                for(let j = 0; j < imageData.width; j++){
+                    // data[(i * imageData.width + j) * 4 + 0]  r
+                    // data[(i * imageData.width + j) * 4 + 1]  g
+                    // data[(i * imageData.width + j) * 4 + 2]  b
+                    // data[(i * imageData.width + j) * 4 + 3]  a
+
+                    //黄色滤镜
+                    data[(i * imageData.width + j) * 4 + 2] = 200;
+
+
+                    //灰色滤镜
+                    data[(i * imageData.width + j) * 4 + 0] = data[(i * imageData.width + j) * 4 + 1] = data[(i * imageData.width + j) * 4 + 2] = (data[(i * imageData.width + j) * 4 + 0] + data[(i * imageData.width + j) * 4 + 1] + data[(i * imageData.width + j) * 4 + 2])/3
+                    
+
+                }
+            }  
+            
+            ctx.putImageData(imageData,0,0)          
+            //将修改过imageData对象  绘制到canvas 上
+        }
+        
+    </script>
+</body>
+</html>

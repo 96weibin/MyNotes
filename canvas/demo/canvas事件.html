@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            height: 100%;
+            width: 100%;
+            background-color: black;
+            overflow: hidden;
+        }
+        canvas{
+            margin-top: 20px;
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="320px" height="500px"></canvas>
+
+    <script>
+        let canvas = document.querySelector('canvas')
+        let ctx = canvas.getContext('2d')
+        ctx.fillStyle = 'blue'
+        ctx.fillRect(50,50,100,100)
+
+        canvas.onmousemove = function(e){
+            // console.log(e)
+            let mouseX = e.clientX,
+                mouseY = e.clientY;
+                if(mouseX > 50  && mouseY > 50 && mouseX < 150 && mouseY <150){
+                    console.log('in')
+                    ctx.beginPath()
+                    ctx.clearRect(0,0,320,500)
+                    ctx.fillStyle = 'red'
+                    ctx.fillRect(50,50,100,100)
+                } else {
+                    ctx.beginPath()
+                    ctx.clearRect(0,0,320,500)
+                    ctx.fillStyle = 'blue'
+                    ctx.fillRect(50,50,100,100)
+                }
+        }
+
+    </script>
+</body>
+</html>

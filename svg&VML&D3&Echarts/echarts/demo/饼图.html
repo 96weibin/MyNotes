@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 800px;
+            height: 600px;
+            border: solid;
+            margin: 10px auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <script src="../js/echarts.min.js"></script>
+    <script>
+        let $ = document.querySelector.bind(document);
+        let chart = echarts.init($('.box'));
+        let option = {
+            title:{
+                text:'美国大选投票',
+                subtext:'2020年度'
+            },
+            series:[
+                {
+                    name:'选票比例',
+                    type:'pie',             //饼图
+                    radius:'40%',           //半径
+                    center:['30%','50%'],   //圆心
+                    data:[
+                        {
+                            name:'特朗普',
+                            value : 500
+                        },
+                        {
+                            name:'拜登',
+                            value : 6000
+                        },
+                        {
+                            name:'希拉里',
+                            value: 4000
+                        }
+                    ]
+                },
+                {
+                    name:'年龄比例',
+                    type:'pie',               
+                    radius:'40%',
+                    center:['70%','50%'],
+                    data:[
+                        {
+                            name:'特朗普',
+                            value : 500
+                        },
+                        {
+                            name:'拜登',
+                            value : 6000
+                        },
+                        {
+                            name:'希拉里',
+                            value: 4000
+                        }
+                    ]
+                }
+            ]
+        }
+        chart.setOption(option)
+    </script>
+</body>
+</html>

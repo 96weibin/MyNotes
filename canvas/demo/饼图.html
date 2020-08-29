@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            text-align: center;
+        }
+        canvas{
+            margin-top: 20px;
+            border: solid;
+        }
+    </style>
+</head>
+<body>
+    
+    <canvas width="800" height="600"></canvas>
+
+    <script>
+        let data = {
+            "吃" : 500,
+            "喝" : 300,
+            "玩" : 900,
+            "衣服" : 300,
+            "出行" : 200,
+            "其他" : 200
+        }
+
+        function bingTu(data){
+            let all = 0;
+            let cs = document.querySelector('canvas')
+            let ctx = cs.getContext('2d')
+            let startArc = 0;
+            let x = 300,
+                y = 400,
+                r = 150 
+            for(n in data){
+                all += data[n]
+            }
+            for(n in data){
+                let a = getArc(all,data[n])
+                ctx.beginPath()
+                ctx.moveTo(x,y)
+                ctx.lineTo(x + r * Math.cos(startArc),y + r * Math.sin(startArc))
+                ctx.arc(x,y,r,startArc,startArc + a,true)
+                ctx.strokeText(n,x + r/2 * Math.cos(startArc + a/2),y + r/2 * Math.sin(startArc + a/2))
+                startArc += a;
+                ctx.closePath()
+                ctx.stroke()
+            }
+        }
+        bingTu(data)
+        function getArc(all,part){
+            return part / all * 2 * Math.PI
+        }
+    </script>
+
+</body>
+</html>

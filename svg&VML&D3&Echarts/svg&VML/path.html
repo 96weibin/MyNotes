@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <svg width="800" height="600">
+        <!-- A rx ry x旋转 大弧 镜像 终点X 终点Y  -->
+        <path d="M 0 100 L 100 100 A 1 1 0 1 1 200 100 L 300 100" fill="none" stroke="black"></path>
+
+        <path id="bing" stroke="blue" fill="none"></path>
+
+        <path id="large1" stroke="red" fill="none"></path>
+        <path id="large2" stroke="blue" fill="none"></path>
+        <path id="large3" stroke="green" fill="none"></path>
+        <path id="large4" stroke="pink" fill="none"></path>
+
+        <path id="bessel4" stroke="pink" stroke-width="20" fill="none"></path>
+        <path id="bessel2" stroke="blue" stroke-width="20" fill="none"></path>
+    </svg>
+    
+    <script>
+        //画饼图  30 ~ 60度
+        let bing = document.querySelector('#bing');
+
+        //#1
+        let ang1 = 0,
+            ang2 = 300,
+            r = 100,
+            x = 100,
+            y = 300
+        function d2a(d) {
+            console.log(d / 180 * Math.PI)
+            return d /180 * Math.PI
+        }
+
+        let arr = [],
+            x1 = x + Math.sin(d2a(ang1)) * r,
+            y1 = y - Math.cos(d2a(ang1)) * r;
+        
+        arr.push(`M ${x} ${y} L ${x1} ${y1} `)
+
+        //#2
+        x2 = x + Math.sin(d2a(ang2)) * r,
+        y2 = y - Math.cos(d2a(ang2)) * r;
+
+        arr.push(`A ${r} ${r} 0 ${Math.abs(ang2 - ang1) < 180 ? 0 : 1} 1 ${x2} ${y2}`)
+
+        //#3
+        arr.push('Z')       //闭合
+
+        bing.setAttribute('d',arr.join(' '))
+
+        // 大弧  镜像  0 1  
+
+        /*
+            通过相同两点  相同半径  有两个椭圆   相交出4条线
+        */
+
+
+        let large1 = document.querySelector('#large1');
+        let large2 = document.querySelector('#large2');
+        let large3 = document.querySelector('#large3');
+        let large4 = document.querySelector('#large4');
+
+        
+        large1.setAttribute('d',`M 400 400 A 150 100 0 0 0 500 400`)
+        large2.setAttribute('d',`M 400 400 A 150 100 0 0 1 500 400`)
+        large3.setAttribute('d',`M 400 400 A 150 100 0 1 0 500 400`)
+        large4.setAttribute('d',`M 400 400 A 150 100 0 1 1 500 400`)
+
+
+        //贝塞尔
+        
+        let bessel4 = document.querySelector('#bessel4');   //四次贝塞尔
+        bessel4.setAttribute('d',`M 100 500 Q 300 400 300 500 `)
+        
+        // Q 控制点x 控制点y  终点X 终点y
+        let bessel2 = document.querySelector('#bessel2');   //二次贝塞尔
+        bessel2.setAttribute('d',`M 100 550 S 300 450 300 550 `)
+        // S 控制点x 控制点y  终点X 终点y
+
+    
+    </script>
+</body>
+</html>
