@@ -10,29 +10,90 @@
     3. 重启网络服务 service network restart
 - 方法二 
     1. cd /etc/init.d/network restart
-
+    
 ### yum(linux 版本管理器)
 
 1. 更改yum源 [网易源](http://mirrors.163.com/.help/centos.html)
 
-```js
-$ yum install wget
-//wget url 下载url对应资源
-$ mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup
-//备份yum配置文件
-$ wget http://mirrors.163.com/.help/CentOS7-Base-163.repo
-//下载新的yum配置文件
-$ yum clean all  
-//清理 yum缓存
-$ yum makecache
-//重写yum 缓存
-```
+    ```js
+    $ yum install wget
+    //wget url 下载url对应资源
+    $ mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup
+    //备份yum配置文件
+    $ wget http://mirrors.163.com/.help/CentOS7-Base-163.repo
+    //下载新的yum配置文件
+    $ yum clean all  
+    //清理 yum缓存
+    $ yum makecache
+    //重写yum 缓存
+    ```
 
 2. 更新  
     - yum update -y  系统 和软件都更新
     - yum upgrade    只更新系统
 
 ### 远程工具  xshell  putty
+
+### 安装Docker[github](https://github.com/docker/docker-install)
+
+1. docker 
+    ```shell
+    $ curl -fsSL https://get.docker.com -o get-docker.sh
+    $ sh get-docker.sh
+    $ docker -v  #已经安装好了
+    $ service docker restart # 重启docker 
+    ```
+2. 集合命令工具[docker compose](https://docs.docker.com/compose/install/)
+   
+    ```shell
+    $ sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+    $ sudo chmod +x /usr/local/bin/docker-compose
+    
+    $ docker-compose --version
+
+   ```
+3. 更换中国源
+
+    ```js
+   
+    // /etc/docker/daemon.js
+  
+    {
+    "registry-mirrors":["https://registry.docker-cn.com"]
+    }
+
+    ```
+4. 安装mongo从[docker hub](https://hub.docker.com/_/mongo)
+
+    ```shell
+    $ docker pull mongo:4 # 可以用冒号指定版本  默认最新版
+    ```
+5. 查看docker 命令
+
+    ```shell
+    $ docker images # 查看已安装净吸纳过
+    $ docker ps     # 正在运行的docker 服务
+    ```
+6. 运行mongo
+    ```shell
+    $ docker run -d --name some-mongo -p 10050:27017 mongo:4
+      # -d        服务端
+      # --name    命名为
+      # -p        指定端口
+      # 10050:27017    指定10050给默认端口27017使用
+    ```
+7. 防火墙放行端口
+
+    ```shell
+    $ service firewalld stop  #关闭防火墙
+    # 或者
+    $ service firewalld start #开启防火墙
+    $ firewall-cmd --zone=public --add-port=10050/tcp --permanent 
+    # 放行10050                                          永久
+    $ firewall-cmd --reload # 重启防火请
+    ```
+8. [robo 3t 可视远程mongo](https://robomongo.org/download)
 
 ### vi vim 文本工具
 
@@ -56,62 +117,63 @@ o | 当前位置前一行插入
 
 2. centOS SELinux 防火墙
 
-```shell
-$ iptables -L -n #查看规则
-$ iptables -f    #清除一切规则
-$ iptables -A INPUT -p tcp --dport 8080 -j ACCEPT # 配置8080端口可入
-```
+    ```shell
+    $ iptables -L -n #查看规则
+    $ iptables -f    #清除一切规则
+    $ iptables -A INPUT -p tcp --dport 8080 -j ACCEPT # 配置8080端口可入
+    ```
 
 3. 重新指定 配置文件
 
-```shell
-$ nginx -c /etc/nginx/nginx.conf
-# centOS配置源yum安装 需要指定配置文件
-```
+    ```shell
+    $ nginx -c /etc/nginx/nginx.conf
+    # centOS配置源yum安装 需要指定配置文件
+    ```
 
 4. 关闭seLinux  对http服务请求限制
 
-```
-$ setsebool -P httpd_can_network_connect 1
-```
+    ```
+    $ setsebool -P httpd_can_network_connect 1
+    ```
 - 或者 /etc/eslinux/config 设置 ESLinun=disable
 
 5. 配置端口转发  /etc/nginx/conf.d/default.conf
     - 通过 特殊路由  共用80端口
     - http://111.229.241.56/node
-```js
-location /node{
-    proxy_pass http://111.229.241.56:8080;
-    //转发端口
-    proxy_set_header Host $host;
-    //重置req.header.host
-}
-```
+    **```****`**
+    ```js
+    location /node{
+        proxy_pass http://111.229.241.56:8080;
+        //转发端口
+        proxy_set_header Host $host;
+        //重置req.header.host
+    }
+    ```
 6. 反向代理 
     - 将其他页面通过 *端口转发* 将其他跨域的资源代理到本服务器对应端口
     - 通过 ./  访问原本跨域的资源
     - http://111.229.241.56/dn
 
-```js
-location /dn{
-    proxy_pass        https://www.157299.cn/;
-}
-```
-```js
-$.ajax('http://111.229.241.56/baidu').then(
-    (res)=>{console.log(res)},
-    (err)=>{console.log('filed')}
-    )
-//通过  访问本源/nd  ajax 读取到了dn的数据
-```
+    ```js
+    // etc/nginx/conf.d/default.conf
+    location /dn{
+        proxy_pass        https://www.157299.cn/;
+    }
+    ```
+    ```js
+    $.ajax('http://111.229.241.56/baidu').then(
+        (res)=>{console.log(res)},
+        (err)=>{console.log('filed')}
+        )
+    //通过  访问本源/nd  ajax 读取到了dn的数据
+    ```
 7. nginx命令
 
-```shell
-    
-$ /usr/sbin/nginx -s quit   # 启动
-$ /usr/sbin/nginx -s reload # 重启
-
-```
+    ```shell
+        
+    $ /usr/sbin/nginx -s quit   # 启动
+    $ /usr/sbin/nginx -s reload # 重启
+    ```
 
 
 
