@@ -1,6 +1,22 @@
 # node 
 
+- 服务端
+
 ## nvm 
+
+1. 安装[git nvm](https://github.com/nvm-sh/nvm#install--update-script)
+
+2. 使用
+
+命令 | 功能 
+-|-
+nvm ls-remote | 查看远端有哪些版本
+nvm install 8.7.0 | 安装 8.7.0版本
+nvm use 8.7.0 | 切换版本
+nvm list | 本地安装node版本
+nvm --version | nvm版本
+node -v	 |	查看当前版本
+
 
 ## 常用模块
 
@@ -507,3 +523,10 @@ os.cpus()
     npm uninstall package  --卸载包  可以-S -D 等
     npm update package     -- 更新包
     ```
+- 自己发布包
+
+    - [npm] 注册
+    - npm adduser 登录
+    - cd 到目录
+    - npm publish 发布包
+    - npm i -D 

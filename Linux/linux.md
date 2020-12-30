@@ -2,6 +2,23 @@
 
 ## centos
 
+1. 查看磁盘
+
+    ```shell
+    df -Th
+    ```
+2. 文件结构 ls -la
+
+    目录 | 功能
+    -|-
+    home | 个人
+    etc | 配置文件
+    usr | 可执行文件
+    usr/sbin | 超级管理员执行文件
+    usr/local | 本地执行文件
+    var | www等常变目录
+3. 查看运行的进程 top
+
 ### 连网
 
 - 方法一
@@ -30,9 +47,18 @@
 
 2. 更新  
     - yum update -y  系统 和软件都更新
-    - yum upgrade    只更新系统
+    - yum upgrade    只更新软件
 
 ### 远程工具  xshell  putty
+
+- ssh
+
+    ```shell
+    $ ssh -p port user@address
+    ``` 
+
+### 安装node
+
 
 ### 安装Docker[github](https://github.com/docker/docker-install)
 
@@ -72,7 +98,7 @@
 5. 查看docker 命令
 
     ```shell
-    $ docker images # 查看已安装净吸纳过
+    $ docker images # 查看已安装的镜像
     $ docker ps     # 正在运行的docker 服务
     ```
 6. 运行mongo
@@ -101,15 +127,14 @@
 
 2. 使用  
 
-
-命令模式 | 编辑
--|-
-i | 输入
-:q | 退出
-:wq | 保存退出 
-:q! | 不保存退出
-i | 当前位置插入
-o | 当前位置前一行插入
+    命令模式 | 编辑
+    -|-
+    i | 输入
+    :q | 退出
+    :wq | 保存退出 
+    :q! | 不保存退出
+    i | 当前位置插入
+    o | 当前位置前一行插入
 
 ### 安装nginx
 
@@ -143,6 +168,8 @@ o | 当前位置前一行插入
     **```****`**
     ```js
     location /node{
+        root '/etc/www';
+        index index.html index.php;
         proxy_pass http://111.229.241.56:8080;
         //转发端口
         proxy_set_header Host $host;
@@ -177,7 +204,7 @@ o | 当前位置前一行插入
 
 
 
-### 安装数据库 mariaDB [腾讯云教程](https://cloud.tencent.com/document/product/213/38056)
+### 安装数据库 mariaDB 
 
 - 原 mySql作者  开发的 与mySQL基本一样
 
@@ -200,17 +227,61 @@ o | 当前位置前一行插入
     ```shell
     $ mysqld_safe # mysql 安全启动   会挂起
     # mysqld  d 是指服务端    
-
     $ service mariadb start
     ```
 
+### 安装yarn [官网](https://yarn.bootcss.com/docs/install/#centos-stable)
 
+- 比npm快，支持离线下载
 
+    ```shell
+    $ curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
 
-操作指令|功能
--|-
-ls | 显示当前目录下文件(不包括隐藏文件)
-ll | 显示当前目录下文件 详细
-cd . | 当前目录
-find / \| grap ifcfg | find /(从根找所有文件)  \| (管道) grap(正则匹配) ifcfg 
+    $ sudo yum install yarn
 
+    $ yarn config set registry http://registry.npm.taobao.org/
+    # 设置淘宝源
+    ```
+
+    命令 | 功能
+    -|-
+    yarn init | 生成package,json
+    yarn add xxx |  安装依赖
+    yarn add xxx -D | 安装开发依赖
+    yarn upgrade xxx | 更新依赖
+    yarn remove xxx | 移除依赖
+    yarn 或 yarn install | 安装 package.json 里的全部依赖
+
+### 常用命令 
+
+1. 文件相关
+
+    操作指令|功能
+    -|-
+    ls | 显示当前目录下文件(不包括隐藏文件)
+    ll | 显示当前目录下文件 详细
+    cd . | 当前目录
+    mkdir xxx | 创建目录
+    touch xxx | 创建文件
+    cat xxx | 查看文件
+    echo 'hello' >> xxx | 向xxx末尾插入hello
+    echo 'hello' >> xxx | 覆盖xxx为hello
+    rm xxx |  删除文件
+    rm -r xxx | 删除目录
+    rm -rf xxx | 强制(force)删除目录 
+    find / \| grap ifcfg | find /(从根找所有文件)  \| (管道) grap(正则匹配) ifcfg 
+
+2. 下载解压压缩
+    操作指令|功能
+    -|-
+    tar zxvf xxx | (z .gz结尾) (x 解压缩) (v 显示过程)  (f使用xxx名)
+    tar zcvf xxx.gz yyy zzz | 将yyy、zzz压缩 名为xxx.gz
+
+3. 进程
+    操作指令|功能
+    -|-
+    systemtcl start xxx | 执行xxx执行文件
+    systemtcl daemon-reload | 重启后台程序
+    systemtcl restart xxx  | 重启xxx
+    systemtcl stop xxx  | 停止xxx
+    systemtcl status xxx  | 查看xxx运行状态
