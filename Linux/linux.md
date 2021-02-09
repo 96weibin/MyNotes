@@ -59,6 +59,10 @@
 
 ### 安装node
 
+1. 先安装 nvm 
+2. 通过nvm 安装node
+
+- [相关博客](https://blog.csdn.net/xiaoweite1/article/details/103445263)
 
 ### 安装Docker[github](https://github.com/docker/docker-install)
 
@@ -153,6 +157,7 @@
     ```shell
     $ nginx -c /etc/nginx/nginx.conf
     # centOS配置源yum安装 需要指定配置文件
+    # 生成 pid文件
     ```
 
 4. 关闭seLinux  对http服务请求限制
@@ -198,7 +203,7 @@
 
     ```shell
         
-    $ /usr/sbin/nginx -s quit   # 启动
+    $ /usr/sbin/nginx -s quit   # 停止
     $ /usr/sbin/nginx -s reload # 重启
     ```
 
@@ -229,6 +234,24 @@
     # mysqld  d 是指服务端    
     $ service mariadb start
     ```
+
+    4. 登录
+
+    ```shell 
+    $ mysql -uroot
+    $ #免密登录
+    $ mysql -uroot -p
+    $ #密码登录
+    ```
+
+    5. 修改密码
+
+    ```shell
+    $ mysqladmin -u root -p password
+    ```
+
+    - [mariadb安装删除](https://blog.csdn.net/chengyuqiang/article/details/80210416)
+    - [mariadb常用配置](https://www.cnblogs.com/keepee/p/10819265.html)
 
 ### 安装yarn [官网](https://yarn.bootcss.com/docs/install/#centos-stable)
 
@@ -269,7 +292,10 @@
     rm xxx |  删除文件
     rm -r xxx | 删除目录
     rm -rf xxx | 强制(force)删除目录 
-    find / \| grap ifcfg | find /(从根找所有文件)  \| (管道) grap(正则匹配) ifcfg 
+    find / \| grep ifcfg | find /(从根找所有文件)  \| (管道) grep(正则匹配) ifcfg 
+    kill -9 进程号 | 结束进程
+    ps | 查看当前进程
+    ps -ef | 查看所有进程
 
 2. 下载解压压缩
     操作指令|功能

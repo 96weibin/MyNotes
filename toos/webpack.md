@@ -4,7 +4,10 @@ webpack : 组合插件使用实现打包、编译、测试、调试等功能
 
 ## webpack
 
-自身只能对json、js进行打包，通过loader、plugin的使用实现对各中资源的打包
+- 自身只能对json、js进行打包，通过loader、plugin的使用实现对各中资源的打包
+- loader  只能处理   js   webpack本身能处理的东西
+- 其他资源  通过plugin 进行处理
+
 
 1. 安装
 
@@ -33,7 +36,6 @@ webpack : 组合插件使用实现打包、编译、测试、调试等功能
                 rules:[]//loader(翻译)配置 
             },
             plugins:[]  //插件配置
-
         }
     ```
 3. 启动

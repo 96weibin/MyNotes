@@ -163,14 +163,14 @@ row的class | 说明
 
 - 水平布局
 
-```html
-<form role="form" class="form-inline">  
-    <div class="form-group">  <!--调整间距-->
-      <label>name</label>
-      <input class="form-control"> <!--组件美化-->
-    </div>
-  </form>
-```
+  ```html
+  <form role="form" class="form-inline">  
+      <div class="form-group">  <!--调整间距-->
+        <label>name</label>
+        <input class="form-control"> <!--组件美化-->
+      </div>
+    </form>
+  ```
 
 ## bootStrap按钮
 
