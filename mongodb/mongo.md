@@ -26,7 +26,7 @@
 
 ## 运行
 
-- windows 运行服务端
+- windows服务 运行服务端
 
     ```shell
     $ # 注意运行命令的终端需要有  管理员权限
@@ -151,7 +151,140 @@
     - 判断不会进行类型转换
 
 
+## 备份和恢复
+
+- 备份  mongodump
+
+    ```shell
+    $ docker ps | grep mongo   # 查看启动的mongo服务  some-mongo
+
+    $ docker exec -it some-mongo mongodump -h  -u -p -d -o /temp/test
+    #                               端口  用户 密码 数据库 输出目录  
+    # 备份出来的 文件在docker容器内
+
+    $ docker cp 3ac745b2a7e7:/temp/test /tmp/test
+    # 从docker 容器3ac745b2a7e7  中拷贝出来
+    ```
+
+- 恢复 mongorestore
+
+    ```shell
+    $ docker exec -it some-mongo mongorestore -h localhost --dir /tmp/test
+    # 需要把  备份文件拷贝到  docker容器内  恢复
+    ```
 
 
 
+## mongoose
 
+
+- 说明
+
+    - mongoose  类似 hibernate  定义类型模板   schema
+
+    - schema  是 规定表   字段、类型的类
+
+    - model 是表
+
+
+- 使用
+
+    ```js
+    const mongoose = require('mongoose')
+    
+    mongoose.connect('mongodb://106.13.116.236:10050/test', {useNewUrlParser: true, useUnifiedTopology: true});
+    //连接数据 mongodb://用户名:密码@106.13.116.236:10050/test
+    const Cat = mongoose.model('Cat', { name: String });        //创建并链接connection
+    const kitty = new Cat({ name: 'Zildjian' });            
+    kitty.save().then(() => console.log('meow'))   //save保存
+
+    ```
+
+- 开发配置
+
+    - lib/mongoose.js
+
+        ```js
+        //数据库连接
+        const mongoose = require('mongoose')
+        const dbConfig = require('../conf/dbConfig');
+
+
+        mongoose.connect(dbConfig.DB_URLL +'/test', {useNewUrlParser: true, useUnifiedTopology: true});
+
+        mongoose.connection.on('connected',()=>{
+            console.log('mongodb 链接成功')
+        })
+        mongoose.connection.on('error',(err)=>{
+            console.log('mongodb 链接失败')
+        })
+        mongoose.connection.on('disconnected',()=>{
+            console.log('mongodb 链接断开')
+        })
+        module.exports = mongoose
+        ```
+
+    - model/User.js
+
+        ```js
+        //定义 schema  导出 model
+        const mongoose = require('../lib/mongoose')
+
+        let Schema = mongoose.Schema;
+        let userSchema = new Schema({
+            name:String,
+            age:Number,
+            sex:Number,
+            msg:String
+        })
+
+        let usersModel = mongoose.model('users',userSchema)
+
+        module.exports = usersModel
+        ```
+
+    - CURD/test.js
+
+        ```js
+        //只需要引入 对应的model--collection  增删改查
+        const usersModel = require('../model/User')
+        // 新增
+        let addUser = async(user)=>{
+            let aUser = new usersModel(user)
+            let res = await aUser.save()
+            console.log(res)
+        }
+
+        let user1 = {
+            name:'weibin',
+            age:17,
+            sex:1,
+            msg:'世界真美好'
+        };
+        // addUser(user1)
+
+        //删除
+        let deleteOneUser = async(user)=>{
+            let res = await usersModel.deleteOne({
+                age:18
+            })
+            console.log(res)
+        }
+        deleteOneUser()
+        //修改
+        let mudateOneUser = async()=>{
+            let res = await usersModel.updateOne({
+                name:'weibin'
+            },{
+            age:18
+            })
+            console.log(res)
+        }
+        // mudateOneUser()
+        //查找
+        let findUser = async(user)=>{
+            let res = await usersModel.find()
+            console.log(res)
+        }
+        // findUser()
+        ```
