@@ -87,10 +87,12 @@
 
     ```js
    
-    // /etc/docker/daemon.js
+    // /etc/docker/daemon.json
   
     {
     "registry-mirrors":["https://registry.docker-cn.com"]
+
+    //163的源地址   http://hub-mirror.c.163.com
     }
 
     ```
