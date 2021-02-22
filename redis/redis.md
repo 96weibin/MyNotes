@@ -96,6 +96,10 @@
 
     - 没有初始化的数据,append、incr 都会予以初始化
 
+    ```js
+    client.set('key', 'value' , 'EX',100) //100秒过期
+    ```
+
 - Hash相关
 
     - 很像json   不过hash value 不能再是hash
