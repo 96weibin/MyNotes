@@ -1204,19 +1204,22 @@ npm run build webpack 编译出dist 目录 将dist目录放入 服务器即可�
 - 设置publicPath
 
 ```js
+//vue cli 3 在router/index.js中配置
 module.exports = {
     publicPath: "./"
 }
+
+//vue cli 2 在 config/index 中配置
+
+    assetsPublicPath: './',
 ```
 
 - router 设置为hash
 
-```js
+```js  
 const router = new VueRouter({
   // mode: 'history',
   mode: 'hash',
-  base: process.env.BASE_URL,
-  routes
 })
 ```
 
