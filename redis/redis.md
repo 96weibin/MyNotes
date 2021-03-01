@@ -21,17 +21,18 @@
     - docker-compose.yml
 
     ```yml
-    version: "3"        # docker-compose 版本
-    services:           # 严格缩进
-    redis-test:     # 名
-        image: "redis"  
-        restart: always # 自动重启
-        container_name: "redis-test"    # 便于管理的名字
+    version: "3"    # docker-compose 版本
+    services:
+      redis-test:   # 名
+        image: "redis"
+        restart: always     # 自动重启
+        container_name: "redis-test"   # 便于管理的名字
         ports:
-            - 15001:6379        # 端口映射
-        volumes:    # 将容器内数据 映射到宿主机
+            - 15001:6379     # 端口映射
+        volumes:      # 将容器内数据 映射到宿主机
             - /home/redistest:/data
         command: ["redis-server","--requirepass","123456"]  # 设置密码
+
     ```
 
     - 运行 compose

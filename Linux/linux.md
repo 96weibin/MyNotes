@@ -288,6 +288,8 @@
     cd . | 当前目录
     mkdir xxx | 创建目录
     touch xxx | 创建文件
+    cp xxx yyy | 复制文件
+    cp -rf xxx yyy | 复制文件夹
     cat xxx | 查看文件
     echo 'hello' >> xxx | 向xxx末尾插入hello
     echo 'hello' >> xxx | 覆盖xxx为hello

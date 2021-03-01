@@ -587,7 +587,7 @@ let vm = new Vue({
         })
 ```
 
-- beforeRouteUpdata
+- beforeRouteUpdata  beforeEnter
 
 ```html
     世界新闻
@@ -1200,6 +1200,25 @@ npm i -g @vue/cli-service-global
 ## build
 
 npm run build webpack 编译出dist 目录 将dist目录放入 服务器即可完成上线
+
+- 设置publicPath
+
+```js
+module.exports = {
+    publicPath: "./"
+}
+```
+
+- router 设置为hash
+
+```js
+const router = new VueRouter({
+  // mode: 'history',
+  mode: 'hash',
+  base: process.env.BASE_URL,
+  routes
+})
+```
 
 
 ## 一些注意点

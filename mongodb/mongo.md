@@ -4,7 +4,48 @@
 - 性能低  数据限制少  验证工作量大
 
 ## [安装](https://www.runoob.com/mongodb/mongodb-linux-install.html)
+    
+- [使用docker 安装](https://hub.docker.com/_/mongo)
 
+    1. 拉去镜像
+
+        ```shell
+        $ docker pull mongo
+        ```
+    2. docker run 
+
+        ```shell
+        $ docker run mongo
+        ```
+
+    1. 通过 .yml文件配置安装
+
+    ```yml
+    version: '3.1'
+    services:
+
+      mongo:
+        image: mongo
+        restart: always
+        container_name: "mongo-test"
+        ports:
+          - 10050:27017
+        environment:
+          MONGO_INITDB_ROOT_USERNAME: root
+          MONGO_INITDB_ROOT_PASSWORD: rootpass
+    ```
+
+    2. 运行yml文件
+
+    ```shell
+    $ docker-compose up -d  # -d在后台运行
+    ```
+
+    3. 停止容器
+
+    ```shell
+    $ docker-compose stop
+    ```
 ## 常见的场景设计方法
 
 1. 内嵌
@@ -193,7 +234,10 @@
     const mongoose = require('mongoose')
     
     mongoose.connect('mongodb://106.13.116.236:10050/test', {useNewUrlParser: true, useUnifiedTopology: true});
+
     //连接数据 mongodb://用户名:密码@106.13.116.236:10050/test
+
+    //不知道为什么  还要添加 ?authSource=admin  难受
     const Cat = mongoose.model('Cat', { name: String });        //创建并链接connection
     const kitty = new Cat({ name: 'Zildjian' });            
     kitty.save().then(() => console.log('meow'))   //save保存

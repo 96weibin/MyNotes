@@ -162,6 +162,8 @@
         module.exports = router
         ```
 
+
+
 ### 包管理 npm-check-updates
 
 - 检测package.json  内依赖是否有更新
@@ -171,6 +173,10 @@
     $ ncu --timeout=100000   # 这里ncu 总超时
     $ 
     ```
+
+### [vee-validate ](https://www.npmjs.com/package/vee-validate)
+
+> TODO 验证提示
 
 
 ## 工作目录设计
@@ -200,3 +206,29 @@
 2. ES6 语法支持     
 
 ----  参考webpack    以后再配置吧
+
+## 鉴权
+
+- 一台服务器，是同时为大量用户提供服务，可以通过 给用户设置uuid 区分用户，并在请求中带入uuid
+- 生成验证码，通过 uuid - text  存入 redis   只给客户返回 data
+- 登录验证  通过传来的uuid 去 redis 查 text 与前台传来的值进行对比   判断验证码是否正确
+
+- Session&cookie
+    看wps
+
+- [JWT](https://www.npmjs.com/package/koa-jwt)   json web token
+
+    - 不传递cookie, **能够防止csrf** (劫持cookie冒充)
+    - 移动端app 不基于浏览器时没有cookie **JWT 更适合移动端**
+    - 传输数据编码 **更安全**
+    - 不需要在服务端存储
+
+    组成 | 含义 | 功能
+    -|-|-
+    header      |  头部| token加密方式、类型
+    payload     |  载荷| 数据
+    signature   |  签名| header+payload 加密字符串
+
+
+
+
