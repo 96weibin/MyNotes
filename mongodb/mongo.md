@@ -50,7 +50,7 @@
 
 1. 内嵌
 
-    - 数据可以使嵌套式的的json
+    - 数据可以使嵌套式的json
     - 减少了关联表的使用
     - 对不常变得属性使用
 
@@ -239,7 +239,7 @@
 
     //不知道为什么  还要添加 ?authSource=admin  难受
     const Cat = mongoose.model('Cat', { name: String });        //创建并链接connection
-    const kitty = new Cat({ name: 'Zildjian' });            
+    const kitty = new Cat({ name: 'jiafei' });            
     kitty.save().then(() => console.log('meow'))   //save保存
 
     ```
