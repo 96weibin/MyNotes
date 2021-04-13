@@ -234,9 +234,9 @@ os.cpus()
 - 二进制数据操作  不破坏文件
 
     ```js
-        let bf1 = Buffer.from('abcdefg')   //创建Buffer
+        let bf1 = Buffer.from('abcdefg')    //创建Buffer
         let bf2 = Buffer.from('hijklm')
-        console.log(bf1.indexOf('b'))    //1
+        console.log(bf1.indexOf('b'))       //1
         console.log(bf1.slice(1,3).toString())    //bc 留头去尾
 
         let arr = [];
@@ -245,6 +245,7 @@ os.cpus()
         let bfArr = Buffer.concat(arr)  //buffer数组 重组buffer
         console.log(bfArr)
     ```
+    
 - 简易封装 split
 
     ```js

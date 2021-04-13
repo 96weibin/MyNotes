@@ -1018,7 +1018,7 @@ npm i -g @vue/cli-service-global
             },
             actions:{       //触发修改函数
                 addAction(store,arg){       //挂在Vue上的store对象
-                    store.commit(' ',arg)//可以出发多个mutation
+                    store.commit('addMutation',arg)//可以出发多个mutation
                 }
             }
             getters:{
@@ -1134,7 +1134,7 @@ npm i -g @vue/cli-service-global
             }
         </script>
         ```
-    - module 拆分store
+    - modules 拆分store
 
 
         ```js
