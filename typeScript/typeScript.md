@@ -160,7 +160,7 @@ HTMLElement
 1. 接口类 约定传参
 
     ```ts
-    //接口类  属性
+    //接口类  约定对象属性
 
     interface Obj{
         readonly mimi ?: string;  //只读
@@ -208,6 +208,61 @@ HTMLElement
     let myStr: string = myArray[0];
     console.log(myStr)
     ```
+
+4. 实现接口的类 的静态部分&实例部分
+
+    - 静态部分问题
+    
+        - class implements interface 时会对class 是否全部实现 interface 进行检查(只检查实例部分，不检查静态部分)
+        - class 的 constructor(){} 是这个类的静态部分
+        - 所以 想用接口  约定 一个类 的时候不能直接实现
+
+        ```ts
+        interface PersonConstructor{
+            new (n:string,a:number):any   //可以 new(n,a) 的一个东西   --- 就是一个构造函数嘛
+        }
+
+        class Staff implements PersonConstructor{
+            constructor(n:string,a:number){}   //constructor是 静态部分,不进行检查, 所以会报错
+            //Err ： 'Staff' provides no match for the signature 'new(n:string.....)'
+        }
+        ```
+
+    - 实现接口约定类的方法
+
+        ```ts
+        interface PersonConstructor{
+            new (n:string,a:number):PersonInterface;   //静态 
+        }
+        interface PersonInterface{
+            tick():void   //实例部分
+        }
+        //interface设置 constructor
+        class Staff implements PersonInterface{
+            constructor(public n:string,public a:number){}   //静态部分 
+            tick(){                                 //实例部分
+                console.log('hhh')
+            }
+        }
+
+        //
+        function buildPerson (ctor:PersonConstructor,n:string,a:number):PersonInterface{
+            return new ctor(n,a)            // 这里和Constructor 相关
+        }
+
+        let staff1:PersonInterface = buildPerson(Staff,'weibin',18)
+        console.log(staff1) // Staff{n:weibin,a:18}
+        staff1.tick()       //为什么   staff1 不能访问到n,a 属性
+
+        ```
+
+        ```ts
+        //感觉还是不太能理解  为什么要像上面这么写
+        let staff2 = new Staff('zw',16)
+        console.log(staff2)
+        console.log(staff2.n)
+        ```
+
 4. 继承接口
 
     ```ts
