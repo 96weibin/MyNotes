@@ -206,7 +206,7 @@ HTMLElement
     myArray = ["Bob", "Fred"];
 
     let myStr: string = myArray[0];
-    console.log(myStr)
+    console.log(myStr)  //Bob
     ```
 
 4. 实现接口的类 的静态部分&实例部分
@@ -511,6 +511,7 @@ class Person {
 
 - 只能作为父级，无法实现，子级继承  必须实现父级的所有抽象方法
 - 函数签名  就是  抽象类中,abstract 的fn 也就是 interface 中没有{}的方法
+- **与接口不同的，抽象只能对方法进行规定， 而接口还可以对参数、传参、类等进行限制**
 
     ```ts
     abstract class Sharp{           //抽象类
@@ -558,6 +559,41 @@ class Person {
     ```
 
 ## 函数
+
+- 函数定义类型
+
+    ```ts
+    //函数声明
+    function add(a:number,b:number):number{
+        return a + b
+    }
+    //函数表达式
+    let sub = function(a:number,b:number):number{
+        return a - b
+    }
+    // 完整的函数表达式
+    let myAdd:(baseValue:number,increment:number) => number = function(x:number,y:number):number{
+        //可以 : 函数的功能， 变量可以更好的描述
+        
+        return x + y
+    }
+    ```
+- 传参 与 默认参数
+
+    - ts函数传参个数严格要求
+    - ? 可选参数需要在形参的最后, 未定义类型 则是any 
+    - 参数默认值  gander = 'male' ,传入(undefined)触发
+    - 剩余参数  与 ES6相同  ...args:string[]
+
+    ```ts
+    function buildName(first:string, last?:string):string {
+        return first + last;
+    }
+    ```
+
+- this 与 箭头函数
+
+
 
 
 ## 泛型
