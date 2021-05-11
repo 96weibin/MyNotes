@@ -147,3 +147,18 @@ less是Css预处理语言 增加变量、mixin、函数等特性，使CSS更易�
     }
     ```
   
+  ### & 代替父级选择器
+
+  ```less
+  .wrapper{
+      .box1{    //.wrapper .box1
+          //xxxx
+      }
+      &.box1{   //.wrapper .wrapper.box
+          //zzzz
+      }
+      & .box1{  //.wrapper .wrapper .box
+          //yyyy
+      }
+  }
+  ```
