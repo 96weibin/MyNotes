@@ -116,7 +116,9 @@
 
     1. 子组件vm @bindable attr 声明属性
     2. 子组件v  ${attr} 属性插值
-    3. container <xxx attr = 'xxx' 给子组件传值
+    3. container <xxx attr = 'xxx' 给子组件传值   
+
+    - 注意: 不同组件 bind 同一引用类型，与函数、赋值等一致，会引用相同地址 公用同一数据。
 
     ```ts
     import { bindable } from 'aurelia-framework';
@@ -434,7 +436,8 @@ unbind() | 组件移除后
 ```ts
 
 aurelia.use
-    .featrue(PLATFORM.moduleName('url'))  //感觉类似 path.reslove  配合webpack 的模块路径   动态构建
+    .featrue(PLATFORM.moduleName('url'))  //感觉类似 path.reslove  动态构建
+    //arg1 相对或绝对url  , 可选arg2 options
 ```
 
 
