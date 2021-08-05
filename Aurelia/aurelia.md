@@ -450,5 +450,83 @@ aurelia.use
 compse  获取 main 里定义的 
 ```
 
-
 测试 view.bind  和 view-model.bind
+
+
+## 插件
+
+### https://www.imangodoc.com/52923.html
+
+
+## eventAggregator 事件聚合器
+
+- 发布订阅，可以在多组件之间 通信，回调。。。。
+
+    api | 功能 
+    -|-
+    subscribe(event,handel) | 订阅 event 执行handel
+    publish(event,data) | 发布 event及data
+    subscribe.dispose() | 取消订阅
+
+1. 订阅
+
+   - 要使用  eventAggregator 需要import并且 inject
+    
+    ```ts
+    import { bindable } from 'aurelia-framework';
+    import { inject } from 'aurelia-dependency-injection';
+    import {EventAggregator, Subscription} from 'aurelia-event-aggregator';
+
+    @inject(EventAggregator)
+    export class ShowMsg{
+        constructor(public eventAggregator:EventAggregator,
+            public msg:string,
+            public subscribes: Subscription
+            ){
+            this.msg = 'hello'
+        }
+        attached() {
+            this.subscribe();
+        }
+        subscribe(): void {
+            this.subscribes = this.eventAggregator.subscribe('showMsg',async res => {
+            this.msg = res.msg
+            await this.sleep(2);
+            this.msg = 'hello'
+            });
+        }
+
+        sleep(s){
+            return new Promise((reslove,reject)=>{
+            setTimeout(() => {
+                reslove('go');
+            }, s * 1000);
+            })
+        }
+
+        dispose(e:MouseEvent){
+            this.subscribes.dispose()
+        }
+    }                       
+    ```
+
+
+2. 发布
+
+ 
+
+    ```ts
+    import { inject } from 'aurelia-dependency-injection';
+    import {EventAggregator} from 'aurelia-event-aggregator';
+
+    @inject(EventAggregator)
+    export class publishMsg {
+        constructor(private eventAggregator:EventAggregator){
+            
+        }
+        async publishMsg (){
+            let res = await (await fetch('http://127.0.0.1:8888/getMsg')).json()
+            this.eventAggregator.publish('showMsg',res)
+        }
+    }
+    ```
