@@ -160,7 +160,7 @@ HTMLElement
 1. 接口类 约定传参
 
     ```ts
-    //接口类  属性
+    //接口类  约定对象属性
 
     interface Obj{
         readonly mimi ?: string;  //只读
@@ -199,34 +199,173 @@ HTMLElement
     ```ts
     // 接口属性  可索引
     interface StringArray {
-    [index: number]: string;
+        [index: number]: string;
     }
 
     let myArray: StringArray;
     myArray = ["Bob", "Fred"];
 
     let myStr: string = myArray[0];
-    console.log(myStr)
+    console.log(myStr)  //Bob
     ```
-4. 继承接口
+
+4. 实现接口的类 的静态部分&实例部分
+
+    - 静态部分问题
+    
+        - class implements interface 时会对class 是否全部实现 interface 进行检查(只检查实例部分，不检查静态部分)
+        - class 的 constructor(){} 是这个类的静态部分
+        - 所以 想用接口  约定 一个类 的时候不能直接实现
+
+        ```ts
+        interface PersonConstructor{
+            new (n:string,a:number):any   //可以 new(n,a) 的一个东西   --- 就是一个构造函数嘛
+        }
+
+        class Staff implements PersonConstructor{
+            constructor(n:string,a:number){}   //constructor是 静态部分,不进行检查, 所以会报错
+            //Err ： 'Staff' provides no match for the signature 'new(n:string.....)'
+        }
+        ```
+
+    - 实现接口约定类的方法
+
+        ```ts
+        interface PersonConstructor{
+            new (n:string,a:number):PersonInterface;   //静态 
+        }
+        interface PersonInterface{
+            tick():void   //实例部分
+        }
+        //interface设置 constructor
+        class Staff implements PersonInterface{
+            constructor(public n:string,public a:number){}   //静态部分 
+            tick(){                                 //实例部分
+                console.log('hhh')
+            }
+        }
+
+        //
+        function buildPerson (ctor:PersonConstructor,n:string,a:number):PersonInterface{
+            return new ctor(n,a)            // 这里和Constructor 相关
+        }
+
+        let staff1:PersonInterface = buildPerson(Staff,'weibin',18)
+        console.log(staff1) // Staff{n:weibin,a:18}
+        staff1.tick()       //为什么   staff1 不能访问到n,a 属性
+
+        ```
+
+        ```ts
+        //感觉还是不太能理解  为什么要像上面这么写
+        let staff2 = new Staff('zw',16)
+        console.log(staff2)
+        console.log(staff2.n)
+        ```
+
+4. 接口继承接口
+
+    - 实现继承的接口，必要实现 全部继承链 属性方法
+    ```ts
+    interface Person{
+        gender:string;
+        group():void;
+    }
+
+    interface Staff extends Person{
+        assets:number;
+        work():void;
+    }
+
+    class Weibin implements Staff{
+        constructor(public assets:number,public gender:string){}
+        group(){
+
+        }
+        work(){
+            console.log('Im working')
+        }
+    }
+    ```
+
+5. 混合类型接口
+    
+    - 一个接口同时约定 对象、方法
 
     ```ts
-    interface Shape10{
-        color:string
+    interface Counter {
+        (start:number):string;  //接口作为函数接口
+        interval:number;        //接口作为对象 设置属性
+        reset():void;           //接口作为对象 设置方法
     }
 
-    interface Square10 extends Shape10{
-        length:number
-    }
+    //混合模式，不通过implements 而是通过  function 模拟实现步骤实现
+    // 混合模式  可以达成 一个接口既是方法，也是对象，
+    // 但是  implements 的检查过程   个人不建议使用
 
-    let obj10:Square10 = {
-        color:'red',
-        length:10
+
+    function getCounter():Counter{
+        let counter = <Counter>function(start:number){};   //<Counter> 泛型 表明 fun是Counter接口类型的 
+        counter.interval = 123;     //是否实现  接口的规定，都是可以的
+        counter.reset = function(){}  //这么搞   接不接口  就没什么用了。
+        return counter
     }
-    //square 的实现需要包含两个
+    let c = getCounter()
+    console.log(c)
     ```
 
-5. 接口使用
+6. 接口继承类
+
+    - 没太搞懂遇到再去官网看吧
+
+    ```ts
+    class Control{  //一个既有 publi 也有 private 的类
+        private privateState:any;
+        protected protectedState:any;
+        public publicState:any;    
+    }
+
+    interface SelectableControl extends Control{
+        select():void;      //接口继承类
+    }
+
+    /*
+
+    try {// 直接实现接口测试  Err
+        class Inp implements SelectableControl{  //Inp实现接口 
+            public publicState = 'public';          //只有 public 的可以实现
+            protected protectedState = 'protected';   //Inp 和 Control 不算子集关系  public 无法实现
+            private privateState = 'private';       //private 就更不能实现了
+            select(){}
+        }
+    } catch (error) {
+        console.log(error)
+    }
+
+    */
+
+    // 通过继承 Control 可以 实现protected  和 private 了
+    class Button extends Control implements SelectableControl{
+        select(){}
+        sayHi():void{
+            console.log(this.publicState)     //
+            console.log(this.protectedState)
+            // console.log(this.privateState)  //Err
+        }
+    }
+    let b = new Button()
+    b.sayHi()
+
+
+    class TextBox extends Control{
+        select(){}
+    }
+    let t = new TextBox()
+
+    ```
+
+
+7. 接口使用
 
     - interface 定义接口, implements 实现接口
     - 通过接口实现的类必须 实现接口的全部方法
@@ -266,45 +405,44 @@ HTMLElement
     console.log(r1.area())
     ```
 
-
 ## 类
 
 - 类内属性需要声明，
-- 修饰符   public、private（仅自身）、 protected  （自身和子集）
+- super 调用父级的构造函数
+- 修饰符   public(默认)、private（仅自身）、 protected（自身和子集）、readonly
 
-```js
-class Person {
-    private name:string;        //类里面的变量，需要先声明
-    protected age:number;
-    constructor(name:string, age:number){
-        this.name = name;
-        this.age = age;
+    ```js
+    class Person {
+        private name:string;        //类里面的变量，需要先声明
+        protected age:number;
+        constructor(name:string, age:number){  //构造函数
+            this.name = name;
+            this.age = age;
+        }
+        show():void{     //方法
+            console.log(this.name + this.age)
+        }
     }
 
-    show():void{     //public 函数
-        console.log(this.name + this.age)
+    class Staff extends Person {        //继承
+        private job:string;             //声明自身类型的 属性
+        constructor(name:string,age:number,job:string){    
+            super(name,age)     //super  只能在constructor 内调用,super调用父级的构造函数
+                                //调用 super 必须在 this之前
+            this.job = job      
+        }
+        show():void{
+        super.show()
+        console.log(this.job)  
+        console.log(this.age)     //访问父级的 protected 属性
+        }
     }
-    
-}
 
-class Staff extends Person {        //继承
-    private job:string;             //声明自身类型的 属性
-    constructor(name:string,age:number,job:string){    
-        super(name,age)     //super  只能在constructor 内调用
-        this.job = job      
-    }
-    show():void{
-      super.show()
-      console.log(this.job)  
-      console.log(this.age)     //访问父级的 protected 属性
-    }
-}
-
-let p:Person = new Person('weibin',17);
-p.show()
-let weibin:Staff = new Staff('weibin',18,'工程师');
-weibin.show()
-```
+    let p:Person = new Person('weibin',17);
+    p.show()
+    let weibin:Staff = new Staff('weibin',18,'工程师');
+    weibin.show()
+    ```
 
 - 简写
 
@@ -337,6 +475,7 @@ class Person {
 ### Accessors 存取器 get/set
 
 - 设置读取 对象属性，   不支持ES3/4
+- 提高对象读取的安全性
 
     ```ts
     class Person {
@@ -352,8 +491,6 @@ class Person {
                 this._name = v;
             }
         }
-        
-        
     }
 
     let p:Person = new Person('male',18,'weibin')
@@ -370,18 +507,15 @@ class Person {
     $ tsc -t es5 .\test.ts  #-t 设置target es5
     ```
 
-
-### 抽象&接口
-
-- 许多对象有公共的特征，通过  继承 或 接口完成,实现对子类的规范
-
-#### abstract 抽象
+### abstract 抽象
 
 - 只能作为父级，无法实现，子级继承  必须实现父级的所有抽象方法
+- 函数签名  就是  抽象类中,abstract 的fn 也就是 interface 中没有{}的方法
+- **与接口不同的，抽象只能对方法进行规定， 而接口还可以对参数、传参、类等进行限制**
 
     ```ts
     abstract class Sharp{           //抽象类
-        abstract draw(gd):void;     //抽象方法
+        abstract draw(gd):void;     //函数签名  抽象方法
         abstract area():number;
     }
 
@@ -395,7 +529,7 @@ class Person {
         area(): number {
             return Math.PI * Math.pow(this.r,2)
         }
-        
+        private Pi:string = '3.14'
     }
 
     class Rect extends Sharp{
@@ -415,10 +549,88 @@ class Person {
     console.log(c1.area())
     let r1:Sharp = new Rect(10,20)
     console.log(r1.area())
+    
+    // console.log(c1.Pi)      //Err c1:Sharp 后就只能放问 与 sharp 重合的部分
+    let c2:Circle = new Circle(11)
+    console.log(c2.pi)      //c2:circle 就可以访问到属性了
+
 
     //一个 父类可以是现成  不同的子类，且子类的类型与父类相同，----多态
     ```
 
+## 函数
+
+- 函数定义类型
+
+    ```ts
+    //函数声明
+    function add(a:number,b:number):number{
+        return a + b
+    }
+    //函数表达式
+    let sub = function(a:number,b:number):number{
+        return a - b
+    }
+    // 完整的函数表达式
+    let myAdd:(baseValue:number,increment:number) => number = function(x:number,y:number):number{
+        //可以 : 函数的功能， 变量可以更好的描述
+        
+        return x + y
+    }
+    ```
+- 传参 与 默认参数
+
+    - ts函数传参个数严格要求
+    - ? 可选参数需要在形参的最后, 未定义类型 则是any 
+    - 参数默认值  gander = 'male' ,传入(undefined)触发
+    - 剩余参数  与 ES6相同  ...args:string[]
+
+    ```ts
+    function buildName(first:string, last?:string):string {
+        return first + last;
+    }
+    ```
+
+- this 与 箭头函数
 
 
-## tsloader 
+
+
+## 泛型
+
+- 表示变量的类型
+
+    - 泛型 比 any的有点  可以限制函数进出类型一致
+
+    ```ts
+    //泛型   
+    function identity<T>(arg:T):T{return arg}
+    //identity 接受两中参数  
+    // 1 <> 中的表明类型的参数  感觉很像声明
+    // 2 () 中的形参
+
+    let output1 = identity<string>('hello word')
+    let output2 = identity(2021)
+
+    // output1 = 123;  //err
+    // output2 = 'hello' //err
+
+
+    //输入不同类型的变量  执行泛型函数 得到不同类型的变量
+    ```
+- 使用泛型变量
+
+    ```ts
+    function identity<T>(arg:T[]):T{
+        //上面的例子中  arg 可以被认为是 any类型，没有明确的类型，对形参的操作就受限
+        // 可以通过  T[] 的方式 进一步 描述 arg 的类型
+        console.log(arg.length)
+        return arg[0]
+    }
+    console.log(identity([1,2,34]))
+    ```
+- 泛型类型
+
+    ```ts
+
+    ```
