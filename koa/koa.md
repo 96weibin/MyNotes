@@ -48,7 +48,7 @@
         const Koa = require('koa')
         let app = new Koa()
         app.use(ctx =>{
-            ctx.response.body = 'hello word'
+            ctx.response.body = 'hello world'
         })
         app.listen(8888)
     ```

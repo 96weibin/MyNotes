@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <div id="myDiagramDiv" style="background-color: rgb(52, 52, 60); border: 1px solid black; height: 570px; position: relative; -webkit-tap-highlight-color: rgba(255, 255, 255, 0); cursor: auto;"><canvas tabindex="0" width="904" height="568" style="position: absolute; top: 0px; left: 0px; z-index: 2; user-select: none; width: 904px; height: 568px; cursor: auto;">This text is displayed if your browser does not support the Canvas HTML element.</canvas><div style="position: absolute; overflow: auto; width: 904px; height: 568px; z-index: 1;"><div style="position: absolute; width: 1687.5px; height: 1px;"></div></div></div><p><button id="zoomToFit">Zoom to Fit</button> <button id="centerRoot">Center on root</button></p><div><div id="myInspector" class="inspector"></div></div><p>This editable organizational chart sample color-codes the Nodes according to the tree level in the hierarchy.</p><p>Double click on a node in order to add a person or the diagram background to add a new boss. Double clicking the diagram uses the <a>ClickCreatingTool</a> with a custom <a>ClickCreatingTool.insertPart</a> to scroll to the new node and start editing the <a>TextBlock</a> for its name .</p><p>Drag a node onto another in order to change relationships. You can also draw a link from a node's background to other nodes that have no "boss". Links can also be relinked to change relationships. Right-click or tap-hold a Node to bring up a context menu which allows you to:</p><ul><li>Vacate Position - remove the information specfic to the current person in that role</li><li>Remove Role - removes the role entirely and reparents any children</li><li>Remove Department - removes the role and the whole subtree</li></ul>Deleting a Node or Link will orphan the child Nodes and generate a new tree. A custom SelectionDeleting <a>DiagramEvent</a> listener will clear out the boss info when the parent is removed.<p></p><p>Select a node to edit/update node data values. This sample uses the <a href="../extensions/dataInspector.html">Data Inspector</a> extension to display and modify Part data.</p><p>To learn how to build an org chart from scratch with GoJS, see the <a href="../learn/index.html">Getting Started tutorial</a>.</p><p>If you want to have some "assistant" nodes on the side, above the regular reports, see the <a href="orgChartAssistants.html">Org Chart Assistants</a> sample, which is a copy of this sample that uses a custom <a>TreeLayout</a> to position "assistants" that way.</p><div><div><button id="SaveButton" onclick="save()" disabled="">Save</button> <button onclick="load()">Load</button> Diagram Model saved in JSON format:</div><textarea id="mySavedModel" style="width:100%; height:270px;">{ "class": "go.TreeModel",
+	"nodeDataArray": [
+	{"key":1, "name":"Stella Payne Diaz", "title":"CEO"},
+	{"key":2, "name":"Luke Warm", "title":"VP Marketing/Sales", "parent":1},
+	{"key":3, "name":"Meg Meehan Hoffa", "title":"Sales", "parent":2},
+	{"key":4, "name":"Peggy Flaming", "title":"VP Engineering", "parent":1},
+	{"key":5, "name":"Saul Wellingood", "title":"Manufacturing", "parent":4},
+	{"key":6, "name":"Al Ligori", "title":"Marketing", "parent":2},
+	{"key":7, "name":"Dot Stubadd", "title":"Sales Rep", "parent":3},
+	{"key":8, "name":"Les Ismore", "title":"Project Mgr", "parent":5},
+	{"key":9, "name":"April Lynn Parris", "title":"Events Mgr", "parent":6},
+	{"key":10, "name":"Xavier Breath", "title":"Engineering", "parent":4},
+	{"key":11, "name":"Anita Hammer", "title":"Process", "parent":5},
+	{"key":12, "name":"Billy Aiken", "title":"Software", "parent":10},
+	{"key":13, "name":"Stan Wellback", "title":"Testing", "parent":10},
+	{"key":14, "name":"Marge Innovera", "title":"Hardware", "parent":10},
+	{"key":15, "name":"Evan Elpus", "title":"Quality", "parent":5},
+	{"key":16, "name":"Lotta B. Essen", "title":"Sales Rep", "parent":3}
+	]
+	}
+	</textarea></div>
+    <script src="../go-debug.js"></script>
+    <script src="./index.js"></script>
+</body>
+</html>
+
+

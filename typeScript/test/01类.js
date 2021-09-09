@@ -13,31 +13,23 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var Department = /** @class */ (function () {
-    function Department(name) {
-        this.name = name;
+var Foo = /** @class */ (function () {
+    function Foo(type) {
+        this.type = type;
     }
-    Department.prototype.printName = function () {
-        console.log('Department name: ' + this.name);
-    };
-    return Department;
+    return Foo;
 }());
-var AccountingDepartment = /** @class */ (function (_super) {
-    __extends(AccountingDepartment, _super);
-    function AccountingDepartment() {
-        return _super.call(this, 'Accounting and Auditing') || this;
+var Son = /** @class */ (function (_super) {
+    __extends(Son, _super);
+    function Son(type) {
+        var _this = _super.call(this, type) || this;
+        _this.type = type;
+        return _this;
     }
-    AccountingDepartment.prototype.printMeeting = function () {
-        console.log('The Accounting Department meets each Monday at 10am.');
+    Son.prototype.test = function () {
+        console.log(this.type);
     };
-    AccountingDepartment.prototype.generateReports = function () {
-        console.log('Generating accounting reports...');
-    };
-    return AccountingDepartment;
-}(Department));
-var department; // 允许创建一个对抽象类型的引用
-// department = new Department(); // 错误: 不能创建一个抽象类的实例
-department = new AccountingDepartment(); // 允许对一个抽象子类进行实例化和赋值
-department.printName();
-department.printMeeting();
-// department.generateReports(); // 错误: 方法在声明的抽象类中不存在
+    return Son;
+}(Foo));
+var s = new Son('son');
+console.log(s);

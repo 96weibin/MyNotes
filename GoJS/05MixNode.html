@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./go-debug.js"></script>
+</head>
+<body>
+    <div id="box" style="width:800px; height:550px; background-color: #DAE4E4;"></div>
+    <script>
+        let $ = go.GraphObject.make;
+        let myDiagram = $(go.Diagram, 'box');
+        myDiagram.nodeTemplate =
+        $(go.Node, "Horizontal",
+            { background: "#44CCFF" },
+            $(go.Picture,
+                { margin: 10, width: 50, height: 50, background: "red" },
+                new go.Binding("source")
+            ),
+            $(go.TextBlock,
+                "Default Text", 
+                { margin: 12, stroke: "white", font: "bold 16px sans-serif" },
+                new go.Binding("text", "name")
+            )
+        );
+        var model = $(go.Model);
+        model.nodeDataArray =
+        [ 
+        { name: "Don Meow", source: "/images/learn/cat1.png" },
+        { name: "Copricat", source: "/images/learn/cat2.png" },
+        { name: "Demeter",  source: "/images/learn/cat3.png" },
+        { /* Empty node data */  }
+        ];
+        myDiagram.model = model;
+        
+    </script>
+</body>
+</html>

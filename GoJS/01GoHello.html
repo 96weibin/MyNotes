@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="./go-debug.js"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <script src="./go-debug.js"></script>
+
+  <div id="box" style="width:400px; height:150px; background-color: #DAE4E4;"></div>
+  <script>
+    var $ = go.GraphObject.make;
+    var myDiagram = $(go.Diagram, 'box', {
+      "undoManager.isEnabled": true
+    })
+    myDiagram.nodeTemplate = $(
+      go.Node,
+      "Auto",
+      $(go.Shape,"RoundedRectangle",new go.Binding('fill',"color")),
+      $(go.TextBlock, {margin:3}, new go.Binding('text','key'))
+    ),
+  
+    myDiagram.model = new go.GraphLinksModel(
+      [
+        { key: "Alpha", color: "lightblue" },
+        { key: "Beta", color: "orange" },
+        { key: "Gamma", color: "lightgreen" },
+        { key: "Delta", color: "pink" }
+      ],
+      [
+        { from: "Alpha", to: "Beta" },
+        { from: "Alpha", to: "Gamma" },
+        { from: "Beta", to: "Beta" },
+        { from: "Gamma", to: "Delta" },
+        { from: "Delta", to: "Alpha" }
+      ]
+    )
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box1" style="height: 200px;" onclick="sayHi()"></div>
+    <div class="box2" style="height: 200px;"></div>
+    <div class="box3">
+        <div style="width: 200px; height: 200px; background-color: pink;"></div>
+    </div>
+    
+    <script>
+        let $ = document.querySelector.bind(document)
+        console.log($('.box1'))
+        $('.box1').innerHTML = `
+        <div style="width: 200px; height: 200px; background-color: black;"
+        
+        
+        ></div>`
+        $('.box2').innerHTML = `
+        <div style="width: 200px; 
+        height: 200px; 
+        background-color: green;
+        ">
+        </div>
+        `
+        function sayHi(){
+            console.log('hhhhh')
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" autofocus  class="box">
+    <button class="focus">focus</button>
+    <button class="blur">blur</button>
+    <script>
+        let $ = document.querySelector.bind(document)
+        let inp = $('.box')
+        $('.blur').addEventListener('click',function(){
+            inp.blur()
+        })
+        $('.focus').addEventListener('click',function(){
+            inp.focus()
+        })
+
+    </script>
+</body>
+</html>

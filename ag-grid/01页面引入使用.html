@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="http://www.itxst.com/package/ag-grid/ag-grid-community.js"></script>
+    <link href="http://www.itxst.com/package/ag-grid/styles/ag-grid.css" rel="stylesheet"/>
+</head>
+<body>
+    <div id="myGrid" style="width: 100%; height: 500px;" class="ag-theme-balham"></div>
+    <button onclick="updateGrid3()">updateGrid3</button>
+    <button onclick="deleteRow()">delete</button>
+    <button onclick="changeSelect">select</button>
+    <script>
+            let $ = document.querySelector.bind(document);
+            let myGridEl = $('#myGrid');
+            var columnDefs = [
+                { 
+                    headerName: '姓名1', 
+                    field: 'name',
+                    'pinned': 'left',
+                    width:120,
+                    filter:'agTextColumnFilter',
+                    headerCheckboxSelection:true,       //表头  checkbox 可选
+                    checkboxSelection:true,             //行    chackbox 可选
+
+                 },
+                { headerName: '性别', field: 'sex',cellEditor:"agSelectCellEditor", cellEditorParams:{values:['男','女']} },
+                { headerName: '年龄', field: 'age', cellEditor:'agLargeTextCellEditor', cellEditorParams:{maxLength:'30',cols:'50', rows:'6'}},
+                     // 点击行多选
+                { headerName: '籍贯', field: 'jg',headerCheckboxSelection:true,checkboxSelection:true,},
+                { headerName: '省份', field: 'sf' },
+                { headerName: '地址', field: 'dz' },
+            ];
+            var rowData = [
+                { name: '张三', sex: '男', age: '100', 'jg': '中国', 'sf': '浙江', 'dz': '杭州市古墩路1号' },
+                { name: '李四', sex: '女', age: '5', 'jg': '中国', 'sf': '浙江', 'dz': '杭州市古墩路12号' },
+                { name: '王五', sex: '女', age: '20', 'jg': '中国', 'sf': '浙江', 'dz': '杭州市古墩路31号' },
+                { name: '王五', sex: '女', age: '26', 'jg': '中国', 'sf': '浙江', 'dz': '杭州市古墩路111号' },
+                { name: '王五', sex: '男', age: '35', 'jg': '中国', 'sf': '浙江', 'dz': '杭州市古墩路12号' },
+                { name: '王五', sex: '男', age: '35', 'jg': '中国', 'sf': '浙江', 'dz': '杭州市古墩路12号' },
+                { name: '王五', sex: '男', age: '35', 'jg': '中国', 'sf': '浙江', 'dz': '杭州市古墩路12号' },
+                { name: '王五', sex: '男', age: '35', 'jg': '中国', 'sf': '浙江', 'dz': '杭州市古墩路12号' },
+                { name: '王五', sex: '男', age: '35', 'jg': '中国', 'sf': '浙江', 'dz': '杭州市古墩路12号' },
+                { name: '王五', sex: '男', age: '35', 'jg': '中国', 'sf': '浙江', 'dz': '杭州市古墩路12号' },
+                { name: '王五', sex: '男', age: '35', 'jg': '中国', 'sf': '浙江', 'dz': '杭州市古墩路12号' },
+                { name: '王五', sex: '男', age: '35', 'jg': '中国', 'sf': '浙江', 'dz': '杭州市古墩路12号' },
+                { name: '王五', sex: '男', age: '35', 'jg': '中国', 'sf': '浙江', 'dz': '杭州市古墩路12号' },
+                { name: '王五', sex: '男', age: '35', 'jg': '中国', 'sf': '浙江', 'dz': '杭州市古墩路12号' },
+                { name: '王五', sex: '男', age: '35', 'jg': '中国', 'sf': '浙江', 'dz': '杭州市古墩路12号' }
+            ];
+            var topRows=[
+                { name: '顶部合计行', sex: 'X', age: '15', 'jg': '中国', 'sf': '顶部1', 'dz': '杭州市文一西路' } 
+            ];
+            var botRows=[
+                { name: '置顶行1', sex: 'X', age: '15', 'jg': '中国', 'sf': '顶部1', 'dz': '杭州市文一西路' },
+                { name: '置顶行2', sex: 'X', age: '15', 'jg': '中国', 'sf': '顶部2', 'dz': '杭州市文一西路' }
+            ];
+
+
+            let gridOptions = {
+                    rowHeight: 30,              //行高
+                    columnDefs,      //表头
+                    rowData,               //数据
+                    floatingFilter:true,
+                    // editType:'fullRow',
+                    //下面为一组
+                    // rowSelection:'multiple',    //点击 checkbox 多选， single 单选
+                    rowMultiSelectWithClick:true, // 点击行多选
+                    rowDeselection:true,          //点击行 取消选中
+
+                    onGridReady(){              
+                        gridOptions.api.sizeColumnsToFit();
+                    },
+                    defaultColDef: {
+                        editable: true,         //单元表格是否可编辑
+                        
+                        // enableRowGroup: true,
+                        // enablePivot: true,
+                        // enableValue: true,
+                        sortable: true,     //排序
+                        sort:'desc',
+                        resizable: true,    //resize
+                        lockPosition: true,
+                        filter: true        //筛选
+                    },
+                    
+                    // 下面连个属性 也是一组
+                    pagination: true,  //开启分页（前端分页）
+                    paginationAutoPageSize: true, //根据网页高度自动分页（前端分页）
+                    
+                    pinnedTopRowData:topRows, //顶部合计行
+                    pinnedBottomRowData:botRows ,//底部合计行
+                    //**************设置置顶行样式**********
+                    getRowStyle: function (params) { 
+                            if (params.node.rowPinned) {   
+                                    return {'font-weight': 'bold','color':'red'};
+                    }
+                },       
+            }
+            new agGrid.Grid(myGridEl,gridOptions);
+        
+        //更新数据
+        function updateGrid3 () {
+            let rowObj = gridOptions.api.getRowNode(2);  //获取第三行 的对象
+            let newRow =  { name: '三行', sex: '男', age: '35', 'jg': '中国', 'sf': '浙江', 'dz': '杭州市古墩路12号' };
+            rowObj.setData(newRow) 
+        }
+        //删除选中行
+        function deleteRow(){
+            let selectRows = gridOptions.api.getSelectedRows();     //获取选中行
+            gridOptions.api.updateRowData({remove: selectRows})     //删除行
+        }
+
+        function changeSelect (){
+            //集中表格选择情况
+            gridOptions.api.selectAll()                 //全选
+            gridOptions.api.deselectAll()               //反全选
+            gridOptions.api.selectAllFiltered();        //条件全选
+            gridOptions.api.deselectAllFiltered();      //条件反全选
+        }
+          </script>
+</body>
+</html>

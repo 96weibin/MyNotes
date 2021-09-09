@@ -634,3 +634,7 @@ class Person {
     ```ts
 
     ```
+
+
+# decorators 装饰器
+

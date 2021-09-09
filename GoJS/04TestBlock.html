@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./go-debug.js"></script>
+</head>
+<body>
+    <div id="box" style="width:400px; height:150px; background-color: #DAE4E4;"></div>
+    <script>
+        let $ = go.GraphObject.make;
+        let myDiagram = $(go.Diagram, 'box')
+        myDiagram.nodeTemplate = $(go.Node,$(go.TextBlock,'Default Value',new go.Binding('text','sss')))
+        myDiagram.model = new go.GraphLinksModel(
+            [
+            { sss: "Alpha"},
+            { sss: "Beta"},
+            { sss: "Gamma"},
+            { sss: "Delta"},
+            {}
+        ])
+        
+    </script>
+</body>
+</html>

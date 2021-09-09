@@ -440,14 +440,14 @@ aurelia.use
     //arg1 相对或绝对url  , 可选arg2 options
 ```
 
+- compose  动态组合 aurelia v1
+    - bind v vm ,组合时 触发  active(){}
 
 ```html         
 <compose view-module.bind="oVM" view.bind="oV" ref="xxx" view-module.ref="yyy">
 
 <compose view="../comment/com-header.html" ${view-model="../comment/com-header.ts"}></compose>
 
-
-compse  获取 main 里定义的 
 ```
 
 测试 view.bind  和 view-model.bind
@@ -513,7 +513,6 @@ compse  获取 main 里定义的
 
 2. 发布
 
- 
 
     ```ts
     import { inject } from 'aurelia-dependency-injection';

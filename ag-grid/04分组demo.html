@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/ag-grid-community/dist/ag-grid-community.min.noStyle.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/ag-grid-community/dist/styles/ag-grid.css">
+    <link rel="stylesheet" href="https://unpkg.com/ag-grid-community/dist/styles/ag-theme-alpine.css">
+    <style>
+        #myGrid{
+            /* width: 500px; */
+            height: 300px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div id="myGrid" class="ag-theme-alpine"></div>
+
+    <script>
+        let $ = document.querySelector.bind(document);
+        let myGrid = $('#myGrid');
+
+        let columnDefs = [
+            {field:'name', checkboxSelection:true, rowGroup:true},
+            {field:'age', filter:true,},
+        ]
+        let rowData = [
+            {name:'weibin6',age:17, gender:'female'},
+            {name:'weibin5',age:1, gender:'male'},
+            {name:'weibin4',age:14, gender:'female'},
+            {name:'weibin3',age:13, gender:'male'},
+            {name:'weibin2',age:12, gender:'male'},
+            {name:'weibin1',age:37, gender:'female'}
+        ]
+        let autoGroupColumnDef={
+            headername:'MOdelxx',
+            field:'gender',
+            cellRender:'agGroupCellRenderer',
+            cellRendererParams:{
+                checkbox:true
+            }
+        }
+        let gridOption = {
+            columnDefs,
+            rowData,
+            defaultColDef:{
+                editable:true,
+                sortable:true,
+                resizeable:true,
+            },
+            groupSelectsChildren:true,
+            autoGroupColumnDef,
+            rowSelection:'multiple'
+
+
+        }
+        window.onload = function(){
+            
+            new agGrid.Grid(myGrid,gridOption)
+
+
+        }
+    </script>
+</body>
+</html>
