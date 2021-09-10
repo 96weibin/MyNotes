@@ -600,7 +600,7 @@ class Person {
 
 - 表示变量的类型
 
-    - 泛型 比 any的有点  可以限制函数进出类型一致
+    - 泛型 比 any的有点  **可以限制函数进出类型一致**
 
     ```ts
     //泛型   
@@ -635,6 +635,75 @@ class Person {
 
     ```
 
+## 命名空间
 
-# decorators 装饰器
+```ts
+//定义
+namespace Validation {
+    export interface StringValidator {
+        isAcceptable(s: string): boolean;
+    }
+}
 
+//使用
+let validators: { [s: string]: Validation.StringValidator; } = {};
+```
+
+## Decorators 装饰器
+
+- 类， 方法，属性， 参数 装饰器   （访问符 get,set）
+- 返回函数的函数，装饰器的形参会 传给 被返回的函数
+- 
+
+1. 启动装饰器
+
+    - tsconfig.json
+    ```json
+        {
+            "compilerOptions": {
+                "target": "ES5",
+                "experimentalDecorators": true
+            }
+        }
+    ```
+2. 声明装饰器
+   
+    ```ts
+    function enumerable(value: boolean) {
+        return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+            descriptor.enumerable = value;
+        };
+    }
+    ```
+3. 使用装饰器
+
+    ```ts
+    class Greeter {
+        greeting: string;
+        constructor(message: string) {
+            this.greeting = message;
+        }
+
+        @enumerable(false)
+        greet() {
+            return "Hello, " + this.greeting;
+        }
+    }
+    ```
+
+    ```ts   
+        function sayHi(value: boolean) {
+            console.log('hello')
+            return function(){
+                console.log(value)
+            }
+        }
+
+        @sayHi(false)
+        class AAASSS {
+            constructor(){
+            }
+        }
+        //hello
+        //false
+    ```
