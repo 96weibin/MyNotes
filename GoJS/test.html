@@ -5,29 +5,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        #demo{
+            width: 800px;
+            height: 600px;
+        }
+    </style>
 </head>
 <body>
+    <div id="demo" ></div>
+    <script src="./go-debug.js"></script>
+
     <script>
-        function delay (s){
-            return new Promise((reslove,reject)=>{
-                setTimeout(() => {
-                    return reslove();
-                }, s*1000);   
-            })
-        }
-
-        async function speek (){
-            console.log('ready');
-            await delay(2);
-            console.log('done')
-        }
-
-        window.onload = async function(){
-            console.log('load')
-            await speek()
-            console.log('jump?')
-        }
-
+        let $go = go.GraphObject.make;
+        let myDiagram = $go(go.Diagram, "demo",{
+            "undoManager.isEnabled": true
+        });
+        let myModel = $go(go.Model);
+        myModel.nodeDataArray = [
+            {key:'A'},
+            {key:'B'},
+            {key:'C'},
+        ]
+        myDiagram.model = myModel;
+        
     </script>
 </body>
 </html>

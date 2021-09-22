@@ -25,7 +25,7 @@
 
 //
 
-let event = {
+let eventAggregator = {
     clientlist : {},
     subscribe(clientId,cb){
         if(!this.clientlist[clientId])
@@ -42,6 +42,6 @@ let event = {
 }
 
 
-event.subscribe('80',()=>{console.log('80平米的房子到了快来买')})
+eventAggregator.subscribe('80',()=>{console.log('80平米的房子到了快来买')})
 
-event.publish('80')
+eventAggregator.publish('80')

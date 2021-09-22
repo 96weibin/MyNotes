@@ -1,10 +1,10 @@
 # GoJS
 
-- JS 交互图标库
+- JS 交互图标库 ， canvas
 
-## Ease demol
+## 创建
 
-- 直接html引入
+1. 直接html引入,通过GraphObject 实现
 
     ```html
         <script src="./go-debug.js"></script>
@@ -17,13 +17,14 @@
             var myDiagram = $(go.Diagram, 'box', {
             "undoManager.isEnabled": true //undoManager
             })
-            
+
+
             //通过  nodeTemplate 定义表格, model提供数据
             myDiagram.nodeTemplate = $(
-            go.Node,
-            "Auto",
-            $(go.Shape,"RoundedRectangle",new go.Binding('fill',"color")),
-            $(go.TextBlock, {margin:3}, new go.Binding('text','key'))
+                go.Node,
+                "Auto",
+                $(go.Shape,"RoundedRectangle",new go.Binding('fill',"color")),
+                $(go.TextBlock, {margin:3}, new go.Binding('text','key'))
             ),
         
             myDiagram.model = new go.GraphLinksModel(  //$(go.Model).nodeDataArray
@@ -44,7 +45,119 @@
         </script>
     ···
 
+2. import 通过 同步线性代码实现  out
+    
+    - node add... 
+
+    ```ts
+    import * as go from 'gojs'; 
+
+    export class Diagram{
+        private diagramEle:HTMLDivElement;      //div 
+        constructor(){}
+        attached() {
+            this.initDiagram();
+        
+        }
+        initDiagram(){
+
+            let $go = go.GraphObject.make;
+                let myDiagram = $go(go.Diagram, this.diagramEle,{
+                    "undoManager.isEnabled": true
+                });
+                let node = new go.Node(go.Panel.Auto);      //go.node
+                let shape = new go.Shape();                 //go.shap
+                shape.figure = 'RoundedRectangle';
+                shape.fill = 'pink';
+                node.add(shape);
+                let textblock = new go.TextBlock()          //go.textblock
+                textblock.text = 'Hello';
+                node.add(textblock);
+                myDiagram.add(node);
+        }
+    }
+    ```
+3. import 通过GraphObject add
+
+    ```ts
+    import * as go from 'gojs';
+
+    export class Diagram{
+        private diagramEle:HTMLDivElement;
+        constructor(){}
+        attached() {
+            this.initDiagram();
+        
+        }
+        initDiagram(){
+
+            let $go = go.GraphObject.make;
+            let myDiagram = $go(go.Diagram, this.diagramEle,{
+                "undoManager.isEnabled": true
+            });
+            
+            myDiagram.add(
+            $go(
+                go.Node,
+                go.Panel.Auto,
+                $go(go.Shape,
+                {
+                figure:"RoundedRectangle",
+                fill:'pink'
+                }),
+                $go(go.TextBlock, {
+                    text:"TextBlock",
+                })
+            )
+        )
+    }
+
+    ```
+
+4. 使用模板 及 绑定数据
+
+    ```ts
+    //A， B 两个节点
+    let nodeDataArray = [
+      {key:'A'},
+      {key:'B'}
+    ]
+    //两条线
+    let linkDataArray = [
+      {from:'A', to:'B'},
+      {from:'B', to:'B'}
+    ]
+    //节点 模板
+    myDiagram.nodeTemplate = $go(go.Node,
+      'Auto',
+      $go(go.Shape,{figure:'RoundedRectangle',fill:'white'}),
+      //绑定数据, 字段 ， key , renderHandl
+      $go(go.TextBlock,{margin : 5},new go.Binding('text','key',(key)=>{return key + 'hhhhh'}));
+      )
+    //创建图线实例
+    myDiagram.model = new go.GraphLinksModel(nodeDataArray,linkDataArray)
+    ```
+
+
+5. 绑定数据
+
+    ```ts
+    ```
+
 ## GraphObject
+
+- gojs 最上层的父类，派生出 panel、part等子类
+- make 方法，创建并返回实例
+
+
+
+## Shape
+
+## TextBlock
+
+## Picture
+
+## Panel
 
 ## nodeTemplate
 
@@ -114,6 +227,4 @@
 1. link  和 tree
 
 
-
-
-
+## 
