@@ -77,6 +77,7 @@
         }
     }
     ```
+
 3. import 通过GraphObject add
 
     ```ts
@@ -116,6 +117,8 @@
 
 4. 使用模板 及 绑定数据
 
+    - 线图mode
+  
     ```ts
     //A， B 两个节点
     let nodeDataArray = [
@@ -138,10 +141,35 @@
     myDiagram.model = new go.GraphLinksModel(nodeDataArray,linkDataArray)
     ```
 
-
-5. 绑定数据
+    - tree mode
 
     ```ts
+    //节点 template
+    myDiagram.nodeTemplate = $go(go.Node,
+      'Auto',
+      $go(go.Shape,{figure:'RoundedRectangle'},new go.Binding('fill','color')),
+      $go(go.TextBlock,{margin : 5},new go.Binding('text','key',(key)=>{return key}))
+      )
+    //tree data
+    let treeDataArray = [
+      { key: "Alpha", color: "lightblue" },
+      { key: "Beta", parent: "Alpha", color: "yellow" },  // note the "parent" property
+      { key: "Gamma", parent: "Alpha", color: "orange" },
+      { key: "Delta", parent: "Alpha", color: "lightgreen" }
+    ];
+    myDiagram.model = new go.TreeModel(treeDataArray);
+    ```
+
+5. 修改模板
+
+    ```ts
+    //通过key 找到 node
+    let Alpha = myDiagram.model.findNodeDataForKey('Alpha');
+    let Beta = myDiagram.model.findNodeDataForKey('Beta');
+    //两种修改方式
+    Alpha.color = 'pink'
+    myDiagram.model.setDataProperty(Beta,'color','green');
+
     ```
 
 ## GraphObject
@@ -149,11 +177,35 @@
 - gojs 最上层的父类，派生出 panel、part等子类
 - make 方法，创建并返回实例
 
+## Binding
+
+    ```ts
+    new go.Binding('A','B',(B)=>{B...}).makeTowWay();
+    //A     node的参数
+    //B     DataArray 的参数 或 part上的参数
+    //()=>{}    B的convert 函数 或 处理函数  go.Point.parse()
+
+    //.makeToWay() // 双向绑定
+    var data = d.model.nodeDataArray[0];  // get the first node data
+    var node = d.findNodeForData(data);   // find the corresponding Node
+    ```
+
+## 事务transcation
+
+    ```ts
+    myDiagram.model.commit(function(m:go.Model){},tname)
+    //以事务执行 fun , 失败回滚
+    //tname         
+    ```
+
+
+
+
+## TextBlock
 
 
 ## Shape
 
-## TextBlock
 
 ## Picture
 

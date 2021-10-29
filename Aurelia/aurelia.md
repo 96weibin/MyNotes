@@ -529,3 +529,65 @@ aurelia.use
         }
     }
     ```
+
+## 验证 validation
+
+### 在ag-grid中使用
+
+1.  自定义验证方法
+
+    ```ts
+    import { ValidationRules, ValidationControllerFactory, ValidationController } from "aurelia-validation";
+
+    //customRule(name, callback, msg,)
+    //自定义 的验证规则 
+    private initValidationRules() {
+        ValidationRules.customRule(
+            "validMaterialName",
+            (value, obj, self) => {
+                self["nameInvalidMessage"] = MaterialRule.validateName(value);
+                return !self["nameInvalidMessage"];
+            }, '${$config.self.nameInvalidMessage}', (self) => {
+                return { self: self };
+            }
+        );
+    }
+    ```
+
+2. 定义，使用rules 
+
+    ```ts
+    let rules = ValidationRules.ensure((d: IDistillationModeSummary) => d.abbreviation) //某个属性的规则
+    .satisfiesRule('validMaterialAbbreviation',this).then().satisfiesRule("uniqueMaterialAbbreviation")
+    .then().ensure((d: IDistillationModeSummary) => d.name)  //另一个属性
+    .required()
+    .satisfiesRule('validMaterialName',this)
+    .satisfiesRule('uniqueModeName')
+    .rules;
+
+    let validationController = this.validationControllerFactory.create();
+    validationController.addRenderer(new GridValidationRenderer(this.distillationModeGridEle));
+    //绑定表格
+    ```
+3. ag-gird的option 使用 validation 
+   
+   ```ts
+   this.gridOption = {
+        context: {
+            validationRules: rules,
+            validationController: validationController
+        }
+    }
+   ```
+
+4. ag-grid的colum 
+
+    ```ts
+    cellEditor: 'aureliaColumnEditor',      //在ag-grid内使用 Aurelia的validation
+    cellEditorParams: (params: ICellEditorParams): ICustomCellEditorParams => {
+        return {
+            template: '<input style="width:100%; height: 100%;" value.bind="name & validateOnChange" maxlength="20"/>',
+            //validateOnChange input 值改变时调用  rules
+        }
+    },
+    ```

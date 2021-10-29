@@ -57,7 +57,7 @@ HTMLElement
 
 ### 基础类型
 
-    - boolean、 number、 string、null、undefined 与js相同
+- boolean、 number、 string、null、undefined 与js相同
 
 ### 引用类型
 
@@ -723,4 +723,11 @@ let validators: { [s: string]: Validation.StringValidator; } = {};
 **派生**: 主要体现在对父类方法的补充 
 
 
-  
+## ?? || ?
+
+1. ? 
+   1. abc?.def     常用于读取, abc 为空时 不会调用.
+2. || 
+   1. 普通或操作，常用赋值 ，  如果为false  则不执行后面
+3. ??
+   1. 类似或，   区别:  如果为  空 则不执行后面，  0 可以

@@ -214,8 +214,10 @@
     sortable | 是否可以排序 | false | boolean
     multiSortKey | 设置多列排序key | | 'ctrl' 
     resizeable | 拖动大小 | boolean |
+    cellRender | cell表面的html渲染 | 
+    valueFormatter | cell渲染text | 只渲染text 用这个会更好
     cellEditor | 编辑 | | agSelectCellEditor 通过select编辑
-    cellEditorParams | 编辑参数 | | {values:['male','femal']}
+    cellEditorParams | 双击后渲染 | | {values:['male','femal']}
     cellEditor|-|-| agLargeTextCellEditor 通过文本框编辑
     headerCheckboxSelection | 表头checkbox | false | boolean
     checkboxSelection | 行checkbox | flase | boolean
@@ -227,6 +229,7 @@
     children | 定义分组 | | [{}]
     openByDefault | 默认展开分组 | | boolean
     marryChildren | child拖拽到不同分组 | boolean
+    suppressColumnsToolPanel | 不被列显示panel控制 | boolean
     
 
 ## 编辑单元格
