@@ -651,9 +651,9 @@ let validators: { [s: string]: Validation.StringValidator; } = {};
 
 ## Decorators 装饰器
 
-- 类， 方法，属性， 参数 装饰器   （访问符 get,set）
+- 类， 方法，属性， 参数 装饰器 
 - 返回函数的函数，装饰器的形参会 传给 被返回的函数
-- 
+- 装饰不同的 内容， 装饰器传参有所不同
 
 1. 启动装饰器
 
@@ -669,8 +669,8 @@ let validators: { [s: string]: Validation.StringValidator; } = {};
 2. 声明装饰器
    
     ```ts
-    function enumerable(value: boolean) {
-        return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+    function enumerable(value: boolean) {   //装饰工厂
+        return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) { //装饰器
             descriptor.enumerable = value;
         };
     }
@@ -707,6 +707,20 @@ let validators: { [s: string]: Validation.StringValidator; } = {};
         //hello
         //false
     ```
+
+- 装饰器分类 
+
+    装饰器 | 作用 | 传参
+    -|-|-
+    属性装饰器 | 修饰变量属性 | target, propertyKey 所在对象 和 修饰的property
+    类装饰器 | 修改类的属性 Object | 
+    方法修饰器 | | target, propertyKey, descriptor 所在对象， 修饰的方法名， 方法的描述器
+    方法参数修饰器 | | target, propertyKey, parameterIndex 
+    访问器修饰器 | | target， propertyKey, descriptor
+
+- 执行顺序
+
+
 
 ## 声明文件 .d.ts
 
