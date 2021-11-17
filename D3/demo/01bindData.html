@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="../D3/d3.js"></script>
+    <div class="wrapper">
+        <ul>
+            <li></li>
+            <li></li>
+        </ul>
+        <button onclick="add()">click</button>
+    </div>
+    <script>
+        let data = [1,2,3,4,5];
+        d3.selectAll('.wrapper > ul > li').data(data).text(d=>d).enter().append("li").text(d=>d).exit()
+        // d3.selectAll('.wrapper > ul > li').datum(data).text(d=>d)
+        function add(){
+            data.push('xx')
+        }
+    </script>
+</body>
+</html>

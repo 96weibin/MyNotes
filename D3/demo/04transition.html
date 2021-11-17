@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="../D3/d3.js"></script>
+    <script>
+
+        
+
+        d3.select('body').append('svg').attr('width',200).attr('height',200).style('background','rgba(0,0,0,.1)')
+        .append('line')
+        .transition()
+        .attr('x1',0).attr('y1',0)
+        .attr('x2',100).attr('y2', 100)
+        .style('stroke','red')
+        .style('stroke-width', 20)
+
+    </script>
+</body>
+</html>
