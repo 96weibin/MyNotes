@@ -36,6 +36,7 @@ int main(void) {
 int main(void) {
 	std::cout << "1.网站404攻击" << std::endl;
 	system("pause");
+	system("ping www.baidu.com");  //system 执行系统命令
 	return 0;
 }
 ```
