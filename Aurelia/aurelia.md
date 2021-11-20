@@ -490,9 +490,9 @@ aurelia.use
         }
         subscribe(): void {
             this.subscribes = this.eventAggregator.subscribe('showMsg',async res => {
-            this.msg = res.msg
-            await this.sleep(2);
-            this.msg = 'hello'
+                this.msg = res.msg
+                await this.sleep(2);
+                this.msg = 'hello'
             });
         }
 
@@ -591,3 +591,5 @@ aurelia.use
         }
     },
     ```
+
+    **TODO   怎么使用  Observeable**   **singloeton**
