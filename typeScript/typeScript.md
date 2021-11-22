@@ -745,3 +745,111 @@ let validators: { [s: string]: Validation.StringValidator; } = {};
    1. 普通或操作，常用赋值 ，  如果为false  则不执行后面
 3. ??
    1. 类似或，   区别:  如果为  空 则不执行后面，  0 可以
+
+
+## es5 Object 方法
+
+- Object.assing(tar, ...objs) 给tar分配属性
+    ```ts
+    //将 obj 分给 tar并修改 ,返回 tar的值
+    //tar 同名属性被覆盖， 不同名属性 添加
+    //不修改 objs
+    //assign  是浅克隆
+
+    let o1 = {a:1, b:4};
+    let o2 = {b:2, c:3};
+    let o3 = {d:4};
+    let introduce = {gender:'male', age: 17}
+
+    let nO1 = Object.assign(o1, o2);
+    //nO1     {a:1, b:2, c:3};
+    //o1      {a:1, b:2, c:3};
+    
+    let nO2 = Object.assing(o1,o2,o3);
+    //nO2     {a:1, b:2, c:3, d:4};
+    //o1      {a:1, b:2, c:3, d:4};
+
+    o1.introduce = introduce;
+    let nO3 = Object.assign({}, o1);
+    nO3.introduce == o1.introduce  //true
+    ```
+    > 仅修改tar, 浅克隆， 同名覆盖
+
+- Object.create(proto, [propertiesObject]) 用对象创建对象
+
+    ```ts
+    const person = {
+        isHuman: false,
+        printIntroduction(){
+            console.log(`My name is ${this.name}. Am I human? ${this.isHuman}`)
+        }
+    }
+
+    let p = Object.create(person);
+    p.name = 'weibin';
+    p.printIntroduction();
+    // My name is weibin. Am I human? false
+    ```
+    > 通过实例创建实例 
+
+- Object.defineProperties(obj, props)   给obj的 多个prop 定义描述
+
+    ```ts
+    var obj = {name:'777'};
+    Object.defineProperties(obj,{
+        name:{value:'weibin', writeable: false},// 初始对象已声明  name 再修改
+        age: {value: 17, writeable: false}  //描述 只对新生成的property 有效
+    })
+    //obj {name: 'weibin', age: 17}     name 可修改
+    obj.name = '777'    
+    //obj {name: '777', age: 17}        name 仍可修改
+    obj.age = 18
+    //obj {name: '777', age: 17}        age 不可修改
+    ```
+    > define的描述 只对新生成的property 有效
+
+- Object.defineproperty(obj, prop, description) 给obj的 prop 定义描述
+
+    ```ts
+    const object1 = {};
+    Object.defineProperty(object1, 'property1', {
+        value: 42,
+        writable: false
+    });
+    object1.property1 = 77;     //不报错 但是不生效   应该是没有用严格模式的原因
+    console.log(object1.property1); //42
+    ```
+    > 修改某个属性的  description
+
+- Object.entries(obj)  返回对象的可枚举[k,v]Map
+
+    ```ts
+    let obj = {name: '777', gender: 'male'};
+    Object.entries(obj);
+    //[['name','777'],['gender','male']]
+    ```
+    > 感觉这个功能很像  面试题
+
+- Object.freeze(obj) 冻结对象
+
+    ```ts
+    let obj = {name: '777', gender: 'male'};
+    Object.freeze(obj);
+    obj.name = '888' // 不生效  严格报错
+    ```
+
+[TODO](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/fromEntries)
+
+### Object 的常用描述
+
+- property 描述
+
+    属性 | 功能 | 取值 | default
+    -|-|-|-
+    configurable | 能否修改，删除 | boolean  | false
+    enumerable | 枚举对象 可枚举 | boolean | false
+    writeable | 可写 | boolean | false 
+    value | value | any | undefined
+    get | getter函数 | fun | undefined
+    set | setter函数 | fun | undefined
+

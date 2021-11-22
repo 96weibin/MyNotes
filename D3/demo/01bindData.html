@@ -14,7 +14,9 @@
             <li></li>
         </ul>
         <button onclick="add()">click</button>
+        
     </div>
+    <div class="box" style="width: 100px; height: 100px; background: #006FA6;"></div>
     <script>
         let data = [1,2,3,4,5];
         d3.selectAll('.wrapper > ul > li').data(data).text(d=>d).enter().append("li").text(d=>d).exit()
@@ -22,6 +24,8 @@
         function add(){
             data.push('xx')
         }
+
+
     </script>
 </body>
 </html>
