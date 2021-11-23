@@ -21,7 +21,8 @@
         {
             static void Main(string[] args) //entry point
             {
-                Console.WriteLine("Hello World!");
+                string Hello = "hello wrold";
+                Console.WriteLine(Hello);
             }
         }
     }
@@ -58,7 +59,7 @@
 
 3. 指针类型
 
-TODO
+    TODO
 
 ## 类型转换
 
@@ -86,9 +87,60 @@ TODO
 
 ## 类
 
-1. constroctor 是与类同名的  函数
-2. 继承  用 : 表示
+- 创建
 
+    ```c#
+    using System;   //use namespace
+
+    namespace ConsoleApp1   //create namespace
+    {
+        class Steps
+        {
+            public string step;
+            public string defaultStep = "000";
+            public static string keys = "456";
+            public Steps(string a) {    //构造函数 同名且 不写返回值， void 也不可以
+                this.step = a;
+            }
+
+            public Steps()              //可以有多个构造函数通过传参区分
+            {
+
+            }
+
+            public void sayCurrent()    //成员函数
+            {
+                string type = "number";     //局部变量   貌似不能有access 修饰符
+                Console.WriteLine(step + type);
+            }
+
+            public void sayDefault()
+            {
+                Console.WriteLine(defaultStep);
+            }
+            //static void Main(string[] args)       //可以多个类  不能多个  Main
+            //{
+            //    Console.WriteLine("www");
+            //}
+        }
+        class Programxx       //
+        {
+            static void Main(string[] args) //entry point
+            {
+                Steps s = new Steps("001");         //通过构造函数创建对象
+                s.sayCurrent();                     //调用实例方法
+                s.sayDefault();
+                Steps.keys = "changed keys";        //static 可以修改和直接访问
+                Console.WriteLine(Steps.keys);
+                Steps s2 = new Steps();
+                Console.WriteLine(s2.defaultStep);  
+            }
+        }
+    }
+    ```
 
 TODO  多继承  多态  重载 。。。。
 - 面向对象，面向组件， 运行在.Net上
+
+
+### 访问符
