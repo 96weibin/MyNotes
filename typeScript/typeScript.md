@@ -749,6 +749,8 @@ let validators: { [s: string]: Validation.StringValidator; } = {};
 
 ## es5 Object 方法
 
+- Object 
+
 - Object.assing(tar, ...objs) 给tar分配属性
     ```ts
     //将 obj 分给 tar并修改 ,返回 tar的值
@@ -837,8 +839,15 @@ let validators: { [s: string]: Validation.StringValidator; } = {};
     Object.freeze(obj);
     obj.name = '888' // 不生效  严格报错
     ```
+- Object.keys() Object.values()
 
-[TODO](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/fromEntries)
+    ```ts
+    //返回可枚举  key, value 数组  仅一层
+
+    let obj = {name: 'weibin', age: '18', hoby:['a','b','c']}
+    Object.values(obj)  // ['weibin', '18', Array(3)]
+    Object.keys(obj)    // (3) ['name', 'age', 'hoby']
+    ```
 
 ### Object 的常用描述
 
