@@ -1,6 +1,6 @@
-#APS
+# APS
 
-##ASP的起源
+## ASP的起源
 
 	ASP是服务器端脚本语言，运行在服务器上，通过中间插件，CGI（common Gateway Interface）【共同 网络连接器 接口】的处理与web服务器进行通信，在linux系统上的PHP类似
 
