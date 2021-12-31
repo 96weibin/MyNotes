@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //1.Object.keys(obj) 返回一个所有元素为字符串的数组，返回其枚举自身属性的对象
+        //数组中属性的名的排列顺序和正常循环遍历该对象时返回的顺序一致
+        var arr = ['a', 'b', 'c'];
+        console.log(Object.keys(arr)); //0: "0" 1: "1" 2: "2
+
+        var anObj = { 0: 'a', 1: 'b', 2: 'c' };
+        console.log(Object.keys(anObj)); //['0','1','2']
+
+        var anObjs = { 100: 'a', 7: 'b', 2: 'c' };
+        console.log(Object.keys(anObjs)); //['2','7','100']
+
+        //2.Object.values()返回一个给定对象自身所有的可枚举属性值的数组
+        var obj = { foo: 'bar', foz: "baz" };
+        console.log(Object.values(obj)); //["bar","baz"]
+
+        var obj1 = { 0: 'a', 1: "b", 2: 'c' };
+        console.log(Object.values(obj1)); //["a","b","c"]
+
+    </script>
+</body>
+
+</html>

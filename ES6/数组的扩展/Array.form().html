@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*Array.from 方法用于将两类对象转为真正的数组：类似数组的对象（array-like object）
+         可遍历（iterable）的对象（包括 ES6 新增的数据结构 Set 和 Map）。*/
+        let arrayLike = {
+            '0': 'a',
+            '1': 'b',
+            '2': 'c',
+            length: 3
+        };
+        console.log(Array.from(arrayLike));// ["a","b","c"]
+        //只要是部署了 Iterator 接口的数据结构， Array.from 都能将其转为数组
+        
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let obj = {
+            '小黑': 80,
+            '小王': 90,
+            '小杨': 85,
+            '小白': 80
+        }
+
+        //得到按键值升序排列的键数组
+        let keyArr = Object.keys(obj).sort(function (a, b) {
+            return obj[a] - obj[b];   //升序
+        });
+        console.log(keyArr);   //[ '小黑', '小白', '小杨', '小王' ]
+
+        for (let key of keyArr) {   //遍历键数组    
+            console.log(key + ":" + obj[key]);
+        }
+
+
+    </script>
+</body>
+
+</html>

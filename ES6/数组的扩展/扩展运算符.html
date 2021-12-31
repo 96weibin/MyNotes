@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*`替代函数的apply方法`
+        apply() 方法接受数组形式的参数。
+        */
+
+        function f(x, y, z) {
+            console.log(x, y, z);
+        }
+        let args = [0, 1, 2];
+        console.log(f(...args));
+
+        //Math.max()求出一个数组最大元素
+        console.log(Math.max.apply(null,[14,2,36])); //36
+        console.log(Math.max(...[14,25,35]));//35
+
+        //通过 push 函数，将一个数组添加到另一个数组的尾部
+        var arr1=[10,20,30];
+        var arr2 =[15,25,35];
+        arr1.push(...arr2);
+        console.log(arr1); //[10, 20, 30, 15, 25, 35]
+
+        //(1)复制数组  数组是复合的数据类型，直接复制只是复制了指向底层数据结构的指针，而不是复制一个全新的数组（修改 b，会影响a）
+        //  ES5  :这个改b不会影响a
+        const a1 = [1,2];
+        const a2 =a1.concat();
+        console.log(a2); // [1,2]
+        a2[0]= 2 ;
+        console.log(a1);//[1,2]
+        console.log(a2);//[2,2]
+        //ES6
+        const a3= [1,2];
+        const a4=[...a3];
+        console.log(a4);;//[1, 2]
+        a4[0]=100;
+        console.log(a4);//[100, 2]
+        console.log(a3);//[1, 2]
+
+        //(2)合并数组
+        const ar1 =["csd","sda","ggg"];
+        const ar2 =["c"];
+        const ar3=["22"];
+        //ES5
+        console.log(ar1.concat(ar2,ar3)); //['csd', 'sda', 'ggg', 'c', '22']
+        //ES6
+        console.log([...ar1,...ar2,...ar3]); //['csd', 'sda', 'ggg', 'c', '22']
+        //不过注意这个都是浅拷贝，他们的成员都是对原数组成员的引用，修改了指向的值会同步反映到新数组
+
+        //(3)与解构赋值结合  如果将扩展运算符用于数组赋值，只能放在参数的最后一位，否则会报错
+        const [first,...rest]=[1,2,3,45,6];
+        console.log(first); //1
+        console.log(rest); //[2, 3, 45, 6]
+
+        //(4)字符串   可以将字符串转成数组
+        console.log([...'hello']); //['h', 'e', 'l', 'l', 'o']
+
+        //(5)Map 和 Set 结构，Generator 函数
+        //扩展运算符内部调用的是数据结构的 Iterator 接口，因此只要具有 Iterator 接口的对象，都可以使用扩展运算符，比如 Map 结构。
+        let map = new Map([
+            [1,"one"],
+            [2,"two"],
+            [3,"three"]
+        ]);
+        let arrKey = [...map.keys()];
+        let arrValues= [...map.values()]
+        console.log(arrKey); //[1, 2, 3]
+        console.log(arrValues); //['one', 'two', 'three']
+
+
+    </script>
+</body>
+
+</html>

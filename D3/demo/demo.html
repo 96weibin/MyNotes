@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
+</head>
+
+<body>
+    <script>
+        //setAttribute() 方法添加指定的属性，并为其赋指定的值
+        let table = document.createElement("table");
+        table.setAttribute("class", "chartTooltipTable chartTooltipTable");
+
+        // let tr1=document.createElement("tr");
+        // tr1.setAttribute("class","rowData");
+        // let th = document.createElement("th");
+        // th.setAttribute("colspan",4);
+        // th.setAttribute("class","chartTooltipTh");
+        // th.innerText = "xxx";
+        // tr1.appendChild(th);
+        // table.appendChild(tr1);
+
+        let tr2 = document.createElement("tr");
+        tr2.setAttribute("class", "columnName");
+        let th1 = document.createElement("th");
+        th1.setAttribute("colspan", 4);
+        th1.setAttribute("class", "chartTooltipTh");
+        th1.innerText = "xxx";
+        tr2.appendChild(th1);
+        let th2 = document.createElement("th");
+        th2.setAttribute("class", "chartTooltipTh");
+        th2.innerText = "value";
+        tr2.appendChild(th2);
+
+        var points = [{ "color": "red", "index": "0", "trendLabel": "America" },
+        { "color": "yellow", "index": "1", "trendLabel": "Babico" }];
+        for (var i = 0; i < points.length; i++) {
+            let tr = document.createElement("tr");
+            tr.style.textAlign = "center";
+            tr.setAttribute("class", "rowData");
+            table.appendChild(tr);
+            let td1 = document.createElement("td");
+            td1.setAttribute("class", "chartTooltipTd");
+            if (points[i].index != null && !points[i].color) {
+                td1.innerHTML = points[i].trendLabel;
+            } else {
+                td1.innerHTML = "<div class='crudeLabelPane'>" + points[i].trendLabel + "<div class='colorPane' style='background-color:" + points[i].color + "'></div></div>";
+            }
+
+            tr.appendChild(td1);
+        }
+    </script>
+</body>
+
+</html>

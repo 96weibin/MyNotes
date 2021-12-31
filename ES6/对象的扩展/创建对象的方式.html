@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //1.对象字面量{...},可用于克隆或者是合并对象，浅拷贝，不包括原型
+        var obj1={};
+        obj1.name="John";
+        console.log(obj1);//Object  name: "John" [[Prototype]]: Object
+        var obj2={name:"John1",age:22};
+        console.log(obj2);////Object age:22 name: "John1" [[Prototype]]: Object
+        var name="John2",age=22;
+        var obj3={name:name,age:age};
+        console.log(obj3);//Object age:22 name: "John2" [[Prototype]]: Object
+        var obj4={...obj3};
+        console.log(obj4);//Object age:22 name: "John2" [[Prototype]]: Object
+        //2.new Object(value)
+        //(1)如果value里面传的值是空/null/undefined，则会创建并返回一个空对象
+        var ob=new Object();
+        console.log(ob);
+        var ob1=new Object (undefined);
+        var ob2=new Object(null);
+        console.log(ob1);
+        console.log(ob2);
+        //(2)如果value的值是一个基本类型，就会构建其包装类的对象
+        //(3)如果value的值是一个引用类型，就会返回这个值
+        var arr=[1,2,3];
+        var ob3=new Object(arr);
+        console.log(ob3===arr);//true
+        //3.Object.create()：使用现有的对象来提供新创建对象的__proto__
+        //4.Object.assign(target，...resources)：将所有自身的可枚举属性的值从一个或者多个源对象复制到目标对象，返回目标对象
+        var o1={a:1,b:2};
+        var o2={c:2,d:77};
+        var o3={a:15};
+        var objx=Object.assign({},o1,o2,o3);
+        console.log(objx);//{a: 15, b: 2, c: 2, d: 77}
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>toLocaleString()</title>
+</head>
+
+<body>
+    <script>
+        `Number.prototype.toLocaleString()`
+        //          `toLocaleString() 返回这个数字在特定语言环境下的表示字符串
+        //     语法：numObj.toLocaleString([locales[,options]])
+        //     locales 表示缩写语言代码
+        //     options 包含一些多个属性的类 style：要使用的样式格式（默认为decimal）
+        //                            minimumFractionDigits  使用的整数数字的最小数目，1~21，默认值是1
+        //                            maximumFractionDigits  使用的小数位数的最大数目，0~20
+        //                            unit 用于单位格式
+        //                            decimal 用于纯数字格式
+        //                            percent 用于百分比格式
+        //     返回值是字符串
+        // `
+        // ` 如果我想获取带e的底数的式子的结果，就可以直接用他`
+        console.log(9.999e-7.toLocaleString());  //0
+        //在没有指定区域的基本使用时，返回使用默认的语言环境和默认选项格式化的字符串
+        var num = 3500;
+        console.log(num.toLocaleString()); //3,500
+
+        //使用options对返回的参数进行定制 maximumFractionDigits:限制有效三位数字
+        console.log(num.toLocaleString("en-IN",
+            { style: "percent", minimumFractionDigits: 3, maximumFractionDigits: 3 })); //3,50,000.000%
+        `Array.prototype.toLocaleString() 返回一个字符串表示数组中的元素`
+        const array1 = [1, 'a', 23];
+        console.log(array1.toLocaleString("en", { timezone: "UTC" })); //"1,a,23"
+        `Date.prototype.toLocaleString() 返回该日期对象的字符串`
+        console.log(new Date(Date.UTC(2012, 11, 20, 3, 0, 0)).toLocaleString('en-GB', { timeZone: 'UTC' }));
+        // 20/12/2012, 03:00:00
+
+    </script>
+</body>
+
+</html>

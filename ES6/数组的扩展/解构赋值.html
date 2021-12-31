@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // //从数组中提取值，按照对应的位置 ，对变量赋值  如果解构不成功，变量的值就为undefined
+        // let a, b, res;
+        // [a, b] = [10, 20];
+        // console.log(a); ///10
+        // console.log(b); //20
+        // [a, b, ...res] = [10, 20, 40, 30, 50, 70];
+        // console.log(res);//40, 30, 50, 70
+
+        var arr = [150, 0, 0, 0, 3];
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i] == 0) {
+                arr.splice(i, 1);
+                i = i - 1;
+            }
+        };
+        console.log(arr);
+
+        //解构赋值允许指定默认值，对象的属性值严格等于undefined
+        let [foo = true] = [];
+        console.log(foo);  //true
+        //如果一个数组成员是null，默认值就不会生效，因为null 不严格等于undefined
+        let [x = 1] = [null];
+        console.log(x);  //null
+
+        //对象的解构赋值
+        let { fooo, bar } = { fooo: "aaa", bar: "bbb" }
+        console.log(fooo, bar);//aaa foo bbb bar
+        let { healer } = { aaa: "aaa" };
+        console.log(healer); //undefined  变量没有对应的同名属性，导致取不到值，最终等于undefined
+
+        //交换变量的值
+        let xx = 1;
+        let yy = 2;
+        [xx, yy] = [yy, xx];
+        console.log(xx, yy);//2 1
+
+        //从函数返回多个值
+        function example() {
+            //返回一个数组
+            // return [1,2,3]
+
+            //返回一个对象
+            return {
+                sex: "male",
+                age: "20"
+            }
+        }
+        //let [a,b,c]=example();
+        // console.log(a,b,c); // 1 2 3
+        let { sex, age } = example();
+        console.log(sex, age); //male 20
+
+    </script>
+</body>
+
+</html>

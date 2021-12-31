@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        `
+        Number.inFinite() 检查一个数值是否为有限的，即不是infinity；如果参数类型不是数值，一律返回false
+        Number.isNaN()  检查一个值是否为NaN，参数不是NaN一律返回false
+
+        `
+        console.log(Number.isFinite(7));  //true
+        console.log(Number.isFinite(-0.2)); //true
+        console.log(Number.isFinite(Infinity)); // false
+        console.log(Number.isFinite(NaN)); //false
+        console.log(Number.isFinite("foo")); //false
+        console.log(Number.isFinite(false)); //false
+
+        console.log(Number.isNaN(7));  //false
+        console.log(Number.isNaN(true));  //false
+        console.log(Number.isNaN(-0.3));//false
+        console.log(Number.isNaN(NaN));//true
+        console.log(Number.isNaN("look"));//false
+    </script>
+</body>
+</html>
