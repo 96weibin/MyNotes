@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        `ES6允许为函数的参数设置默认值，即直接写在参数定义的后边`
+        function log(x,y="hello"){
+            console.log(x,y);
+        }
+        console.log(log("hhh"));//hhh hello
+        console.log(log("lll","yyy"));//lll yyy
+        console.log(log("xxx","")); //xxx 
+
+        `函数的length属性
+        指定了默认值之后，函数的length属性，将返回没有指定默认值的参数的个数，=>指定了默认值之后，length属性将失真
+        length属性的返回值 = 函数的参数个数 - 指定默认值的参数个数`
+        console.log((function (a){}).length);//1
+        console.log((function (a=5){}).length);//0
+        console.log((function (a,b,c=2){}).length);//2
+
+        `rest参数，形式：...变量名，用于获取函数的多于参数
+        rest参数后不能有其他的参数，否则会报错
+        函数的length属性不包括rest参数`
+
+        `name属性，返回该函数的函数名`
+        function foo(){}
+        console.log(foo.name);
+
+        `箭头函数 =>
+        如果箭头函数不需要参数或需要多个参数，就用一个圆括号代表参数部分
+        `
+        var sum = (sum1,sum2)=> sum1+sum2;
+
+        `如果箭头函数直接返回一个对象，必须在对象外面加上括号，否则会报错`
+        let getItem = id =>({id:id,name:"Temp"})
+
+        `rest函数+箭头函数`
+        const numbers = (...nums)=>nums;
+        console.log(numbers(1,2,3,4,5,6));// [1,2,3,4,5,6]
+
+        `箭头函数注意点
+        （1）函数体内的this对象，就是定义是所在的对象，而不是使用时所在的对象
+        （2）不可以使用new命令
+        （3）不可以使用arguments对象，如果要用可以用rest参数代替
+        （4）不可以使用yield命令`
+       //arguments、super、new.target 三个变量在箭头函数之中也是不存在的，指向外层函数的对应变量
+       function foo() {
+            setTimeout(() => {
+                console.log('args', arguments);
+            }, 100)
+        }
+        foo(2,4,6,8) // args: [2, 4, 6, 8]
+        //箭头函数内部变量 arguments，其实是函数 foo 的arguments变量
+        //由于箭头函数没有自己的 this，就不能使用call()、apply()、bind() 去改变this的指向
+        `不适用的场合
+        1.定义对象的方法，且该方法内部包含this
+        2.需要动态this的时候
+        `
+
+        `尾调用：函数a的最后一步是调用函数b，调用后还有操作的不属于尾调用`
+        `函数参数的尾逗号：`
+        `Function.prototype.toString():返回函数代码本身（）一摸一样`
+    </script>
+</body>
+</html>

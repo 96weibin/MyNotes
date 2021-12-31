@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type = "text/javascript" src = "https://d3js.org/d3.v4.min.js"></script>
+</head>
+<body>
+    <ul id="list">
+        <li></li>
+        <li></li>
+    </ul>
+    <p></p>
+    <div></div>
+    <ul class=".list_two">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <script>
+      d3.select("#list").selectAll("li")
+       .data([10,20,30,40,50,60])
+       //text（）方法中的函数用于获取li元素映射数据
+       .text(function(d) {return d})
+       //enter提供对剩余数据的访问（未映射到现有元素）
+       .enter()
+       //append（）方法用于从相应数据创建新元素
+       .append("li")
+       .text(function(d)
+            { return "hhhh" + d;});
+
+            //10
+            // 20
+            // hhhh30
+            // hhhh40
+            // hhhh50
+            // hhhh60
+        ///exit() method用于处理从数据集中动态删除的数据项
+        d3.selectAll("li")
+        .data([10,20,30,15])
+        .exit()
+        .remove()
+
+        //1. datum() 用于为HTML文档中的单个元素设置值
+        d3.select("p")
+        .datum(50)
+        .text(function(d) {
+            return "changed" + d +"hhh"
+        });//<p>changed50hhh</p>
+
+        d3.select("div")
+        .datum(100)
+        .append("p")
+        .text(function(d){
+            return "append" + d+ "lll"
+        }); // <div><p>append100lll</p></div>
+
+        //2. data() 将数据集分配给HTML文档中的元素集合
+        d3.select(".list_two").selectAll("li")
+        .data([10,200,32,500,5023])
+    </script>
+</body>
+</html>

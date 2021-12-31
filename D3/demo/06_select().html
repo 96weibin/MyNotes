@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type = "text/javascript" src = "https://d3js.org/d3.v4.min.js"></script>
+</head>
+<body>
+    <div class="name">Hello World</div>
+    <script>
+        // alert(d3.select("div").text());
+        // alert(d3.select(".name").text());
+
+        //添加DOM元素
+        // d3.select(".name").append("span").text("I am coming");
+        // d3.select(".name").html("HHH<span>啦啦啦</span>")  //HHH啦啦啦
+        // d3.select(".name").attr("style","color:red")
+        // d3.select(".name").style("color","yellow")
+
+        //classed()
+        //添加类
+        d3.select(".name").classed(".small_name",true);//<div class="name .small_name">Hello World</div>
+        //删除类
+        d3.select(".name").classed(".small_name",false); //<div class="name">Hello World</div>
+        //检查是否存在类
+        console.log(d3.select(".name").classed(".small_name"));  //false
+    </script>
+</body>
+</html>

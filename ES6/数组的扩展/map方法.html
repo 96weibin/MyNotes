@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //map()的结果一般是数组中的每一个元素调用一次提供函数后的返回值
+        //也就是每个元素执行回调函数的结果组成的数组
+        const arr1 = [1, 2, 3];
+        console.log(arr1.map(x => x * 2));//[2, 4, 6]
+        //参数（currentValue正在处理的当前元素，[,index正在处理的当前元素的索引[,array方法调用的数组]]）
+        //map方法会把原数组的每个元素都按照顺序调用一次callback函数，map生成一个新的数组
+        //map不修改调用它的原数组的本身
+
+        //eg:使用map重现格式化数组里面的对象
+        var options = [{ value: "111", key: 1 },
+        { value: '222', key: 2 },
+        { value: "333", key: 3 }];
+        var refreshOptions = options.map(function (obj) {
+            var robj = {};
+            robj[obj.value] = obj.value;
+            return robj;
+        });
+        console.log(refreshOptions);
+    </script>
+</body>
+
+</html>
