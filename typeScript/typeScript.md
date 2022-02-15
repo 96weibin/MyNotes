@@ -135,7 +135,8 @@ HTMLElement
 
         //元祖额外的类型 为 undefined  不能 arrB[3] 取
 
-
+    let obj1: objA & objB;   //交叉类型，  obj1同时包含 objA 并 objB
+    let obj2: objA | objB    //联合类型    obj2 仅包含 objA 交 objB
 
     let objA:{a:string,b:number} = {a:'你好',b:18}
 

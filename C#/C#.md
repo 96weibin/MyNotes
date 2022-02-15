@@ -36,7 +36,16 @@
 
     ![](./img/keywords.png)
 
-## 数据类型
+##  变量 
+
+1. 声明变量 Declaration
+
+    ```c#
+    string name;        //string 类型
+    var a = "string";   //编辑器会自行判断 a 的类型
+    ```
+    > c# 强类型，必须规定类型 或  var 类型
+
 
 - C# 有三种类型数据 值类型 (value types)， 引用类型(reference types)， 指针类型(pointer types)
 
