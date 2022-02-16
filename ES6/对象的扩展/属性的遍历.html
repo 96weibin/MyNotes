@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*五种方法
+        (1)for...in 循环遍历对象自身的和继承的可枚举属性（不包含symbol属性）
+        (2)Object.keys(obj) 返回一个数组，包括对象自身的(不含继承的)所有可枚举属性不包含symbol属性）的键名
+        (3)Object.getOwnPropertyNames(obj)
+        (4)Object.getOwnPropertySymbols(obj) 返回一个数组，包含对象自身的所有 Symbol 属性的键名
+        (5)Reflect.ownKeys(obj) 数组的属性次序:数值属性>字符串属性
+        */
+        //for...in 返回一个所有属性名和其对应的字符串
+        var obj = { age: 12, sex: "male", name: "Simon" };
+        for (o in obj) {
+            console.log(o); //age sex name
+            console.log(obj[o]);//12 male Simon
+        }
+        console.log(Object.keys(obj));//['age', 'sex', 'name']
+        console.log(Object.getOwnPropertyNames(obj)); //['age', 'sex', 'name']
+        console.log(Object.getOwnPropertySymbols(obj));
+        console.log(Reflect.ownKeys(obj)); // ['age', 'sex', 'name']
+    </script>
+</body>
+
+</html>
