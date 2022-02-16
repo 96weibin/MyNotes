@@ -265,7 +265,7 @@
     //Console.WriteLine(arr[3]);    Err out range
     ```
 
-    > c# 数组 长度不能自动拓展, 超界会报错。
+    > c# 数组 长度不能自动拓展(因为分配连续内存), 超界会报错。
     > 变量需要先赋值 再使用
 
 ## 字符串
@@ -343,7 +343,7 @@
 
     ```
 
-- struct VS classs
+- struct VS class
 
     - class 是引用类型， struct 是值类型， 
     - struct 不能继承
@@ -371,9 +371,9 @@
 
     namespace ConsoleApp1   //create namespace
     {
-        class Steps
+        class Steps         
         {
-            public string step;
+            public string step;          //成员变量
             public string defaultStep = "000";
             public static string keys = "456";
             public Steps(string a) {    //构造函数 同名且 不写返回值， void 也不可以
@@ -416,6 +416,405 @@
     }
     ```
     > 对象是类的实例， 构成类的方法和变量，称为类的成员
+    > 无修饰符  类： internal, 成员： private
     > 构造器  区分参数长度和 类型
 
+## 继承
 
+- 基于 **基类** 派生出 **派生类**, **派生类** 继承自**基类**
+
+    - C# 的类不支持多继承， 而接口可以
+    - 通过 ： 实现继承
+
+    ```c#
+    class Program
+    {
+
+        static void Main(string[] args)     //main
+        {
+            Sharp r0 = new Rect();              
+            Console.WriteLine(r0.getArea());    //0
+            Sharp r1 = new Rect(10);
+            Console.WriteLine(r1.getArea());    //100
+            Rect r2 = new Rect(4, 5);
+            Console.WriteLine(r2.getArea());    //20
+            Sharp s1 = new Sharp();
+            r2.draw(s1);    //draw this is Sharp
+            r2.draw(r2);    //draw this is rect
+
+            r2.print(s1);   //print this is Sharp
+            r2.print(r2);   //print this is rect
+        }
+    }
+
+    interface DrawMethods
+    {
+        public void draw(Sharp s);
+    }
+
+    interface printMethods
+    {
+        public void print(Sharp s);
+    }
+
+    class Rect: Sharp, DrawMethods, printMethods //继承一个类，两个接口
+    {
+        public Rect()//构造函数
+        {
+
+        }
+        public Rect(int length)     //构造函数
+        {
+            height = length;           //继承的  height,width
+            width = length;             
+        }
+        public Rect(int width, int height)//构造函数
+        {
+            this.width = width;
+            this.height = height;
+        }
+
+        public void draw(Sharp s)       //实现接口
+        {
+            if(s is Rect)
+            {
+                Console.WriteLine("draw this is rect");
+            } else
+            {
+                Console.WriteLine("draw this is Sharp");
+            }
+        }
+
+        public void print(Sharp s)     //实现接口
+        {
+            if (s is Rect)
+            {
+                Console.WriteLine("print this is rect");
+            }
+            else
+            {
+                Console.WriteLine("print this is Sharp");
+            }
+        }
+    }
+    class Sharp
+    {
+        public int width = 0;
+        public int height = 0;
+        public string title = "sharp";
+        public int getArea() { return this.width * this.height; }
+    }
+    ```
+
+## 多态
+
+- 函数重载
+  
+  - 一个类内 通过传参区分 来实现重载
+    
+    ```c#
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Welcome w1 = new Welcome();
+            w1.sayHi();         //Hi
+            w1.sayHi("weibin"); //Hiweibin
+            w1.sayHi(18);       //I'm 18years old
+        }
+    }
+
+    class Welcome
+    {
+        public void sayHi()
+        {
+            Console.WriteLine("Hi");
+        }
+
+        public void sayHi(string name)
+        {
+            Console.WriteLine("Hi" + name);
+        }
+
+        public void sayHi(int age)
+        {
+            Console.WriteLine("I'm " + age + "years old");
+        }
+    }
+    ```
+   
+  - 不同类之间 通过继承，重写 虚方(virtual)方法 | 抽象(abstract)方法
+  - 继承的抽象方法必须实现，虚方法不用
+     ```c#
+    class Program
+        {
+            static void Main(string[] args)
+            {
+                SharpV sv1 = new RectV();
+                sv1.interduce();        //here is RectV
+                RectV rv1 = new RectV();
+                rv1.interduce();        //here is RectV
+                RectA ra1 = new RectA();
+                ra1.interduce();        //here is RectA
+            }
+        }
+
+        class RectV: SharpV            //继承的虚方法可以不实现
+        {
+            public RectV() { }
+            public override void interduce()        //通过创建不同的  Rect 重写不同的 interduce 实现多态
+            {       
+                Console.WriteLine("here is RectV");
+            }
+        }
+
+        class RectA : SharpA        //继承的抽象方法必须实现
+        {
+            public RectA() { }
+            public override void interduce()    //通过创建不同的  Rect 重写不同的 interduce 实现多态
+            {
+                Console.WriteLine("here is RectA");
+            }
+        }
+
+        //class circle: 
+
+        abstract class SharpA       //抽象类
+        {
+            public abstract void interduce();   //抽象方法
+        }
+        class SharpV
+        {
+            public virtual void interduce() { }     //虚方法
+        }
+    ```
+
+- 运算符重载
+  
+  - 定义 覆盖 操作符 对 对象操作
+
+    ```C#
+    public static Box operator+ (Box b, Box c)
+    {
+        Box box = new Box();
+        box.length = b.length + c.length;
+        box.breadth = b.breadth + c.breadth;
+        box.height = b.height + c.height;
+        return box;
+    }
+    ```
+
+## 接口 interface
+
+  - 与TS 相同 详见TS.md
+  
+    ```C#
+    interface IMyInterface
+    {
+        void MethodToImplement();
+    }
+    ```
+    1. 继承接口必须实现，接口的方法
+    2. 一个类可以继承多个 接口
+
+## 命名空间 namespace
+
+1. 命名空间可以全局调用 不需要引入，同名类似作用域链 就近
+2. 使用命名空间内的实例的属性方法
+3. useing 会将class 引入，直接使用
+
+- 创建&&使用命名空间 
+    
+    - main.cs
+
+    ```C#
+    using System;       
+    using N2;           //use 了N2的命名空间可以直接调用 N2C
+    namespace ConsoleApp5
+    {
+        class Program
+        {
+            static void Main(string[] args)
+            {
+                N1.N1C n1c = new N1.N1C();   //没 Use N1， 需要用N1 才能读 N1C
+                n1c.sayHi(); // hello N1
+                N2C n2c = new N2C();        //得到N2的 实例
+                n2c.sayHi();// hello N2
+            }
+        }
+    }
+
+    namespace N1
+    {
+        class N1C       //命名空间 需要一个类
+        {
+            public void sayHi() //成员函数
+            {
+                Console.WriteLine(msg);
+            }
+            public string msg = "hello N1"; //成员变量
+        }
+    }
+
+    namespace N2
+    {
+        class N2C
+        {
+            public void sayHi()
+            {
+                Console.WriteLine(msg2);
+            }
+            public string msg2 = "hello N2";
+        }
+    }
+    ```
+
+## 预处理器指令 
+
+- 预处理指令
+  
+  ![](img/预处理器指令.png)
+
+## 正则表达式
+
+- 去看Jscript的就行都一样
+
+## 异常处理
+
+- try catch finally and throw
+
+    ```c#
+    try
+    {
+       //do some things
+    } 
+    catch(Exception err)
+    {
+        throw new Exception("err",err);
+    }
+    finally{
+        Console.WriteLine("try end");
+    }
+    ```
+
+- 异常等级
+
+    - C# 的异常 好像并没有那么复杂  其他异常都是 exception 派生的
+  
+    ![](img/exception.png)
+
+## 索引器 get,set
+
+?? 把对象 装换成通过 下标进行访问，有啥用呢？ 
+
+## 集合
+
+1. 动态数组 ArrayList
+    
+    - ArrayList需要 using System.Collections;
+    - 无需设定长度，且内容随意
+
+    ```c#
+    List<string> l1 = new List<string>();
+    l1.Add("hello");
+
+    ArrayList a1 = new ArrayList(); //创建 Arraylist 无需设定长度
+    a1.Add(1);
+    a1.Add("2");
+    a1.Add(l1);
+    foreach(object i in a1)
+    {
+        Console.WriteLine(i);
+    }
+    ```
+2. 哈希表 hashtable 
+    
+    - Hashtable using System.Collections;
+    - k,v 的集合
+
+    ```c#
+    Hashtable hs1 = new Hashtable();
+    hs1.Add("001", "001v");
+    Console.WriteLine(hs1["001"]);
+    ```
+
+3. 排序列表 sortedList  0.0 没啥用的东西
+
+    - sortedList using System.Collections;
+    - k,v 的集合, 且自动排序
+
+    ```c#
+    SortedList s1 = new SortedList();
+    s1.Add("02", "778");
+    s1.Add("021", "777");
+    s1.Add("01", "776");
+
+    foreach(string s in s1.Keys)
+    {
+        Console.WriteLine(s, s1[s]);
+        //01    776
+        //02    778
+        //021    777
+    }
+    ```
+4. 栈 stack
+
+    - 先进后出
+
+    ```c#
+    Stack st1 = new Stack();
+    st1.Push("He");
+    st1.Push('l');
+    st1.Push("lo");
+
+    foreach(object i in st1)
+    {
+        Console.WriteLine(i);
+        //lo
+        //l
+        //He
+    }
+    ```
+
+5. 队列
+
+    - 先进先出
+
+    ```c#
+    Queue q1 = new Queue();
+    q1.Enqueue("He");
+    q1.Enqueue('l');
+    q1.Enqueue("lo");
+
+    foreach(object i in q1)
+    {
+        Console.WriteLine(i);
+        //He
+        //l
+        //lo
+    }
+    ```
+
+6. 点阵列 BitArray TODO
+
+7. 泛型集合
+
+    - 需要using System.Collections.Generic
+
+    ```c# 
+    List<object> lo1 = new List<object>();
+    lo1.Add(q1);        //添加一个元素
+    lo1.Add("8");
+    string[] sarr = { "9", "0" };   
+    lo1.AddRange(sarr);     //拓展 添加元素
+    Console.WriteLine(lo1.Count);
+    foreach(object i in lo1)
+    {
+        Console.WriteLine(i);
+        //4
+        //System.Collections.Queue
+        //8
+        //9
+        //0
+    }
+    ```

@@ -20,7 +20,7 @@
 - 区分服务器端脚本
 	
 	1. <%%>   嵌入到html中， 其间为服务器端脚本
-	2. <script language="vbscript" RUNAT="server">	当内嵌script的 runat值为 server时 服务器端，为client时为用户端
+	2. *<script* language="vbscript" RUNAT="server"*>*	当内嵌script的 runat值为 server时 服务器端，为client时为用户端
 	3. 同时也支持 script sec进行外链
 
 标记语言 确定编码 <%@ language="vbscript" codepage="65001"%>
@@ -119,7 +119,7 @@
 
 ### session对象
 
-其实就是指访问者从到达某个特定位置 到离开位置的那段时间，每个访问都会单独的获取一个session
+>其实就是指访问者从到达某个特定位置 到离开位置的那段时间，每个访问都会单独的获取一个session
 与Application对象相比  session对象更接近于 普通应用程序中的 **全局变量**， 全局变量在程序执行的过程中始终有效，其他的用户同时启动该程序的副本 使 该程序 的各个实例使用各自的全局变量，在两个继承之间相互不能访问，绝大多数情况下session对象被做为全局变量，以实现在该应用的所有页面中的共享信息
 
 - 设置
@@ -178,21 +178,22 @@
 
 	7. GetLastError: 返回ASPError对象的引用，包含最后一次报错数据
 ---
+
 - #include 引用外部文件
-```asp
-'相对于当前真实目录的引用
-<!--#include file="./wwwroot/index.asp" -->
+  
+	```asp
+	'相对于当前真实目录的引用
+	<!--#include file="./wwwroot/index.asp" -->
 
-'相对于web虚拟目录的引用
-<!--#include virtual="./wwwroot/index.asp"-->
+	'相对于web虚拟目录的引用
+	<!--#include virtual="./wwwroot/index.asp"-->
 
-与 Excute 相反
-```
+	与 Excute 相反
+	```
 
 ---
 
 ## ADO组件(AvtiveX Data Object)
-
 
 ### SQL
 
@@ -500,8 +501,6 @@ name 				指定command的名称
 execute 		执行字符串个是命令
 createParameter 使用指定属性创建parameter对象
 cancel			取消执行挂起的异步Execute方法的调用
-
-
 
 #### command对象的parameters集合
 	
