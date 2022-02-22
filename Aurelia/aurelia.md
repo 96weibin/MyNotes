@@ -592,4 +592,31 @@ aurelia.use
     },
     ```
 
-    **TODO   怎么使用  Observeable**   **singloeton**
+## Observeable
+
+- 监听属性change
+
+    ```ts
+    import { bindable, observable } from 'aurelia-framework';
+        export class Child1{
+        @observable obSelfStr;      //声明 this.obSelfStr
+        @bindable bindStr;          //声明 并接收 bind的 bind-str
+        arrMsgxxxx;
+        constructor(){}
+
+        obSelfStrChanged(n,o){      //监听 自身 obSelfStr的 change 
+            console.log(n,o)
+        }
+
+        bindStrChanged(n,o){        //监听 父bind 过来的属性是否change
+
+        }
+    }
+
+    ```
+- observable 与 bindable的区别
+> bindable 可以声明,并接收 bind来的值， 而 observable不能 接收bind,只能监听本文件的change
+
+
+
+    **TODO   怎么使用  **   **singloeton**
