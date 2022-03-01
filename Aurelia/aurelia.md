@@ -11,7 +11,7 @@
   
     ``` shell
     $ au new 
-    ## select your option
+    # select your option
     ```
 2. 运行
 
@@ -150,7 +150,44 @@
     container | art="xxx" | fun.bind="xxx" | 
     vm | @bindable art | @bindable fun | 
 
+    >TODO  bind 的函数 的 this 问题
 
+    4. 子组件触发父组件函数
+
+    ```html
+    //父组件
+    <template>
+        <require from="./common/child1"></require>
+        <child1 child-save.delegate="fatherSave()"></child1>    
+    </template>
+    ```
+
+    ```ts
+    public message = 'Hello World!';
+    fatherSave(){   //函数内使用 this 时，在父组件执行函数 不用改变this
+        console.log("fatherSaved" + this.message);
+    }
+    ```
+
+    ```html
+    //子组件
+    <template>
+        <button click.delegate="attachChildSave()">attachChildSave</button>
+    </template>
+    ```
+
+    ```ts
+    import { DOM, autoinject } from 'aurelia-framework';
+    @autoinject
+    export class Child1{
+        constructor(
+            public element:Element
+        ){}
+        attachChildSave(){  //dispatch自定义事件
+            this.element.dispatchEvent(DOM.createCustomEvent("child-save",{bubbles: true}));
+        }
+    }
+    ```
 
 
 5. 注册组件    TODO  2,3,4 版本问题都不能用
@@ -190,6 +227,8 @@
         ```ts
         @customElement('newName')
         ```
+
+
 
 TOTO @watch  local Template
 
@@ -324,6 +363,8 @@ TOTO @watch  local Template
         console.log(arg)
     }
    ```
+
+> 注意： ref 需要在 bind 之后才有
 
 ## 语句
 
