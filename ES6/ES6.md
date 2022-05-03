@@ -44,10 +44,10 @@ let {x: width, y: height} = {   //匹配: 声明
 
 2. 简写规则
 
-条件 | 简写 |
--|-|-
-只有一个形参 | 省略形参括号() | var fun = a => {return a + 1};
-函数体只有一句  | 省略 函数体括号{} 和 return | var fun = a => a*2;
+    条件 | 简写 |
+    -|-
+    只有一个形参 | 省略形参括号() | var fun = a => {return a + 1};
+    函数体只有一句  | 省略 函数体括号{} 和 return | var fun = a => a*2;
 
 ## 拓展运算符 ...arr
 
