@@ -874,8 +874,8 @@ npm i -g @vue/cli-service-global
 3 | mounted | 挂在之后
 4 | beforeUpdate | 虚拟dom渲染前
 5 | updated | 虚拟dom渲染后
-6 | beforeDestroy | 销毁之前
-7 | destroyed | 销毁之后
+6 | beforeDestroy -> beforeUnmont | 销毁之前
+7 | destroyed -> unmounted | 销毁之后
 
 ### [axios](http://www.axios-js.com/zh-cn/docs/#axios-post-url-data-config)
 
