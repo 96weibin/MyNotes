@@ -469,9 +469,6 @@ unbind() | 组件移除后
     ```
     - inject 的类会作为参数传入constructor 且是有序的
 
-
-
-
 ## compose  和  PLATFORM.moduleName
 
 ```ts
