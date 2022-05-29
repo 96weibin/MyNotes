@@ -155,7 +155,7 @@
     private | 只能类内访问
     protected | 类内和子集可以访问
     internal | 仅类库项目内可访问
-    protected internal | 
+    protected internal | TODO
 
     - 创建class Library: add > new project > class library
     - 创建关联 ： add > project reference
@@ -588,7 +588,45 @@ public static void Main(string[] args)
         }
 ```
 
+### IOC 控制反转 &&  DI 依赖注入  TODO
 
+- 通过IOC 容器实现对象之间的解耦, 面向接口
+- 每个class 都不是很小，都是很大很多功能
+
+1. newGet DependencyInjection
+
+
+模式 | 功能
+-|-
+singleton | 单例
+scoped | 作用域
+transient | 瞬时
+```C#
+```
+
+### Unit Test TODO 
+
+1. sln >Add > new project > MSTest 创建unitTest
+2. sln > Add > project reference 添加项目引用
+3. nav > Test > Run all test 跑测试
+```C#
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using ConsoleApp1;
+namespace TestProject1
+{
+    [TestClass]
+    public class UnitTest1
+    {
+        [TestMethod]
+        public void TestMethod1()
+        {
+            bool test = true;
+            Assert.IsTrue(test);
+        }
+    }
+}
+
+```
 
 ## Array Collection
 
