@@ -426,6 +426,10 @@ attached() 附属| 组件被添加到 Dom中
 detached() | 组件从dom中移除
 unbind() | 组件移除后 
 
+    constructor-------------------------
+    activate-------------------------
+    bind-------------------------
+    attached-------------------------
 
 ## injection
 
