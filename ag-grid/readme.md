@@ -260,3 +260,12 @@
         }
     },
     ```
+  
+## 常见问题
+
+1. params.data  是从 setRowData(data) 的data中取的值
+2. 在修改表格的时候 我们操作的也是  这个data，不要去修改params.data
+3. cellRenderer 是表格常态时显示内容，
+4. cellEditor 是表格 双击时显示内容
+5. 渲染内容不是普通Html而是组件时 需要 使用cellEditor: "aureliaColumnEditor", 配合 cellEditorParams
+6. 如果Editor使用组件的时候修改了 data. 但是再render的时候发现没有修改params.data， 可以添加 valueSetter: (params: valueSetterParams) =>{return bool}
