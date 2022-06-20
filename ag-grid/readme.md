@@ -260,3 +260,17 @@
         }
     },
     ```
+
+- 常见问题
+
+1. params.data 是从 setRowData(data) 中的data 中获得，
+2. 表格内容使用组件时  操作的数据 也是 data， 不要修改params.data,
+3. cellRenderer 是表个正常显示的渲染
+4. cellEditor 是表个双击的时候的渲染
+5. 渲染时 返回内容为 组件时 需要使用 CellEditorParams,且需 cellEditor: "aureliaColumnEditor",
+
+- cellRender 组件
+
+    ```json
+
+    ```
