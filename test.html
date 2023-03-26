@@ -28,8 +28,19 @@
         ">
         </div>
         `
-        function sayHi(){
-            console.log('hhhhh')
+        async function sayHi(){
+           console.log("hi");
+           let res = await sleep(2);
+           console.log(res);
+           console.log("hi again")
+        }
+
+        function sleep(s){
+            return new Promise((reslove, reject) => {
+                setTimeout(() => {
+                    reslove(`has sleep ${s}s`);
+                }, s*1000);
+            })
         }
     </script>
 </body>
