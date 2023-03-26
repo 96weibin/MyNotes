@@ -1,14 +1,150 @@
-# Vue 3
+# [Vue 3](https://cn.vuejs.org/guide/introduction.html)
 
-## SFC语法规范
+- [options](#options)
+- [composition](#composition)
+- [class style](#classStyle)
 
-## class style
+## 安装
 
-- 拆分vue的ts 作为类引入， data为class的属相，method 为class 的成员方法， 其他Option 提供
+```shell
+$ npm init vue@latest
+```
+> node > V16.0.0
 
-### demo
+## 模板语法
 
-1. parent 
+- 页面插值， 表达式， 调用函数， 插入html， bind, 事件, 修饰符
+
+1. 一次绑定多个值
+
+    ```html
+    <script setup lang="ts">
+    const obj = {id: "only", class: "many"}
+    </script>
+    <template>
+    <div v-bind="obj">div1</div>
+        <!-- 
+        <div id="only" class="many">div1</div>      
+        -->
+        <!-- 简写不可以 -->
+    </template>
+    ```
+2. 动态属性方法
+
+    ```html
+    <script setup lang="ts">
+    import { ref } from 'vue';
+
+
+    const event = ref("click");
+    const sayHi = ()=>{
+    console.log(event.value);
+    }
+    </script>
+    <template>
+    event: <input type="text" v-model="event">
+    <button @[event]="sayHi()">{{event}}</button>
+    </template>
+    ```
+    > [] 中括号使用变量当作 属性，方法名
+
+3. Directives 指令
+
+
+
+## API 风格
+
+### Options API 选项是API <span id="options">
+
+- options API, 2.0
+    ```html
+    <script>
+    export default {
+    // data() 返回的属性将会成为响应式的状态
+    // 并且暴露在 `this` 上
+    data() {
+        return {
+        count: 0
+        }
+    },
+
+    // methods 是一些用来更改状态与触发更新的函数
+    // 它们可以在模板中作为事件监听器绑定
+    methods: {
+        increment() {
+            this.count++
+        }
+    },
+
+    // 生命周期钩子会在组件生命周期的各个不同阶段被调用
+    // 例如这个函数就会在组件挂载完成后被调用
+    mounted() {
+        console.log(`The initial count is ${this.count}.`)
+    }
+
+    props{      //接受父级bind的值，
+        msg: String,    //生命属性
+    }
+    }
+    </script>
+
+    <template>
+    <button @click="increment">Count is: {{ count }}</button>
+    </template>
+    ```
+    > props 接受父级bind的值
+
+### Composition API 组合式API <spen id="composition">
+
+
+- composition API 3.0
+
+    ```html
+    <script setup>
+    import { ref, onMounted, computed } from 'vue'
+
+    // 响应式状态
+    const count = ref(0)
+
+    // 用来修改状态、触发更新的函数
+    function increment() {
+    count.value++
+    }
+
+    // 生命周期钩子
+    onMounted(() => {
+    console.log(`The initial count is ${count.value}.`)
+    })
+
+    //computed 返回集合
+    const forms = computed(()=>{})
+
+    //监听 prop 执行回调
+    const prop = ref(true);
+    watch(prop, ()=>{})
+
+    //接受父级bind值
+    defineProps({       //defineProps 编译时宏 无需引入，
+        msg: String,    //声明了 msg 变量
+        obj: Object
+    })
+    </script>
+
+    <template>
+    <button @click="increment">Count is: {{ count }}</button>
+    </template>
+    ```
+
+
+    >1. setup 标记
+    >2. 生命周期需要  引入执行
+    >3. defineProps 接受父级bind的值
+
+### [class style](https://class-component.vuejs.org/) <span id="classStyle">
+
+- 拆分vue的ts 作为类引入， data为class的属性，method 为class 的成员方法， 其他@Option 提供
+
+1. Parent.vue
 
     ```html
     <template>
@@ -49,8 +185,8 @@
     });
     </script>
     ```
-2. child
-    - .vue
+2. Child
+    - Child.vue
     ```html
     <template>
     <div class="aside">
@@ -73,7 +209,7 @@
     export default Aside            //需要export 给 template使用
     </script>
     ```
-    - .ts
+    - Child.ts
     ```ts
     import { Vue, prop, Options } from 'vue-class-component';   //干活的组件
     import { Store, useStore } from 'vuex';
@@ -150,3 +286,59 @@
         }
     }
     ```
+
+## SFC single file component 语法规范
+
+## 响应式
+
+### options API 
+
+- options 模式的 data, methods 就是响应式的
+
+### composition API 
+
+- reactive 
+
+```html
+<template>
+  <div class="about">
+    <h2>{{state.count}}</h2>
+    <button @click="addCount()">addCount</button>
+  </div>
+</template>
+
+<script lang="ts">
+import { reactive } from 'vue';
+export default{
+  setup() { //特殊生命周期
+    const state = reactive({count: 0})  //reactive 创建响应式对象或数组
+    const addCount = ()=>{
+      state.count ++;
+    }
+    return {
+      state,  //暴露出 方法和  变量
+      addCount
+    }
+  } 
+}
+</script>
+```
+> setup 函数内定义的变量，方法都要返回到外边使用
+
+- \<script setup\>
+
+```html
+```
+
+
+## 组件间传值
+
+1. 父->子
+    - props
+    - v-mode: e="" --- $emit(update:e, xxx)
+    - slot
+
+2. 子->父
+    - emit
+
+> prps 设计上  单项数据流， 但传递的 数组对象 是可以被修改的， Vue 期望不要修改它， 而是通过 emit 实现
