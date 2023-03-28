@@ -23,6 +23,10 @@ metrics | 指标
 immediately | 立即
 iterate | 迭代
 instead | 相反 代替
+norms | 规范， 行为准则
+cross | 交叉
+Iteration | 迭代
+interation | 
 
 
 PI | program increment

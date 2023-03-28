@@ -5,16 +5,19 @@
    </head>
    <body>
       <p></p>
+      <p></p>
+      <p></p>
       <div></div>
       <script>
-         d3.select("p")
+         d3.selectAll("p")
          .datum(50)
          .text(function(d) { 
             return "Used existing paragraph element and the data " + d + " is assigned."; 
          });
          d3.select("div")
          .datum(100)
-         .append("p")
+         .style("background", "pink")
+         .append("h1")
          .text(function(d) { 
             return "Created new paragraph element and the data " + d + " is assigned."; 
          });

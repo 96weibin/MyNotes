@@ -15,6 +15,7 @@
         d3.select('body').append('svg').attr('width',200).attr('height',200).style('background','rgba(0,0,0,.1)')
         .append('line')
         .transition()
+        .duration(2000)
         .attr('x1',0).attr('y1',0)
         .attr('x2',100).attr('y2', 100)
         .style('stroke','red')

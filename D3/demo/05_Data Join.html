@@ -42,8 +42,9 @@
         ///exit() method用于处理从数据集中动态删除的数据项
         d3.selectAll("li")
         .data([10,20,30,15])
-        .exit()
-        .remove()
+        .text(d=>d)
+        .exit()     // 选择器中 超出 data 范围的
+        .remove();   //删除
 
         //1. datum() 用于为HTML文档中的单个元素设置值
         d3.select("p")
@@ -60,7 +61,7 @@
         }); // <div><p>append100lll</p></div>
 
         //2. data() 将数据集分配给HTML文档中的元素集合
-        d3.select(".list_two").selectAll("li")
+        d3.select(".list_two").selectAll("li")  //已经被删除了
         .data([10,200,32,500,5023])
     </script>
 </body>
