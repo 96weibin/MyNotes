@@ -741,7 +741,7 @@ let validators: { [s: string]: Validation.StringValidator; } = {};
 ## ?? || ?
 
 1. ? 
-   1. abc?.def     常用于读取, abc 为空时 不会调用.
+   1. abc?.def     常用于读取, abc 为空时 不会调用.  就没有返回值
 2. || 
    1. 普通或操作，常用赋值 ，  如果为false  则不执行后面
 3. ??

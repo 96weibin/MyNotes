@@ -466,7 +466,8 @@ SQL也有 局部变量、全局变量
     （7）AND
     （8）ALL ANY BETWEEN IN LIKE OR SOME（逻辑运算符）
     （9）=（赋值）
-```
+    ```
+
 8. 通配符
 
     通配符|描述|实例
