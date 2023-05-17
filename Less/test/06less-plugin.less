@@ -1,0 +1,16 @@
+@plugin "06less-plugin";
+@themestr: theme();
+
+.theme-mixin(light){
+    background-color: white;
+    color: black;
+}
+.theme-mixin(dark){
+    background-color: black;
+    color: white;
+}
+
+.ag-theme-balham{
+    font-size: 30px;
+    .theme-mixin(@themestr);
+}

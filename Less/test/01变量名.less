@@ -1,0 +1,14 @@
+@import './03public.less';
+@PropertyName: #box;
+@red: #F40;
+@red-hover: darken(@red, 10%);
+@pName: border;
+
+@{PropertyName}{
+    color: pink;
+    
+}
+@{PropertyName}:hover{
+    color: @red-hover;
+    @{pName}: 1px solid pink;
+}

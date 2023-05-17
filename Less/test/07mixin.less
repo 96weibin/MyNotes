@@ -1,0 +1,39 @@
+.my-inline-block() {
+    display: inline-block;
+    font-size: 0;
+}
+.thing1 {
+    .my-inline-block;
+    value: 1;
+}
+.thing2 {
+    .my-inline-block;
+    value:2;
+}
+
+.hover-mixin(){
+    &:hover{
+        border: 1px solid black;
+    }
+}
+
+button{
+    .hover-mixin()
+}
+
+//重载
+
+@theme: dark;
+
+.theme(@theme: light){
+    .thing1
+
+}
+
+.theme(@theme: dark){
+    
+}
+
+.theme{
+    .theme(@theme)
+}
