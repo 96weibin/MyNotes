@@ -1,6 +1,5 @@
 # C# Node
 
-
 - console 程序执行 生成exe, dll, pdb 等  在bin/debug/net5.0下
 - using 命名空间 获取变量  system
 
@@ -413,6 +412,12 @@ TODO
 
 - 装箱拆箱： 指的是 值类型 <-> 引用类型， 会是存储 栈<->堆， 消耗性能
 - ∴ 使用泛型 避免拆装
+
+## 高级编程
+
+- structs, enum, 泛型， NUllable, 
+
+###
 
 ## correlation
 
