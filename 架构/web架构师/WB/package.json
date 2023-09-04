@@ -1,0 +1,17 @@
+{
+  "name": "wb230904",
+  "version": "1.0.0",
+  "description": "package setst",
+  "main": "index.js",
+  "bin": {
+    "wb": "bin/index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "pkg"
+  ],
+  "author": "96weibin",
+  "license": "ISC"
+}
