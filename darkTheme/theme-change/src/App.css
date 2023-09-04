@@ -1,0 +1,16 @@
+
+
+.App {
+  background-color: var(--main-background-color);
+  color: var(--main-color);
+  border-color: var(--main-border-color);
+  text-align: center;
+}
+
+.box1{
+  background-color: var(--main-background-color);
+  color: var(--main-color);
+  border-width: 1px;
+  border-color: var(--main-border-color);
+
+}
