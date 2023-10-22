@@ -1,0 +1,18 @@
+{
+  "name": "testcli1022",
+  "version": "1.0.0",
+  "description": "test cli dev",
+  "main": "index.js",
+  "bin": {
+    "testcli1022": "../bin/index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "test",
+    "cli"
+  ],
+  "author": "96weibin",
+  "license": "ISC"
+}
