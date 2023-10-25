@@ -30,13 +30,7 @@ class MyPromise {
     #PromiseState = pendding;
     #PromiseResult = undefined;
 
-    
-
-    
-
     constructor(executor){
-        
-    
         const reslove = (data) => {
             onStateChanged(fulfilled, data)
         };
@@ -49,7 +43,6 @@ class MyPromise {
             console.log(this.#PromiseState, this.#PromiseResult)
         }
         executor(reslove, reject);
-        
         
     }
 }
