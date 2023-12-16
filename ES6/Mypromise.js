@@ -27,28 +27,35 @@ const fulfilled = "fulfilled"
 const rejected = "rejected"
 
 class MyPromise {
-    #PromiseState = pendding;
-    #PromiseResult = undefined;
-
+    _state = pendding;
+    _value = undefined;
+    _reslove = (data) => {
+        this._onStateChanged(fulfilled, data)
+    };
+    _reject = (data) => {
+        this._onStateChanged(rejected, data)
+    }
+    _onStateChanged = (state, data) => {
+        if(this._state != pendding) return;
+        this._state = state; 
+        this._value = data;
+        console.log(this._state, this._value)
+    }
+    then(onFulfiled, onRejected){
+       return new MyPromise()
+    }
     constructor(executor){
-        const reslove = (data) => {
-            onStateChanged(fulfilled, data)
-        };
-        const reject = (data) => {
-            onStateChanged(rejected, data)
-        }
-        const onStateChanged = (state, data) => {
-            this.#PromiseState = state;
-            this.#PromiseResult = data;
-            console.log(this.#PromiseState, this.#PromiseResult)
-        }
-        executor(reslove, reject);
-        
+        executor(this._reslove.bind(this), this._reject.bind(this));
     }
 }
 
 
-new MyPromise((res, rej)=>{
-    // rej(123)
-    res(234);
+let my = new MyPromise((res, rej)=>{
+    let data = 'my data'
+    setTimeout(() => {
+
+        res(data);
+    }, 100);
 })
+
+console.log(my)
