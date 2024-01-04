@@ -205,13 +205,21 @@ let p = new Promise((reslove, reject)=>{
     });
 })
 
-p.then(res => {                  //捕获 reslove
+p.then(res => {                  //reslove 执行
     console.log('success ' + res);
+},rej => {
+    console.log('field', rej);  //reject 执行
 })
 
-p.catch(err=>{                  //捕获 reject
+p.catch(err=>{                  //reject 执行
     console.log('fild' + err)
 })
+
+p.finally(x => console.log('xxxxx'))  //最终执行一次
+
+p.reslove(1)    //返回一个成功状态的  promise value 1
+
+p.reject('2')   //返回一个失败状态的 promise  value ‘2’
 ```
 
 2. promise的使用
