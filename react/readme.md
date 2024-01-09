@@ -10,8 +10,6 @@
 ## `搭建本地开发环境`
 
 ```shell
-$ npm i -g create-react-app
-$ npx create-react-app my-app --template typescript
+$ npx create-next-app@latest
 ```
 
-- 使用不同的template 生成项目 npmjs.com 搜索 `cra-template-*` 生成不同的app
