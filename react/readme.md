@@ -67,3 +67,73 @@ class HeaderComp extends React.Component{ //需要继承 实现 类组建
 ```
 
 - 函数组件
+
+
+### 组件传值
+
+- 父组件
+
+```tsx
+function App() {
+  let [dolor, setDolor] = useState(0);
+  let [rmb, setRmb] = useState(0);
+
+  const morneyTransformHandel = (type: string, value: number) => {
+    switch (type) {
+      case 'dolor':
+        setDolor(value);
+        setRmb(Number((value / 7).toFixed(2)))
+        break;
+      case 'rmb':
+        setDolor(value * 7);
+        setRmb(value)
+        break;
+      default:
+        break;
+    }
+  }
+  return(<>
+  <h1>人民币《-》 美元</h1>
+  <Morney title='人民币' value={rmb} morneyTransform={(value: number)=>morneyTransformHandel('rmb', value)}></Morney>
+  <Morney title='美元' value={dolor} morneyTransform={(value: number)=>morneyTransformHandel('dolor', value)}></Morney>
+  </>)
+```
+
+- 子组件
+
+```tsx
+export default function Morney({title, value, morneyTransform}: IMorneyProps){
+
+    const onChangeHandel = (e: ChangeEvent<HTMLInputElement>)=>{
+
+        //受控组建 对输入进行 filter
+        let numVal = Number(e.target.value.split('').filter(x => !isNaN(Number(x))).join(''));
+        morneyTransform(numVal)
+    }
+
+    return(<>
+    <h2>{title}</h2>
+    <input type="text" value={value} onChange={(e)=>onChangeHandel(e)}/>
+    </>)
+}
+
+interface IMorneyProps {
+    title: string,
+    value: number,
+    morneyTransform: Function
+}
+```
+
+## 生命周期
+
+- 生命周期。主要是对 类组件的钩子
+
+钩子函数 | hoks | 作用
+-|-|-
+constructor | 1| 组件创建时执行一次
+render | 3 | **必须** 
+componentDidMount | | mounted 挂载 执行一次
+componentWillUnmount | | 组件销毁时调用
+componentDidUpdate | | 更新后调用
+
+## Hoks

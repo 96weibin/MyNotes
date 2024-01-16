@@ -1,42 +1,28 @@
-import React from 'react';
-import style from './App.module.css';
-
-export function MyImg () { //创建函数式组件
-  return (
-    <img src="/test.jpg" alt="" />
-  )
-}
-
-
-class HeaderComp extends React.Component{ //需要继承 实现 类组建
-  private myCount: number = 0;
-  public state: Readonly<{}> = {
-    myCount: this.myCount
-  };
-  constructor(props: {} | Readonly<{}>){
-    super(props);
-  }
-  private clickHandel(e:any) {
-    this.myCount ++;
-    this.setState({myCount: this.myCount})
-    console.log(this.myCount)
-  }
-  
-  render(): React.ReactNode {
-    return(<>
-      <div>{this.myCount}</div>
-      <button onClick={(e) => this.clickHandel(e)}>Add </button>
-    </>)
-  }
-}
+import React, { useState } from 'react';
+import Morney from './components/Morney';
 
 function App() {
-  const handelClick = function(e: any, msg: string) {
-    console.log(e, msg)
+  let [dolor, setDolor] = useState(0);
+  let [rmb, setRmb] = useState(0);
+
+  const morneyTransformHandel = (type: string, value: number) => {
+    switch (type) {
+      case 'dolor':
+        setDolor(value);
+        setRmb(Number((value / 7).toFixed(2)))
+        break;
+      case 'rmb':
+        setDolor(value * 7);
+        setRmb(value)
+        break;
+      default:
+        break;
+    }
   }
   return(<>
-    <button onClick={(e)=> handelClick(e, 'abc')}>click me</button>
-    <HeaderComp></HeaderComp>
+  <h1>人民币《-》 美元</h1>
+  <Morney title='人民币' value={rmb} morneyTransform={(value: number)=>morneyTransformHandel('rmb', value)}></Morney>
+  <Morney title='美元' value={dolor} morneyTransform={(value: number)=>morneyTransformHandel('dolor', value)}></Morney>
   </>)
 }
 
