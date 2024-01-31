@@ -1,28 +1,35 @@
-import React, { useState } from 'react';
-import Morney from './components/Morney';
+import React, { useEffect, useState } from 'react';
 
 function App() {
-  let [dolor, setDolor] = useState(0);
-  let [rmb, setRmb] = useState(0);
+  let [count, setCount] = useState(0);
+  let [gridData, setGridData] = useState([]);
 
-  const morneyTransformHandel = (type: string, value: number) => {
-    switch (type) {
-      case 'dolor':
-        setDolor(value);
-        setRmb(Number((value / 7).toFixed(2)))
-        break;
-      case 'rmb':
-        setDolor(value * 7);
-        setRmb(value)
-        break;
-      default:
-        break;
+  useEffect(()=>{
+    console.log('useEffect no DependencyList')
+  })  //没有 dependency list 每次渲染后会执行一次， 
+
+
+  useEffect(()=> {
+    console.log("get data...")
+  },[]) // 只会在组件挂载后执行
+
+  useEffect(() => {
+    document.title = `点击了${count} 次`;
+    const sayHi = setInterval(()=>{
+      console.log("hello")
+    }, 1000)
+    return () => {
+      clearInterval(sayHi);  //返回清理函数
     }
-  }
+  }, [count]) // 渲染结束 且 count值 不一样时调用
+  
+
   return(<>
-  <h1>人民币《-》 美元</h1>
-  <Morney title='人民币' value={rmb} morneyTransform={(value: number)=>morneyTransformHandel('rmb', value)}></Morney>
-  <Morney title='美元' value={dolor} morneyTransform={(value: number)=>morneyTransformHandel('dolor', value)}></Morney>
+    <div>
+      count: {count}
+      <button onClick={()=>{setCount(++count)}}>click</button>
+      <button onClick={()=>console.log("normal click")}>click2</button>
+    </div>
   </>)
 }
 

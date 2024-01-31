@@ -1,6 +1,6 @@
 # Recact
 
-- 声明式， 构建用户界面的JS库，
+- *声明式*， 构建用户界面的JS库，
 - 虚拟dom
 - 单向数据流
 
@@ -136,4 +136,85 @@ componentDidMount | | mounted 挂载 执行一次
 componentWillUnmount | | 组件销毁时调用
 componentDidUpdate | | 更新后调用
 
-## Hoks
+## Hoks 16.8+
+
+- 为什么 使用hocks 
+
+  - 某些情况 需要在不同的生命周期  写重复的逻辑
+  - 告别类组件的 this指向问题
+
+- [编程范式](https://www.imaginarycloud.com/blog/functional-programming-vs-oop/)
+  - 命令式编程： 告诉计算机怎么做， 
+    - 面向对象， 面向过程
+
+  - **声明式编程**： 告诉计算机我要什么（封装了命令）
+    - 函数式编程
+    - css, html,sql 
+
+  > 由于工程越来越复杂，命令式力不从心
+  > 纯函数， 副作用， 柯里化， 高阶函数
+
+- 在函数最外层调用
+- 只能在函数呼唤组建中调用
+
+### useState
+
+- 多个state， 声明多次
+
+### useEffect
+
+
+- 纯函数 pure function: 一个确切的参数返回一个确切的值
+
+  ```ts
+  function multiply2 (count) {
+  return count * 2
+  ```
+
+- 副作用: 函数的返回不确定， 如 数据请求等
+
+
+  ```tsx
+  function App() {
+    let [count, setCount] = useState(0);
+    let [gridData, setGridData] = useState([]);
+
+    useEffect(()=>{
+      console.log('useEffect no DependencyList')
+    })  //没有 dependency list 每次渲染后会执行一次， 
+
+
+    useEffect(()=> {
+      console.log("get data...")
+    },[]) // 只会在组件挂载后执行
+
+    useEffect(() => {
+      document.title = `点击了${count} 次`;
+      const sayHi = setInterval(()=>{
+        console.log("hello")
+      }, 1000)
+      return () => {
+        clearInterval(sayHi);  //返回清理函数
+      }
+    }, [count]) // 渲染结束 且 count值 不一样时调用
+    
+
+    return(<>
+      <div>
+        count: {count}
+        <button onClick={()=>{setCount(++count)}}>click</button>
+        <button onClick={()=>console.log("normal click")}>click2</button>
+      </div>
+    </>)
+  }
+  ```
+
+### useRef
+
+### 自定义 hooks
+  - 封装自带的 hooks 的函数实现
+
+## [Router](https://reactrouter.com/en/main/start/tutorial)
+
+
+## Redux
