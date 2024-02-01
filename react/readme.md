@@ -12,7 +12,7 @@
 ## `搭建本地开发环境`
 
 ```shell
-$ px create-react-app my-app --template cra-template-typescript
+$ npx create-react-app my-app --template cra-template-typescript
 ```
 
 ## JSX
@@ -216,5 +216,31 @@ componentDidUpdate | | 更新后调用
 
 ## [Router](https://reactrouter.com/en/main/start/tutorial)
 
+```shell
+$ npm install react-router-dom localforage match-sorter sort-by
+```
+
+```tsx
+import * as React from "react";
+import * as ReactDOM from "react-dom/client";
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+import "./index.css";
+
+const router = createBrowserRouter([    // browser/hash router...
+  {
+    path: "/",
+    element: <div>Hello world!</div>,
+  },
+]);
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <RouterProvider router={router} />
+  </React.StrictMode>
+);
+```
 
 ## Redux
