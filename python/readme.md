@@ -1,4 +1,4 @@
-# Python3
+# [Python3](https://www.liaoxuefeng.com/wiki/1016959663602400/1017316949097888)
 
 - 解释型语言， 交互式语言， 面向对象
 - 缩进 代码块
@@ -282,5 +282,43 @@ sum |
 ## 高级特性
 
 ### 切片
+
+- 操作集合 的快捷方法
+
+    ```py
+    L = list(range(100))
+    s = "hello wrold"
+
+    # [start : end ?: step]
+
+    l10 = L[:10]   # 0-10
+    print(l10)
+
+
+    ls10 = s[-10:] # 后10
+    print(ls10)
+
+    ood10 = L[:10:2] # 0-10 step =2
+    print(ood10)
+
+    copys = s[:] # copy
+    print(copys)
+    ```
+
+    ```py
+    def trim(s: str) -> str:
+        if s[:1] == ' ':
+            return trim(s[1:])
+        elif s[-1:] == ' ': 
+            return trim(s[:-1])
+        else:
+            return s
+        
+    hello = "   hello world    "
+    print(trim(hello))
+    ```
+### 迭代
+
+
 
 ## 函数式编程
