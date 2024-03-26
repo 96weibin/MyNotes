@@ -319,6 +319,52 @@ sum |
     ```
 ### 迭代
 
+- for in
+- isInstance(xxx, Iterable)
+- 可以结构item 
+
+
+    ```py
+    from collections.abc import Iterable
+
+    d1 = {
+        'name': 'weibin',
+        'age' : 17,
+        'gender' : "maile",
+        # 'hobys': ('bascateball', 'football')
+        }
+
+    if isinstance(d1, Iterable):
+        for k in d1 :   # 遍历 key
+            print(k)
+        for v in d1.values(): 
+            print(v)    # 遍历 Val
+        for k,v in d1.items(): # 同时遍历 k v
+            print(k, v)
+
+    s1 = [(1,1,2), (2,2,3), (3,3,4)]
+
+    if isinstance(s1, Iterable):
+        for x, y, z in s1:  # 可以对 item 解构
+            print(x, y, z)
+
+    ```
+### 列表生成式
+
+```py
+# 快速生成 有一定规则的 list
+# [表达式 多个 Iterable condition]
+
+l1 = [x*x for x in range(1, 10)]
+print(l1) # [1, 4, 9, 16, 25, 36, 49, 64, 81]
+
+l2 = [x * 2 for x in range(1, 10) if x % 2 == 0] # 有判断条件
+print(l2) # [4, 8, 12, 16]
+
+l3 = [(a + b).lower() for a in 'XYZ' for b in "ABCD"] # 多个迭代
+print(l3) # ['xa', 'xb', 'xc', 'xd', 'ya', 'yb', 'yc', 'yd', 'za', 'zb', 'zc', 'zd']
+
+```
 
 
 ## 函数式编程
