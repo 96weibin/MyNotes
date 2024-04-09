@@ -1,4 +1,4 @@
-# [Python3](https://www.liaoxuefeng.com/wiki/1016959663602400/1017316949097888)
+# [Python3](https://www.liaoxuefeng.com/wiki/1016959663602400/1017434209254976)
 
 - 解释型语言， 交互式语言， 面向对象
 - 缩进 代码块
@@ -144,7 +144,10 @@ class
 
 ### 条件判断
 
-> 三元运算 msg = "true msg" if xxx else "false msg"
+- 条件判断
+    
+    > 三元运算 msg = "true msg" if xxx else "false msg"
+
 
     ```py
     # if else
@@ -160,10 +163,13 @@ class
     print(msg)
     ```
 
+
+
 ### 匹配
 
 - match case 
-> 数组 匹配， 或匹配， 条件匹配， 匹配值可做变量， default _
+
+    > 数组 匹配， 或匹配， 条件匹配， 匹配值可做变量， default _
 
     ```py
     source = input("source: ")
@@ -222,23 +228,22 @@ class
 
 ## 函数
 
-### 常用内置函数
+- 常用内置函数
 
-函数 | 功能 | exmple
--|-|-
-int | 类 | int("123")
-float | 型 | float("123.34")
-str | 转 | str(True)
-bool | 换 | bool(0)
-len | 长度 | len(obj)
-type | 查询类型 | type(123)
-help | 查看帮助 | help(abs)
-abs | 绝对值 |
-mas | 
-min | 
-sum | 
+    函数 | 功能 | exmple
+    -|-|-
+    int | 类 | int("123")
+    float | 型 | float("123.34")
+    str | 转 | str(True)
+    bool | 换 | bool(0)
+    len | 长度 | len(obj)
+    type | 查询类型 | type(123)
+    help | 查看帮助 | help(abs)
+    abs | 绝对值 |
+    mas | 
+    min | 
+    sum | 
 
-### 自定义函数
 
 - 自定义函数
 
@@ -259,9 +264,8 @@ sum |
     def emp_fun():
         pass
     ```
-### 递归函数
 
-- 求斐波那契数列第n项
+- 求斐波那契数列第n项（递归）
 
     ```py
     # 0, 1, 1, 2, 3, 5, 8
@@ -376,40 +380,41 @@ next(g1)
 
 ## 函数式编程
 
-### 高阶函数
+-  高阶函数
 
-- 
+    ```py
+    # map
 
-```py
-# map
+    from functools import reduce
 
-from functools import reduce
+    def f(x: int) -> int:
+        return x * x
 
-def f(x: int) -> int:
-    return x * x
+    m1: map = map(f, range(1,10))
+    print(m1)
+    l1: list = list(m1)
+    print(l1)
+    # <map object at 0x000001995BE7B550>
+    # [1, 4, 9, 16, 25, 36, 49, 64, 81]
 
-m1: map = map(f, range(1,10))
-print(m1)
-l1: list = list(m1)
-print(l1)
-# <map object at 0x000001995BE7B550>
-# [1, 4, 9, 16, 25, 36, 49, 64, 81]
+    # reduce
 
-# reduce
+    def f2 (t, s) -> bool:
+        return str(t) + str(s)
+    c1 = reduce(f2, l1, "")
+    print(c1)  # 149162536496481
 
-def f2 (t, s) -> bool:
-    return str(t) + str(s)
-c1 = reduce(f2, l1, "")
-print(c1)  # 149162536496481
+    # filter
+    def isOdd(n):
+        return n % 2 == 0
+    f2 = filter(isOdd, l1)
+    print(list(f2))     # [4, 16, 36, 64]
+        
+    # sorted
+    l2 = [-19,8,12,7, -8,2,12]
+    s2 = sorted(l2, key=abs, reverse= True)
+    print(list(s2))
+    ```
 
-# filter
-def isOdd(n):
-    return n % 2 == 0
-f2 = filter(isOdd, l1)
-print(list(f2))     # [4, 16, 36, 64]
-    
-# sorted
-l2 = [-19,8,12,7, -8,2,12]
-s2 = sorted(l2, key=abs, reverse= True)
-print(list(s2))
-```
+- 返回函数
+
