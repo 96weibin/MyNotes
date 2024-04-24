@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    // fetch 需要传入 多个参数, 而接口中 很大一部分 需要的数据 setting 都是同样的 所以可以 通过 科里化 函数  进行简化
+
+
+    // fetch(url, init)
+
+    function stop(s) {
+        return new Promise((res, rej) => {
+            setTimeout(() => {
+                res()
+            }, s);
+        })
+    }
+
+    const myInit = {
+        method: 'post',
+        headers: new Headers({
+            'Content-Type': 'application/json',
+            'my-header' : 'hhhh'
+        })
+    }
+
+    function createMyFetch(myInit) {
+        return async function (url) {
+            return await fetch(url, myInit)
+        }
+    }
+
+    var myFetch = createMyFetch(myInit)
+    myFetch("123").finally(() => {console.log(123)})
+    myFetch("234").finally(async () => {
+        console.log('awati')
+        await stop(2000);
+        console.log("done")
+    })
+    myFetch("235").finally(()=> console.log(235))
+
+    </script>
+</body>
+</html>

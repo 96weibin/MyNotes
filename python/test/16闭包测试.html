@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function carry(fn) {
+            if(typeof fn != 'function') {
+                throw new Error("should be a function");
+            }
+            return function carriedFn(...args) {
+                console.log(args)
+                if(args.length >=  fn.length) {
+                    let res =  fn.apply(this,args);
+                    // 注意重置  不然 下次调用 _args 还是保存的上一次
+                    return res;
+                } else {
+                    return function(...args2) {
+                      return carriedFn.apply(this, args.concat(args2))
+                    }
+                }
+            }
+        }
+
+        function getThreeSum(a, b, c) {
+            return a + b + c
+        }
+
+        var carriedFn = carry(getThreeSum)
+        console.log( carriedFn(1)(2)(3))
+        console.log( carriedFn(1)(2)(3))
+    </script>
+</body>
+</html>

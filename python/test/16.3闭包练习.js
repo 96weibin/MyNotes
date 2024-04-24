@@ -1,3 +1,4 @@
+// 第一题 
 // # const counter = createCounter();  
 // # console.log(counter()); // 输出: 1  
 // # console.log(counter()); // 输出: 2  
@@ -6,8 +7,7 @@
 function createCounter(){
     let count = 0;
     return function(){
-        count +=1
-        return count
+        return  count +=1
     }
 }
 
@@ -18,19 +18,41 @@ console.log(counter())
 console.log(counter())
 
 
+// 第二题 carr用ing
 // function sum(a, b, c) {  
 //     return a + b + c;  
 //   }  
     
 //   const curriedSum = curry(sum);  
 //   console.log(curriedSum(1)(2)(3)); // 输出: 6
-  
+
+function sum(a, b, c) {
+    return a + b + c;
+}
+
+function curry(fn) {
+
+    return function carriedFn(...args) {
+        if(args.length >= fn.length) {
+            return fn.apply(this, args)
+        } else {
+            return function(...args2) {
+                return carriedFn.apply(this, args.concat(args2))
+            }
+        }
+    }
+}
+
+curriedSum = curry(sum);
+console.log(curriedSum(1)(2)(3))    // 6
 
 // const counterObject = createCounterObject();  
 // counterObject.increment();  
 // console.log(counterObject.getCount()); // 输出: 1  
 // counterObject.increment();  
 // console.log(counterObject.getCount()); // 输出: 2
+
+
 
 
 // const obj = {  
