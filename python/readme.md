@@ -416,5 +416,44 @@ next(g1)
     print(list(s2))
     ```
 
-- 返回函数
+- 闭包
+    
+    > 函数1 返回 函数2执行， 函数2的执行 返回 函数1的值
+    ```py
+    def count():
+        fs = []
+        for i in range(1,4):
+            def f():
+                return 2 * i
+            fs.append(f)
+        return fs
+
+    fs1, fs2, fs3 = count()
+    print(fs1(), fs2(), fs3())  # 6 6 6 
+
+
+    def closure_count():
+        fs = []
+        for i in range(1,4):
+            def f(j):
+                def doubleF():
+                    return j * j
+                return doubleF
+            fs.append(f(i))
+        return fs
+
+    fs1, fs2, fs3 = closure_count()
+    print(fs1(), fs2(), fs3()) #1 4 9
+
+
+
+    def closure_count_shot():
+        def f(i):
+            return lambda  : i * i
+        return map(f, range(1,4))
+
+    fss1, fss2, fss3 = closure_count_shot()
+    print(fss1(), fss2(), fss3())  # 1 4 9
+
+    ```
 
