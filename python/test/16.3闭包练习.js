@@ -52,9 +52,29 @@ console.log(curriedSum(1)(2)(3))    // 6
 // counterObject.increment();  
 // console.log(counterObject.getCount()); // 输出: 2
 
+function createCounterObject(){
+    count = 0
+    class CounterObject{
+        count = 0
+        constructor(){};
+        increment(){
+            this.count ++;
+        }
+        printCount(){
+            console.log(this.count)
+        }
+    }
+    
+    return new CounterObject()
+}
 
-
-
+const counterObject = createCounterObject();   
+counterObject.increment(); 
+counterObject.printCount()
+counterObject.increment(); 
+counterObject.printCount()
+counterObject.increment(); 
+counterObject.printCount()
 // const obj = {  
 //     value: 10,  
 //     handler: function(event) {  
