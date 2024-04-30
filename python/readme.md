@@ -457,3 +457,10 @@ next(g1)
 
     ```
 
+- 匿名函数
+
+```py
+getValue = lambda x, y: x + y       # 多个行参用 ， 分割
+
+print(getValue(1,2))
+```
