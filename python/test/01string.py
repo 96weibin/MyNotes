@@ -17,3 +17,6 @@ str1 = "hello world"
 str2 = 'Hi %s, do you have $%d' % ('weibin', 1000)
 str3 = 'hello {0} and {1:.2f}'.format('xiao ming', 12.345)
 str4 = f'Pi = {PI} about {PI:.2f}'
+str5 = 'hello 你好'.encode('utf-8')
+str6 = b'hello world'
+print(str5, str6)

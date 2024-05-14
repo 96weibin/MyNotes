@@ -969,6 +969,41 @@ Todo
 
 ## web开发
 
+### WSGI web server gateway interface
+
+- 内置网络处理接口
+
+    -server
+    ```py
+    from wsgiref.simple_server import make_server
+    from app import application
+
+    httpd = make_server('', 8000, application)
+    print('Serving HTTP on port 8000...')
+
+    httpd.serve_forever()
+    ```
+
+    - app
+
+    ```py
+    def application(environ, start_response):
+    start_response('200 ok', [('Content-Type', 'text/html'),('Header1', "lalala"),('Header2', "hahaha")])
+    return [b'<h1>Hello web!</h1>']
+    ```
+
+### [Flask](./Flask/Flask.md)
+
+- web框架
+
+    Django：全能型Web框架；
+
+    web.py：一个小巧的Web框架；
+
+    Bottle：和Flask类似的Web框架；
+
+    Tornado：Facebook的开源异步Web框架。
+
 ## 异步IO
 
 ## 使用MicrosoftPython
