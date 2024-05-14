@@ -798,3 +798,177 @@ Todo
     print(xiaoming.scores)
     xiaoming.scores = 101
     ```
+
+    - 多重继承 mixin
+
+    ```py
+    class Animal:
+        def run(self):
+            print('I can run')
+        pass
+
+
+    class Bird(object):
+        def fly(self):
+            print('%s I can fly' % self.__dir__.__name__ )
+        pass
+
+
+    class MaqueFactory(Animal, Bird):   # 同时继承了  两个类  
+        pass
+
+    maque1 = MaqueFactory()
+    maque1.fly()    
+    maque1.run()
+    ```
+
+    - 定制类 TODO
+
+    - 枚举类
+
+    ```py
+
+    # 默认
+    from enum import Enum
+
+    status = Enum('status123', ('success', 'fild', 'pandding'))
+
+    print(status.success.value)     # 1
+    print(status.success.name)      # success
+    print(status(1))                # status.success
+    
+    # 对应特殊值
+    @unique         # 检查 名字唯一
+    class Weekday(Enum):
+        Mon = 1
+        Tue = 2
+        Wed = 3
+        Thu = 4
+        Fri = '周五'
+        Sat = 6
+        Sun = 7
+        pass
+
+    print(Weekday.Fri.name)     # Fri
+    print(Weekday.Fri.value)    # '周五'
+
+    ```
+
+    - 元组类
+
+    TODO
+
+## Test & Debug
+
+### [Exception](https://docs.python.org/3/library/exceptions.html#exception-hierarchy)
+
+> BasBaseExceptione 所有异常的基类
+
+- 捕获异常
+
+    ```py
+    import logging
+
+
+    def div10(n):
+        return 10 / n
+
+    def doubleN(n):
+        return div10(n) * 2
+
+    def main(n):
+        return doubleN(n)
+
+    try: 
+        main(0)
+    except ZeroDivisionError as e:
+        logging.exception('ZeroDivisionError 错误 %s', e)  # ZeroDivisionError 错误 division by zero
+    except BaseException as e:
+        logging.exception('base 错误')
+    finally:
+        print('--------------finally a error logging------------split----------')
+
+
+    print('End')        # try 捕获异常后 继续执行`
+
+    ```
+
+- 抛出异常
+
+    ```py
+    raise 'unexpected 自定义的异常'
+    ```
+
+
+
+
+### Debug
+
+- print, **logging**, IDE
+
+
+## IO 编程
+
+### 读写文件
+
+- open write read
+
+    ```py
+    
+    def oldRead(path):
+        try:
+            f = open('./a.txt', 'rb', encoding='utf-8')  # encoding  设置字符集
+            print(f.read())
+        finally:
+            if f:
+                f.close()
+
+    # oldRead('./a.txt')
+
+    def withRead(path):     # with 写法不需要手动 close()
+        with open(path, 'r',  encoding='utf-8') as f:
+            print(f.read())
+
+    def writeFile(path):
+        with open(path,'w', encoding='utf-8') as f:
+            f.write('整的挺不错')
+    ```
+    mode | 功能 | dsf
+    -|-|-
+    r | 只读 | 不存在报错
+    w | 写入 | 覆盖， 不存在则 新建
+    x | 文件不存在时 新建| 否则 报差错
+    a | 追加 | 不存在 新建
+    b | 二进制 | 
+    t | 文本模式 | default
+    \+ | 更新模式 | 和 其他组合  同时可读写
+
+### StringIO 和 BytesIO
+
+### 操作文件和目录
+
+### 序列化
+
+## 进程和线程
+
+## 正则
+
+## 常用内奸模块
+
+## 常用第三方模块
+
+## venv
+
+## 图形界面
+
+## 网络编程
+
+## 电子邮件 
+
+## 访问数据库
+
+## web开发
+
+## 异步IO
+
+## 使用MicrosoftPython
