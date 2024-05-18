@@ -482,6 +482,7 @@
 ## 模块
 
 ### 自定义模块 
+
 - 标准自定义模块
 
     ```py
@@ -511,6 +512,14 @@
     - _xxx 表示   私有
     - \__xxx__ 表示 特殊 
 
+- import
+
+    方法 | 功能
+    -|-
+    import math | 导入整个模块
+    import math as s | 导入math 别名 s
+    form math import sqrt | 导入 math模块中的 sqrt
+    form math import * | 导入math模块的所有变量和函数
 
 ### 第三方模块
 
@@ -953,9 +962,21 @@ Todo
 
 ## 正则
 
-## 常用内奸模块
+## 常用内建模块
+
+### datetime 
+
+
 
 ## 常用第三方模块
+
+### [pyAutoGui](https://pyautogui.readthedocs.io/en/latest/)
+
+1. 安装
+
+    ```shell
+    $ pip install pyautogui
+    ```
 
 ## venv
 
