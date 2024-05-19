@@ -970,13 +970,122 @@ Todo
 
 ## 常用第三方模块
 
-### [pyAutoGui](https://pyautogui.readthedocs.io/en/latest/)
+### [pyautogui](https://pyautogui.readthedocs.io/en/latest/)
 
 1. 安装
 
     ```shell
     $ pip install pyautogui
     ```
+
+2. api
+
+    - 鼠标事件
+
+    ```py
+    # pyautogui.PAUSE = 2.5           # 保险措施每次调用暂停2.5s
+    pyautogui.FAILSAFE = True
+
+    mousPos = pyautogui.position() # 获取鼠标坐标
+    screenSize = pyautogui.size()    # 屏幕区域大小
+
+    print(mousPos, screenSize)  #Point(x=1813, y=2317)
+
+    # 鼠标功能
+
+    # 鼠标移动
+    pyautogui.moveTo(200, 200, 2)   # 移动到200 200
+    pyautogui.moveRel(200, -200, 2)  # 相对于当前鼠标位置继续移动 200 200
+
+
+    # 拖动
+    pyautogui.drag(200, 200, 2)     # 拖动到 200 200
+    pyautogui.dragRel(200, -200, 2) # 相对于当前鼠标位置继续拖动 200 -200
+
+    # 点击
+    # pyautogui.click(x=moveToX, y=moveToY, clicks=num_of_clicks, interval=secs_between_clicks, button='left')
+    pyautogui.click(500, 10, 2, .1, button='left')   # 500, 10 点击两次， 间隔.1秒
+
+    pyautogui.mouseDown(100,100)
+    pyautogui.mouseUp(100, 100)
+    pyautogui.rightClick(100,100)
+    pyautogui.middleClick(100, 100)
+    pyautogui.doubleClick(100, 100)
+    pyautogui.tripleClick(100, 100)
+    ```
+
+    - 键盘事件
+
+    ```py
+    
+    # 键盘输入
+    pyautogui.PAUSE = 2
+    pyautogui.typewrite('hello world', interval=0.4)    # 键盘输入一段话 间隔0.4
+    pyautogui.typewrite(['a', 'b', '8', 'backspace', 'c', 'enter'], .3)   # 间隔。3 依次按下按键
+
+    # 组合键
+    pyautogui.hotkey('ctrl', 'a')
+    pyautogui.hotkey('ctrl', 'x')
+    pyautogui.hotkey('ctrl', 'shift', 'p')
+
+    # 也可以拆分别为 keyup keydown
+
+    # 消息框
+    # confirm(text='', title='', buttons=['OK', 'Cancel'])
+    res = pyautogui.confirm('do you want do type password?')
+    print(res)
+    if(res == 'Cancel'): 
+        # alert(text='', title='', button='OK')
+        pyautogui.alert('canceled', '给取消了', '可以吧。。。')
+    else:
+        # password(text='', title='', default='', mask='*')
+        password = pyautogui.password('pass world', 'type pass title', mask='--')
+        print(password)
+
+    # 提示框
+    # prompt(text='', title='' , default='')
+    pyautogui.prompt('This lets the user type in a string and press OK.')
+    
+    ```
+
+    - 屏幕操作
+
+    ```py
+    screen = pyautogui.screenshot()     # 截屏
+    pyautogui.screenshot('abc.png')     # 截屏 另存为
+    pyautogui.locateOnScreen('abc.png') # 获取定位
+
+
+    os.system('calc')   # win 打开计算器
+    time.sleep(2)
+    keys = ['7', '+', '8', '=']
+
+    try: 
+        pyautogui.PAUSE = .3
+        for k in keys:
+            ImgUrl = './imgs/%s.png' % k
+            print(ImgUrl)
+            # 在屏幕上 定位
+            matchBox = pyautogui.locateOnScreen(ImgUrl, confidence=0.9, region=(0,0, 2000, 1800), grayscale=True) #  相似度90%  需要install opencv-python
+            # 相似度90% 
+            # 灰度匹配 降低颜色饱和度 提速30% 可能错误匹配
+            boxCenter = pyautogui.center(matchBox)
+            pyautogui.click(boxCenter)
+    except Exception as e:
+        print('not found ',e)
+    ```
+
+    - 
+API | 功能 | 参数
+-|-|-
+PAUSE | 执行后暂停多久 | num
+FAILSAFE | 安全检查  | bool
+鼠标 | | 
+position() | 获取鼠标坐标 | 
+size() |  屏幕大小 | 
+onScreen() | 在屏幕上 |
+
+
 
 ## venv
 
