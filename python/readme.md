@@ -1074,16 +1074,8 @@ Todo
     except Exception as e:
         print('not found ',e)
     ```
+    - 像素操作
 
-    - 
-API | 功能 | 参数
--|-|-
-PAUSE | 执行后暂停多久 | num
-FAILSAFE | 安全检查  | bool
-鼠标 | | 
-position() | 获取鼠标坐标 | 
-size() |  屏幕大小 | 
-onScreen() | 在屏幕上 |
 
 
 
