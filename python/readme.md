@@ -70,6 +70,21 @@
     #-><class 'int'>
     ```
 
+- 布尔值应用
+
+
+    ```py
+    # 使用三元运算符
+    def cost_of_project(engraving, solid_gold):
+    cost =  (100 if solid_gold else 50) + len(engraving) * (10 if solid_gold else 7)
+    return cost
+
+    # 布尔值 分别写两种
+    def cost_of_project(engraving, solid_gold):
+    cost = solid_gold * (100 + 10 * len(engraving)) + (not solid_gold) * (50 + 7 * len(engraving))
+    return cost
+    ```
+
 ### List 和 tuple
 
 - [] 数组 () 元组
