@@ -1,2 +1,5 @@
 node_modules
 /.vs
+# python build 文件
+dist
+build
