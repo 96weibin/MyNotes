@@ -93,13 +93,19 @@ print(a, b)
     #-><class 'int'>
     ```
 
-- To num
+- 布尔值应用
+
 
     ```py
-    # 多个 bool 参数 求和即为 其中中有几个 为true  
+    # 使用三元运算符
+    def cost_of_project(engraving, solid_gold):
+    cost =  (100 if solid_gold else 50) + len(engraving) * (10 if solid_gold else 7)
+    return cost
 
-    def exactly_one_topping(ketchup, mustard, onion):
-        return ketchup + mustard + onion == 1 # 三个参数中只有一个为true，  只选择 一种浇头
+    # 布尔值 分别写两种
+    def cost_of_project(engraving, solid_gold):
+    cost = solid_gold * (100 + 10 * len(engraving)) + (not solid_gold) * (50 + 7 * len(engraving))
+    return cost
     ```
 
 ### List 和 tuple
