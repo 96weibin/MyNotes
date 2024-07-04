@@ -21,6 +21,29 @@
 ## python 基础 Diff
 
 
+### 运算符
+
+运算符 | 功能
+-|-
+a ** b | a 的 b次幂
+a // b | 熵 取整
+
+### 解构
+
+```py
+# 交换 a b 变量 
+
+a = [1,2,3]
+b = "hello"
+
+# 类似结构的协防
+
+a, b = b, a
+print(a, b)
+
+# hello [1, 2, 3]
+```
+
 ### string
 
     ```py
@@ -244,11 +267,14 @@
     bool | 换 | bool(0)
     len | 长度 | len(obj)
     type | 查询类型 | type(123)
-    help | 查看帮助 | help(abs)
+    help | 查看帮助 | help(abs)  
     abs | 绝对值 |
-    mas | 
+    round | 四舍五入几位小数 | round(a , 2) 
+    max | 
     min | 
     sum | 
+
+> help(float)  很常用 查看帮助文档
 
 
 - 自定义函数
@@ -291,9 +317,9 @@
 
 ## 高级特性
 
-### 切片
+### List切片
 
-- 操作集合 的快捷方法
+- 操作集合 的快捷方法, 
 
     ```py
     L = list(range(100))
@@ -327,6 +353,14 @@
     hello = "   hello world    "
     print(trim(hello))
     ```
+- 除了读值 还可以 通过切片赋值
+
+    ```py
+    myList = ["one", "two", "three", "four"]
+    myList[1:2] = [2]
+    print(myList) # ['one', 2, 'three', 'four']
+    ```
+
 ### 迭代
 
 - for in
