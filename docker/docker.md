@@ -107,3 +107,6 @@
     $ docker image rm 96weibin/omysql:1.0.1 #删除之前创建的镜像
     $ docker pull 96weibin/omysql:1.0.1     #下载镜像
     ```
+
+
+    
