@@ -107,9 +107,55 @@ question :
 
 5. 转换数据以及 使用 MDX
 
+  - 安装 plugin
 
+  ```shell
+  $ npm install gatsby-plugin-mdx gatsby-source-filesystem @mdx-js/react
+  ```
+
+  - set config.js
+
+  ```js
+  import { dirname } from "path"
+  import { fileURLToPath } from "url"
+
+  const __dirname = dirname(fileURLToPath(import.meta.url))
+
+  const config = {
+    plugins: [
+      `gatsby-plugin-mdx`,      // 读取 mdx 
+      {
+        resolve: `gatsby-source-filesystem`,
+        options: {
+          name: `pages`,                    // graphql 名字
+          path: `${__dirname}/src/pages`,   //配置路径
+        },
+      },
+    ],
+  }
+
+  export default config
+  ```
+
+  - mdx: 结合 markdown 和  jsx
+    - 可以读取  title date 等自定义变量
+
+  ```mdx
+  ---
+  title: "Another Post"
+  date: "2021-07-24"
+  slug: "another-post"
+  some: "my spical2"
+  ---
+
+  Here's another post! It's even better than the first one!
+  ```
 
 ## 创建git仓库
+
+
+## [unsplash](https://unsplash.com/)
+- 免费素材库
 
 
 ## gatsby on Netlify 部署

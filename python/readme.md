@@ -46,7 +46,23 @@ print(a, b)
 
 ### string
 
+- 字符编码
+    - Ascii  编码 a-Z  占用1字节
+    - unicode编码 包括各种 gb2312等  汉字其他文字 但是为定长的
+    - utf-8  编码 动态长度 以及各种文字
+> python 字符串使用 Unicode 编码格式 
+
     ```py
+    # 字符编码
+
+    ord('A')  # -> 65
+    chr(65)  # -> A
+
+    # encode decode
+    '中文'.encode('utf-8') # -> b'\xe4\xb8\xad\xe6\x96\x87'
+    b'\xe4\xb8\xad\xe6\x96\x87'.decode('utf-8')     # ->  '中文'
+   
+
     # r'' 不转义
     print(r'不转义 no trans ,,.."""""')
 
@@ -64,6 +80,14 @@ print(a, b)
     str3 = 'hello {0} and {1:.2f}'.format('xiao ming', 12.345)
     str4 = f'Pi = {PI} about {PI:.2f}'
     ```
+
+    占位符 | 替换内容
+    -|-
+    %d | 整数
+    %f | 浮点数
+    %s | 字符串
+    %x | 16进制整数
+    %% | '%'
 
 ### boolean
 
@@ -160,15 +184,16 @@ print(a, b)
     print(d.keys())
     print(d.items())
     ```
-- set
+- set 无序不重复key的 集合
 
     ```py
-    d1 = {'name': 'weibin', 'age': 18, 'gender': True}
+    s0 = {'abc',1,23,5,67}   # set 字面量
+    d1 = {'name': 'weibin', 'age': 18, 'gender': True} # dict 字面量
     # 可迭代的对象 list dict tuple
     s1 = set(d1)    # key 的 set
     s1.add('some')
     s1.update(('grid', 'prop'))
-    s1.pop()    # 随机删除一位  不知道啥用
+    s1.pop()    # 随机删除一位  因为无需的
     s1.remove('some')   # 不存在则会报错
     s1.discard('some') # 不存在不会报错
     print(s1)
@@ -212,8 +237,9 @@ print(a, b)
         case _:                     # default
             print('hello any one')                                                         
     ```
-
+    
     ```py
+    # 列表匹配
     args = ['gcc', 'hello.c', 'world.c', 'I','like you']
     # args = ['gcc', 'hello.c']
     # args = ['clean']
@@ -235,7 +261,7 @@ print(a, b)
 - for in
 
     ```py
-    listOod = list(range(0, 100, 2))
+    listOod = list(range(0, 100, 2))   # range default start with 0
     for n in listOod:
         print(n)
     ```
@@ -421,7 +447,7 @@ print(a, b)
 
 ## 函数式编程
 
--  高阶函数
+-  高阶函数  函数作为形参传入
 
     ```py
     # map
@@ -1178,3 +1204,5 @@ Todo
 ## 异步IO
 
 ## 使用MicrosoftPython
+
+
