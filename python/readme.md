@@ -818,7 +818,7 @@ Todo
 ### 面向对象高级
 
 - 动态给类，实例 设置方法
-    - MethodType - 实例方法
+    - MethodType - 给实例绑定方法 传入**self**
     ```py
     from types import MethodType
 
@@ -906,7 +906,16 @@ Todo
     maque1.run()
     ```
 
-    - 定制类 TODO
+    - 定制类 
+
+        方法 | 功能 
+        -|-
+        \_\_str__ | 定义 print 类时返回的字符串
+        \_\_repr__ | 定义 直接变量访问类 返回的字符串
+        \_\_iter__ | 定义可枚举的类
+        \_\_next__ | 枚举类时遍历的 方法
+        \_\_getattr| 不存在的property 访问时 调用
+        \_\_call__ | 调用类时执行的方法
 
     - 枚举类
 
