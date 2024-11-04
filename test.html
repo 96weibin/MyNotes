@@ -12,13 +12,16 @@
     <script>
         let $ = document.querySelector.bind(document)
         let b ="";
+
+        function down() {
+            console.log(b)
+            console.log(b)
+        }
         function up(){
             let a = $("#upload").files[0];
             let reader = new FileReader();
             b = reader.readAsDataURL(a);
             reader.onload = function(){
-                console.log(this.result)
-                console.log(b)
             }
             console.log(b)
         }
