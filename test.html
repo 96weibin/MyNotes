@@ -21,6 +21,20 @@
                 console.log(b)
             }
             console.log(b)
+
+            console.log('weibin first')
+        }
+        function up(){
+            let a = $("#upload").files[0];
+            let reader = new FileReader();
+            b = reader.readAsDataURL(a);
+            reader.onload = function(){
+                console.log(this.result)
+                console.log(b)
+            }
+            console.log(b)
+
+            console.log('weibin first')
         }
     </script>
 </body>
