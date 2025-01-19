@@ -21,9 +21,48 @@
 ## python 基础 Diff
 
 
+### 运算符
+
+运算符 | 功能
+-|-
+a ** b | a 的 b次幂
+a // b | 熵 取整
+
+### 解构
+
+```py
+# 交换 a b 变量 
+
+a = [1,2,3]
+b = "hello"
+
+# 类似结构的协防
+
+a, b = b, a
+print(a, b)
+
+# hello [1, 2, 3]
+```
+
 ### string
 
+- 字符编码
+    - Ascii  编码 a-Z  占用1字节
+    - unicode编码 包括各种 gb2312等  汉字其他文字 但是为定长的
+    - utf-8  编码 动态长度 以及各种文字
+> python 字符串使用 Unicode 编码格式 
+
     ```py
+    # 字符编码
+
+    ord('A')  # -> 65
+    chr(65)  # -> A
+
+    # encode decode
+    '中文'.encode('utf-8') # -> b'\xe4\xb8\xad\xe6\x96\x87'
+    b'\xe4\xb8\xad\xe6\x96\x87'.decode('utf-8')     # ->  '中文'
+   
+
     # r'' 不转义
     print(r'不转义 no trans ,,.."""""')
 
@@ -41,6 +80,14 @@
     str3 = 'hello {0} and {1:.2f}'.format('xiao ming', 12.345)
     str4 = f'Pi = {PI} about {PI:.2f}'
     ```
+
+    占位符 | 替换内容
+    -|-
+    %d | 整数
+    %f | 浮点数
+    %s | 字符串
+    %x | 16进制整数
+    %% | '%'
 
 ### boolean
 
@@ -68,6 +115,21 @@
     #->False
     #->True
     #-><class 'int'>
+    ```
+
+- 布尔值应用
+
+
+    ```py
+    # 使用三元运算符
+    def cost_of_project(engraving, solid_gold):
+    cost =  (100 if solid_gold else 50) + len(engraving) * (10 if solid_gold else 7)
+    return cost
+
+    # 布尔值 分别写两种
+    def cost_of_project(engraving, solid_gold):
+    cost = solid_gold * (100 + 10 * len(engraving)) + (not solid_gold) * (50 + 7 * len(engraving))
+    return cost
     ```
 
 ### List 和 tuple
@@ -122,15 +184,16 @@
     print(d.keys())
     print(d.items())
     ```
-- set
+- set 无序不重复key的 集合
 
     ```py
-    d1 = {'name': 'weibin', 'age': 18, 'gender': True}
+    s0 = {'abc',1,23,5,67}   # set 字面量
+    d1 = {'name': 'weibin', 'age': 18, 'gender': True} # dict 字面量
     # 可迭代的对象 list dict tuple
     s1 = set(d1)    # key 的 set
     s1.add('some')
     s1.update(('grid', 'prop'))
-    s1.pop()    # 随机删除一位  不知道啥用
+    s1.pop()    # 随机删除一位  因为无需的
     s1.remove('some')   # 不存在则会报错
     s1.discard('some') # 不存在不会报错
     print(s1)
@@ -174,8 +237,9 @@
         case _:                     # default
             print('hello any one')                                                         
     ```
-
+    
     ```py
+    # 列表匹配
     args = ['gcc', 'hello.c', 'world.c', 'I','like you']
     # args = ['gcc', 'hello.c']
     # args = ['clean']
@@ -197,7 +261,7 @@
 - for in
 
     ```py
-    listOod = list(range(0, 100, 2))
+    listOod = list(range(0, 100, 2))   # range default start with 0
     for n in listOod:
         print(n)
     ```
@@ -229,11 +293,14 @@
     bool | 换 | bool(0)
     len | 长度 | len(obj)
     type | 查询类型 | type(123)
-    help | 查看帮助 | help(abs)
+    help | 查看帮助 | help(abs)  
     abs | 绝对值 |
-    mas | 
+    round | 四舍五入几位小数 | round(a , 2) 
+    max | 
     min | 
     sum | 
+
+> help(float)  很常用 查看帮助文档
 
 
 - 自定义函数
@@ -276,9 +343,9 @@
 
 ## 高级特性
 
-### 切片
+### List切片
 
-- 操作集合 的快捷方法
+- 操作集合 的快捷方法, 
 
     ```py
     L = list(range(100))
@@ -312,6 +379,14 @@
     hello = "   hello world    "
     print(trim(hello))
     ```
+- 除了读值 还可以 通过切片赋值
+
+    ```py
+    myList = ["one", "two", "three", "four"]
+    myList[1:2] = [2]
+    print(myList) # ['one', 2, 'three', 'four']
+    ```
+
 ### 迭代
 
 - for in
@@ -372,7 +447,7 @@
 
 ## 函数式编程
 
--  高阶函数
+-  高阶函数  函数作为形参传入
 
     ```py
     # map
@@ -743,7 +818,7 @@ Todo
 ### 面向对象高级
 
 - 动态给类，实例 设置方法
-    - MethodType - 实例方法
+    - MethodType - 给实例绑定方法 传入**self**
     ```py
     from types import MethodType
 
@@ -831,7 +906,16 @@ Todo
     maque1.run()
     ```
 
-    - 定制类 TODO
+    - 定制类 
+
+        方法 | 功能 
+        -|-
+        \_\_str__ | 定义 print 类时返回的字符串
+        \_\_repr__ | 定义 直接变量访问类 返回的字符串
+        \_\_iter__ | 定义可枚举的类
+        \_\_next__ | 枚举类时遍历的 方法
+        \_\_getattr| 不存在的property 访问时 调用
+        \_\_call__ | 调用类时执行的方法
 
     - 枚举类
 
@@ -1101,16 +1185,8 @@ Todo
     except Exception as e:
         print('not found ',e)
     ```
+    - 像素操作
 
-    - 
-API | 功能 | 参数
--|-|-
-PAUSE | 执行后暂停多久 | num
-FAILSAFE | 安全检查  | bool
-鼠标 | | 
-position() | 获取鼠标坐标 | 
-size() |  屏幕大小 | 
-onScreen() | 在屏幕上 |
 
 
 
@@ -1174,3 +1250,5 @@ onScreen() | 在屏幕上 |
 
 
 ## 使用MicrosoftPython
+
+

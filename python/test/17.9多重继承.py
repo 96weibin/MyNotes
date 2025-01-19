@@ -16,3 +16,4 @@ class MaqueFactory(Animal, Bird):   # 同时继承了  两个类
 maque1 = MaqueFactory()
 maque1.fly()    
 maque1.run()
+print(dir(maque1))
