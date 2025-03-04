@@ -1042,7 +1042,34 @@ Todo
 
 ### 序列化
 
-## 进程和线程
+## 进程process和线程
+
+- 一个进程 可能有多个线程
+- 单核CPU 通过频繁切换任务 来达到 同时执行多任务
+
+### 多进程multiprocessing
+
+- forck
+
+    ```py
+    import os
+
+    print('pid %s' % os.getpid())
+    childProcessId = os.fork()  # 脚本会在 主线程 和 子线程执行，   子线程 得到 0
+
+    if childProcessId == 0:
+        print('here is child, os pid : %s' % os.getpid())
+    else:
+        print('here is main os pid: %s' % os.getpid())
+
+    # pid 35027
+    # here is main os pid: 35027
+    # here is child, os pid : 35028
+    ```
+
+- 进程池  TODO
+- 线程 
+
 
 ## 正则
 
@@ -1169,6 +1196,10 @@ Todo
 
 ## 网络编程
 
+- TCP/IP
+
+    通过IP找到彼此 TCP建立链接
+
 ## 电子邮件 
 
 ## 访问数据库
@@ -1211,6 +1242,12 @@ Todo
     Tornado：Facebook的开源异步Web框架。
 
 ## 异步IO
+
+- 协程 Coroutine  子程序就是协程的一种特例。
+
+### asyncio
+
+
 
 ## 使用MicrosoftPython
 
