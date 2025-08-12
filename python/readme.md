@@ -1188,9 +1188,51 @@ Todo
     - 像素操作
 
 
+## 虚拟环境 venv
 
+- venv 用于创建独立的 Python 运行环境，避免依赖冲突。
 
-## venv
+- 常用操作如下：
+
+    - **创建虚拟环境**
+        - 在当前目录创建名为 venv 的虚拟环境：
+            ```shell
+            python3 -m venv venv
+            ```
+
+    - **激活虚拟环境**
+        - Windows:
+            ```shell
+            venv\Scripts\activate
+            ```
+        - macOS/Linux:
+            ```shell
+            source venv/bin/activate
+            ```
+
+    - **退出虚拟环境**
+        - 输入：
+            ```shell
+            deactivate
+            ```
+
+    - **常用 pip 命令**
+        - 安装依赖包：
+            ```shell
+            pip install 包名
+            ```
+        - 查看已安装包：
+            ```shell
+            pip list
+            ```
+        - 导出依赖列表：
+            ```shell
+            pip freeze > requirements.txt
+            ```
+        - 按依赖文件安装：
+            ```shell
+            pip install -r requirements.txt
+            ```
 
 ## 图形界面
 
