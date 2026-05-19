@@ -1,0 +1,562 @@
+
+00:00 [说话人A]good morning Sally。 
+
+00:02 [说话人H]hey，good morning，the pms are out this week so i'm not expecting them to be in this call and a few vacations in this week a few pocs and details but yeah it looks like most of the attendance we have here i'll be covering a couple of things then we'll review the team statuses and the updates。 
+
+00:32 [说话人H]well，i there's some small discussion we need to have on the bug the internal bug and it's workflow basically we need there's some proposal that i have we can review and we can i mean agree disagree we can you know do that then want to spend some time on the post development box as well and then i have this last weeks。 
+
+01:08 [说话人H]ates have filled out all the iteration review results for that second iteration and then i have a copilot summary of that will spend like five ten minutes to review that as well OK，so as you have seen my message we have now the dashboards which i was working on this for a while then we have the individual team dashboards each team has of course similar content consistent data that we are trying to have it in the team's dashboards so basically e- everything from the lucid。 
+
+01:46 [说话人H]have been converted majority of the contents with risks，but i objectives were done before and only the dependencies of the stories between the stories and between the arcs does not captured that is an action item to explore in future because there's no easy way you have to create successor and producers' links between the stories to do that so i'll be exploring on that later and we'll see how we can have that into the same dashboard here。 
+
+02:17 [说话人H]so at the archer level of course the useful information here the first thing we should be caring about what pa objectives that we have same thing in the teams also i have the same contents there pa objectives so we have six object pa objectives for the team then immediately the risks so moving forward if you identify a new risk the atl and the pocs during your you know it after your iteration reviews are you know during your stand up something new that you realized please add directly here into the ado the。 
+
+02:50 [说话人H]new risk item and you when you created new risk item。 
+
+02:54 [说话人H]please make sure that you put the area part at least archer or a team is also fine because a query pulls up from the archer under the archer then put the instruction part bi two which is what you know the that makes that show up in this query here OK。 
+
+03:16 [说话人H]so then of course，we have you know the burn down for the features across for the art and the cycle time for the you know a number of days it takes for a work item in the art to from the start to complete then some other we used to see in our old video as well like stories and features by state as well as the post the defect statuses this is very helpful we have the post development box both at product as well as at the team level this i would i highly encourage all the pocs to。 
+
+03:47 [说话人H]look at this is very important post development bugs you we have it at a team level and at the same time the iteration level as well in the same table and there isn't mean there is a there is an action needed by the pocs that there are a lot of pocs development bugs that don't have iteration set so at least these must be triaged OK，i know that some teams don't want to commit yet they want to plan such fixes you know either in the later in the cycle or。 
+
+04:17 [说话人H]spread across in this。 
+
+04:18 [说话人H]so make sure that the incoming defects that you have i know did it they by default they have the Aspen text safe as the iteration part so the pocs and atls you know and pms were looking into that backlog and you know assigning them into the right iterations at this moment i have cleaned up all the audio post development bugs which had an incorrect iteration part some bugs we had like itera in the pi one never cleaned up and some had you know pi zero never cleaned up so everything else。 
+
+04:57 [说话人H]other than what we set what pocs and pms have set it to iteration two three up to four everything else has been moved under Aspen tech safe so of course the proposal bugs submitted by customers holds the highest priority for your triages then the bd box supported by the international internal teams OK，so of course，it's a you know velocity of the art and stories by state it's just a quick view of the features across all art where they are of course a lot of them on the Aspen tech so pi two is what we care and pi。 
+
+05:35 [说话人H]zero i did some cleanup yesterday。 
+
+05:37 [说话人H]of those features as well actually followed up with the Po so they cleaned up so i see everything is now done for the pa zero and pa one and this is the business value coming from the teams。 
+
+05:47 [说话人H]yeah，this is what we will be using moving forward i wish we'll again this is still evolving additional you know contents we may be adding that as well same thing each team you just search your team name you'll to show up it has a format like mango for example i didn't find a better format。 
+
+06:08 [说话人H]now you own that you feel free to edit and rename the dashboard whatever you want and since atos and pocs will be presenting that in this meeting are using in your dashboards as well，so is a consistent data we have across all teams as well for example，all the team，the team，all the team composition here the current iteration that we're the team velocity stories by state in the pi and post development bugs for the team and it also has an internal bugs by the owner in the team that's a quick。 
+
+06:43 [说话人H]view you know you can use like who has a higher internal bugs where you need to spend some time。 
+
+06:49 [说话人H]you know and of this has of course is iteration breakdown api objectives are here for the team same thing same view here post development bugs also you know arranged by that or team member in the team for example here a team grave has you know high number of defects assign i mean oh pd bugs assign to anki same thing you know i don't know why Huang has a bug that has a so some cleanup also i mean this quickly gives you know where you need to spend attention where you need to。 
+
+07:19 [说话人H]rebalance these pd bugs as well as you know some cleanup that you have to spend some time on so this is the cumulative flow diagram and these tables show。 
+
+07:29 [说话人H]the features that team grape is working on and yeah same the current iteration user stories for this team OK，so please use this in your stand ups in addition to the team story board that you have OK and of course this is a very good tool for you know and of course each iteration you may have to or each pr you may have to go back and just update the queries some of the queries specifically pulling pi two just go back every day query for example in this case just edit that when。 
+
+07:58 [说话人H]we start the pi three just change it to pi three。 
+
+08:02 [说话人H]OK，so，that's sort of some small changes that you need to do as we you know move from pi to pi OK，so all team boards thanks Angie for you know helping me with some of the other and thanks Michelle for the亚瑟 art contents，but yeah by this morning Angie has you know created a copy of this all and he refreshed all the queries so all teams now have your dashboards so please keep a bookmark and use it in your stand ups and you know iteration plannings and iteration reviews so as。 
+
+08:33 [说话人H]i mentioned Lucy is a very good tool collaborative tool we will continue to use it for our you know。 
+
+08:38 [说话人H]pi plannings and you know breakouts where everyone is contributing people adding sticky notes and you know editing contents it has been a very good collaborative tool and at the end of the pi planning after the pi readout it's a job of the ato for that team plus the Po to you know sit together clean up the that your team Lucy chart convert all the work items into the ado make sure the data is correctly reflected with based on the iteration based on the p pi in the iteration part。 
+
+09:11 [说话人H]and then you know Lucy cleanup is needed at the end of the pi planning and then ado dashboards will reflect those changes okay。 
+
+09:20 [说话人H]so that's what i wanted to cover first five minutes going back to the so the other thing we'll come back to the status and contents of teams and in a while OK one thing that i wanted to share i'll just spend five minutes i'll s- i'll share this slide deck OK so this is actually you know a copilot summary so all the etls last week have provided the iteration to the two outcomes the review results the stories that are completed the stories that didn't complete and why they didn't。 
+
+09:56 [说话人H]complete so it gave me a good summary。 
+
+09:59 [说话人H]overall you know our performance for based on the iteration two is seventy percent and yeah there are some teams with you know a better performance and some low based on the stories that move from the iteration two to three i'm going to share this please you know take some actions i mean you i believe based on their respective you shared you're taking some actions so definitely three teams below sixty five percent so there's that needs some attention here and also there are you know there are recommendations i didn't make any changes by the。 
+
+10:29 [说话人H]way，i'm just showing whatever code that i've given i've just reviewed it for some consistency for purposes，but。 
+
+10:37 [说话人H]at risk definitely we have some follow up actions based on the iteration two for iteration two reviews the risks to the features in the pi two there is an exercise ongoing at this moment we have some updates and some further discussions in this week，particularly for the features that are being executed by Tomato，mango and avocado so yep，so at risk items based on the testing bottlenecks。 
+
+11:08 [说话人H]mango tomato and grape facing some you know external reviews and。 
+
+11:14 [说话人H]critical teams this unfortunately this ha because of stories that you guys have moved from iteration two to three，but i believe you have taken some action based on the retrospective blue prodep and ad group OK high risk i believe this is mitigated pradeep you have moved fcc out and focusing on hydroracker yeah there are this is what as i said time is being spent in this week on revisiting the pi backlog that we。 
+
+11:49 [说话人H]the team is executing and yep the impacts should be understood i'm going to share this in this chat meeting chat please yeah feel free to review this and for respective teams please take necessary actions here yep，so this is an important it would cause analysis as well like seven stories of mango were blocked by yep the open box that's what triggered last week right the risk on the features plus the risk on the quality。 
+
+12:22 [说话人H]and to talk about it dependencies that we need to revisit and you know look into this so this also got flagged here on plan work i believe this is based on some of the enabler work the team is doing，but at any rate Brian and mengling you need to look into what triggered this and how you can you know handle this better。 
+
+12:54 [说话人H]all right so this was a good team by team problem areas i'm not going to read through this all i'm going to share this but key action items coming out of this exercise last week was definitely based on the mango stories move from iteration to the iteration two to three that introduces risk to the iteration three not only iteration three，but in general for the pi so as i mentioned there's an exercise ongoing at this moment by the pocs revisiting that Aus product features in pi two plus what is the impact sub。 
+
+13:34 [说话人H]subsequent impact。 
+
+13:36 [说话人H]with the release that we are planning and some actions to be taken all right yeah it has a good summary i liked it moving forward we'll be doing this and we may be you know compressing it not so be taking out some highlights only，but this is a good exercise i liked it we'll continue moving forward in the e iteration and we will focus on the recommendations and action items OK。 
+
+14:15 [说话人H]any comments questions on the slide for i just shared any agree disagreement on that analysis。 
+
+14:35 [说话人H]silence can you all hear me。 
+
+14:40 [说话人A]yes。 
+
+14:40 [说话人A]i think there is shock we can hear you Sal。 
+
+14:45 [说话人H]OK。 
+
+14:46 [说话人I]so where do we get access to that powerpoint。 
+
+14:50 [说话人H]i was i will share it，i will post it in one of our you know shared folders where we have our iteration review the slide deck right i will post it post this also in the same place so currently this is in my local drive so i'll copy to there and then i'll share that link here OK。 
+
+15:12 [说话人J]used a summary from previous situation right。 
+
+15:16 [说话人H]yes iteration two。 
+
+15:23 [说话人A]所以就借此机会，我有些想法，关于我们如何从ADO开始获取这些信息，我有些想法，但我需要和你讨论一下。 
+
+15:34 [说话人A]但目前来说这是个好事，谢谢你做了这些。 
+
+15:39 [说话人A]好的。 
+
+16:23 [说话人H]all right my favorite item for s- to start with first risks，i have moved majority of the risks and refreshed the statuses yesterday，so the first one the risk has realized i'm assigning it to the business owners given we need to conduct some i mean based on the iteration two reviews that exercise i just mentioned of revisiting the pi two plans and you know mitigation strategy to be identified that includes you know changing some of our pi priorities plus。 
+
+16:49 [说话人H]also realigning on the release readiness of the cp five so based on the i mean right now this risk is active and of course impact is high，but is it occurred a high impact so currently it is owned by the team and of course Stacy is driving that she's out today，but we have some follow ups later in this week and then next week until we get to the you know mitigation of that。 
+
+16:58 [说话人H]the second item i believe this is either resolved or not a risk anymore right subas can you comment。 
+
+17:10 [说话人H]this was that new the catalog item ask in the you know connecting a us model to multiple catalogs so barth Chris can you comment whoever knows about。 
+
+17:24 [说话人H]yeah，we haven't resolved that yet i think we need to have some follow up discussions，but i don't s i don't as i'm not aware of any common like a consensus reached on what we're doing there。 
+
+17:31 [说话人H]basically the risk was is not the ask，but the urgency that it created。 
+
+17:36 [说话人H]OK。 
+
+17:41 [说话人H]right，so i believe there is no such urgency to have it into pat pa two。 
+
+17:43 [说话人H]right。 
+
+17:54 [说话人H]right，so i would move it to like resolved we can revisit whenever it comes back but right now this is that is i mean nobody is us talking about that we're all set。 
+
+17:59 [说话人K]yeah，it's not actionable，right now，so there's nothing we can do right now，yeah。 
+
+18:12 [说话人H]OK，this also goes along with the first risk that we have yep we review we are reviewing the impact of both together。 
+
+18:33 [说话人H]the next one is really about the number of eps we are controlling yes，we have pushed back on an ask on an fnep on cp three so yes the team did well pushing back so currently it is still owned so it's really managing the you know expectations of the customers。 
+
+18:44 [说话人H]yeah，this is also i don't know why i ask this assigned tools，but anyway it's basically to the team。 
+
+18:51 [说话人H]this is based on the iteration two reviews again all these three going together for the impact assessment plus yeah mitigation。 
+
+19:09 [说话人H]the other risks low confidence i've been that was closed dot net was done and the risk on this fcc and hydrocracker i think that was also mitigated as last week，fcc being moved out a g dot team。 
+
+19:16 [说话人H]so any new thing that people have uncovered recently that we need to track here。 
+
+19:31 [说话人H]any new risk people think of for this pi。 
+
+19:50 [说话人A]does this mean that we're gonna hit all of our pi objectives there's no risk to any of the pi objectives there's no risk to finishing any of the features cause if you don't have any risks，then that means that we're doing a hundred percent really well and we're gonna hit all of our targets。 
+
+20:01 [说话人H]these three risks actually go against at least you know two these two pi objectives Michelle。 
+
+20:01 [说话人H]yeah。 
+
+20:03 [说话人H]the open ones what about the others。 
+
+20:05 [说话人H]i am in yeah。 
+
+20:10 [说话人A]i'm just asking the same question a different way。 
+
+20:16 [说话人H]s- somebody was saying sorry。 
+
+20:31 [说话人H]no，i was saying we already have some risk right that we have identified and some features who are at risk to be completed i don't know i mean is that what we want to talk about here but。 
+
+20:38 [说话人H]no，i'm asking yeah，i've discovered that through the three risks that mentioned here yeah，i'm asking for the additional risks。 
+
+21:21 [说话人H]Louise，i know it's not a major risk，but i'm slightly concerned about the crm features in archer and we picked a few i think at least one feature in the last bi，but we didn't bring it to closure so i i'm slightly you know i i want to have a visibility of that OK，i'm going to create a risk for that so that you know maybe you need to work at this moment。 
+
+21:28 [说话人H]i'm seeing a delay in completing the crm compliance for unified products。 
+
+21:30 [说话人H]yeah。 
+
+21:58 [说话人H]i'm i'm referring to particularly to the unified products so i'm not sure about pitaya and li qi where you are but i'm seeing some slowness there so we need to you know look into that you know with jay and others and let's see what is that and let's have a forecast like when are we going to get you know crm compliance for the unified products。 
+
+22:07 [说话人H]the reason i'm saying i mean if we don't get to a few features to closure we don't get that confidence OK。 
+
+22:07 [说话人H]yeah。 
+
+22:18 [说话人H]so so yeah i i i would you know as pi three preparation is starting i i i would you know put some focus on this for you know for the unity team。 
+
+22:20 [说话人H]yeah makes sense。 
+
+23:03 [说话人H]i will format that later，but i'm assigning this to jay，since he's the pm。 
+
+23:18 [说话人H]any other risk people think of。 
+
+24:06 [说话人H]OK，i'll take that as a no then let's move on yeah this needs some attention the post development bugs also the internal bugs there again unfortunately the audio migration didn't help us a lot of bugs were sitting in the Aspen tech area part，and it also had a wrong product name thanks Sherry for flagging me i cleaned up majority of the records Aspen unified is not a product anymore i need to work with Tim to delete that so i have reset that to the right products now so。 
+
+24:09 [说话人H]you can see now that the defects have jumped up。 
+
+24:40 [说话人H]this is again，not across all art oh sorry it's it is for the all art well and by the product here so unfortunately yeah after cp four and the pd bugs jumped up across all products and primarily on the us now it start to get yeah the team need to spend some time here pm and pso like what is that where those bugs are coming what is impact to the pi this pi that you know that must be looked at same thing internal bugs also。 
+
+24:50 [说话人H]this is by the team tomato unfortunately has high number of internal bugs again this has to go with that risk that we risk we discuss the quality issues there and i believe some。 
+
+24:51 [说话人H]mitigation steps have been already taken here can somebody comment from tomato ciro or Josephine。 
+
+25:06 [说话人L]yeah i think i mean the teams are working through the bugs i think we this is where we're feeling the resource loss a lot of these are handled just by a few people i don't have anything other than that i i think we're just working through it right now。 
+
+25:29 [说话人H]OK，i want to you know spend a few minutes on the bugs itself as i mentioned in the beginning pradeep and i were having actually an interesting conversation yesterday。 
+
+25:39 [说话人H]on you know what does it mean by a bug you know once it's addressed like do we does it need to go through the retesting somehow you know we're coming from our old ideo mindset where everything was a bug，everything was a defect where everything when everything was a defect that has to be you know fix has to be verified by the qa team and then you know retesting plus closure of that you know。 
+
+26:10 [说话人H]retesting of the test case however，if you've noticed there is a clear distinction between post development work bug versus internal bug the intent of internal bug is really is equal to a task it's like the qat member saying hey guy you know when hey developer i just found you know this so and so work why don't you go and fix it this is like you know just quick you know hand a sh- hand on the shoulder and saying yeah you know i find this it's kind of。 
+
+26:38 [说话人H]as somewhat informal or somewhat some a quick action item。 
+
+26:42 [说话人H]i you know again when we're saying internal bugs majority of these have to be you know like they are all both the test is testing is against the use the acceptance criteria of the story the developer has implemented the same acceptance criteria so it's not like a significant like an a gap there i mean that is what it has to be either converted to an enhancement means idea or that has to be closed。 
+
+27:05 [说话人H]but i'm talking about the valid bugs here which are really small work items here like have to be done within like you know a couple of hours and g- since the this the bugs states are same as a task state like。 
+
+27:20 [说话人H]like new active resolve closed and if you notice the post development they are same as the user story and the feature states so my proposal is you know that step that were thinking of oh a bug has been reported by a quality team now somebody has to go and fix it and then the s- the submitter have to come back and verify that bug and close it rather the developer assign a- on that bug it takes it's like oh yeah。 
+
+27:50 [说话人H]i realize this is a valid bug i just fix it and get the code reviewed within the team and Po you know agrees and in the team once the bug is resolved in the standup they just close it。 
+
+28:00 [说话人H]and once the bug is closed whoever have submitted whether it's the same team or the other team they go back and retest that associated test case so what i'm trying to say here is to you know eliminate that retesting by the submitter by the other team for the internal bugs i know people may have opinions，but we have to try this given that internal bugs really mean the small work items yeah Josephine go ahead。 
+
+28:31 [说话人L]yeah，i think i mean i understand in theory that's what we want to do，but i think the reality is that at least in tomato。 
+
+28:43 [说话人L]The these internal bugs are still sort of like kind of like our old way of doing defects so there were even cases where the retesting still fails so. 
+
+28:55 [说话人H]This is we're. 
+
+28:56 [说话人L]Something miss，we're still missing something so. 
+
+28:58 [说话人H]It's i mean there are common office issues there Josephine with the bugs that you guys have reported and we discussed last week was one thing you guys found like good number of those bugs are like not aligned to the acceptability of the story itself means either it's a new story。 
+
+29:17 [说话人H]are you know a future idea？ 
+
+29:19 [说话人H]right i'm only referring to the straightforward bugs that the Po reviews as a first hand and says that yes，this is a bug based on the acceptance criteria for the story that i have created and he assigns he or she assigns it to the developer for such bug once you move to the active state i was i'm referring to that straightforward bugs that they get closed yes，there's some filtering out has to happen by the Po before assigning the bug itself to the developer。 
+
+29:49 [说话人H]make sense。 
+
+29:53 [说话人L]so，but that means isn't that kind of contradictory we say you know we're saying it's just a task you know i found this you know take a look and developer can check in a few hours but then you know if you're inserting the Po review of that also prolongs。 
+
+30:09 [说话人H]yeah pocs have to review it right i mean bugs have to be reviewed within the team either in a stand up or you know a dedicated session that you have i mean it isn't unusual here right now that we got suddenly all such bugs here because everyone is learning here all of us are learning，but at some point i think it's like we may get like at most like a couple of bugs a day。 
+
+30:33 [说话人H]which is good enough to be handled in the stand up review by the product owners。 
+
+30:40 [说话人L]Yeah，i guess for us that adds to the be- because you know the bug submitter is not in the team right so that's. 
+
+30:49 [说话人M]This we're going back to this issue again。. 
+
+30:51 [说话人H]i mean but the Po is the one who should be at this time maybe there is a delay here in getting that bug to be assigned right，but。 
+
+31:02 [说话人H]but the Po is the one in this case should be reviewing and really assigning to the owner only those really the Po thinks is a valid bug right and i think for that they do we don't need like a daily an hour just to assist that it has to be the first ten minutes in the stand up right our pocs spend some time offline look at all the incoming bugs in the stories that he or she created and then process it offline and add it to the you know team board。 
+
+31:34 [说话人N]OK。 
+
+31:35 [说话人N]i guess there is also some understanding it that whoever was testing the story need to follow the acceptance criteria pretty closely and if it turned。 
+
+31:44 [说话人N]it's deviates from the acceptance criteria they could create a post development bug that could be converted to a story。 
+
+31:50 [说话人H]yeah make sense。 
+
+31:53 [说话人N]whatever，the functionality they are testing，and if it is not executing as planned，but the test case which is also reviewed by the teams right，so then those should be really the bugs that developers didn't catch in an alternate workflow or things like that。 
+
+32:12 [说话人O]one question here so so Lu i think when you were first kind of talking through the idea you had mentioned that you need to retest the users the testing user story so i guess。 
+
+32:26 [说话人H]no，no the retesting of the test case the qa person has failed for that bug。 
+
+32:34 [说话人H]Right. 
+
+32:35 [说话人O]So once the developer so let's say the developer works on it as a task they resolve it in a couple hours Po reviews and validates i assume we still want to test like let's say four bugs were tested during a regression。. 
+
+32:49 [说话人O]user story testing and then four bugs were resolved we still need to do the regression test so i guess the question that i'm trying to get to is how do we manage the testing user story do we close it and then create a new one do we just keep it open almost indefinitely or we're not indefinitely，but until a decision is made on all bugs。 
+
+33:15 [说话人O]how what's the recommended process？ 
+
+33:17 [说话人H]my recommendation is to keep that i mean have one story for the testing let's not create too many that also it it that also means at most that testing story moves from one to the next iteration not like going forever。 
+
+33:32 [说话人H]right。 
+
+33:32 [说话人H]right。 
+
+33:32 [说话人H]so some discipline also must be enforced by the pocs here right when they look at the internal bugs and who are waiting right those bugs to be resolved because there's a feature in general hasn't completed because the testing story is still open their tests gets affected and these sorts of bugs have to be resolved so yeah some time the pocs have to spend on this on a daily basis on the internal bugs。 
+
+33:59 [说话人O]sure and then so suppose like for a given user story you have five bugs that come up，i mean wouldn't that impact。 
+
+34:08 [说话人O]people's user stories so how do we manage that do we treat bugs as a number one priority or is there。 
+
+34:15 [说话人H]no，i was referring to this in last week's meeting i mean you know let's think about it you know until the manual testing is happening against that feature right so there should be some allocation by the back end team in the in our case here have to be kept aside to s to fix those internal bugs being reported based on that testing story。 
+
+34:42 [说话人H]so it's not like unplanned you guys i mean teams have to keep that allocation it is part of the feature size。 
+
+34:52 [说话人H]OK，i mean because you have the manual testing i mean unless everything is passing zero defects we reach to that level we can eliminate that but given our history during the manual testing bugs come in the old system it was defects and we used to keep some allocation in the next iteration when the testing is happening to respond to that defect reviewing either resolving right。 
+
+35:17 [说话人H]so we have to continue to do that。 
+
+35:21 [说话人N]alright understood so one more question on that one solo so how is this automated where like let's say there is a user's testing story which has five test cases and qa found three bugs and as a developer fixes those three bugs will system automatically pass those tests and when does qa re-run those tests。 
+
+35:45 [说话人H]when all the bugs linked to the test cases under that story are resolved qa will run that failed test case。 
+
+35:53 [说话人H]for discuss。 
+
+35:54 [说话人H]i need to hear the answer from queenie how it works today in the new way。 
+
+35:57 [说话人H]can someone comment from Lizzie or Julie。 
+
+36:04 [说话人N]is the test case status automatically linked to the bugs and if all the bugs get closed does the test case automatically determined as pass or qa needs to re-run them and manually pass。 
+
+36:18 [说话人B]we need to re-run them because sometimes as we can see from experience sometimes when we do this retesting we still can't find some new issues。 
+
+36:29 [说话人N]yeah，new issues are new things i mean like the test case needs to be updated or a new test needs to be added right。 
+
+36:36 [说话人B]no，no，no i mean the existing the same case if even once the bugs are fixed when you test it you probably can find something new。 
+
+36:46 [说话人N]sure but how does qa know when to retest this。 
+
+36:50 [说话人B]When the bugs pay close. 
+
+36:52 [说话人N]Attention to。. 
+
+36:52 [说话人N]yeah。 
+
+36:54 [说话人B]we actually yeah，we will look so the people who responsible for this user story she need to look up for the bugs actually so once that's fixed she will notice to do the retesting。 
+
+37:09 [说话人N]yeah and OK，so thanks for clarification cherry so，but also i know salu brought this up，but are we in alignment that。 
+
+37:17 [说话人N]given our how our teams are structured testing is done in Shanghai back end stories back end teams fix some of these or most of these back end related bugs so as soon as they resolve a bug is it OK for them to close it or are we alignment on that one or do we really think qa should also verify these bugs that's what Sally and i discussed yesterday，but i don't know Sally you brought it up。 
+
+37:45 [说话人N]But is everyone aligned with that. 
+
+37:47 [说话人H]I want to i want we try this OK i mean again i really want to hear any concerns from qa folks here。. 
+
+37:55 [说话人H]yeah，i think the teams will be OK here right but cherry and yeah Julian and shuanglai what do you think about that proposal。 
+
+38:04 [说话人N]the re-running should confirm that the bug is in fact。 
+
+38:07 [说话人H]yes and of course，i mean once we start this and if there is a particular team who claim for example OK，i hope that's not the case but if there's a particular team if they claim all the bugs that they have all resolved，but when if we see a trend re-running is still failing it means there's some action that we need to take and that's really Po who have to take some action。 
+
+38:30 [说话人H]but。 
+
+38:31 [说话人H]but i think my recommendation is we can eliminate some of these retesting that happens on the bug we can go with the developer confidence plus of course code is reviewed to fix that bug plus the Po agree and it happens you know and all the right steps are taken to close that bug it's just that the retesting formal retesting is not done by the qe and they i mean verifying of the fix is not done by the qe and that can be done after you know once the bug is closed they can do that through。 
+
+38:59 [说话人H]the retesting right，not the test case。 
+
+39:01 [说话人N]i agree i think it will save time as well yeah，going back and forth i mean that's the whole intention of these lightweight bugs too yeah。 
+
+39:09 [说话人H]exactly。 
+
+39:15 [说话人H]l- l- let's try this and of course we can review we can revisit let's say api later if we see that is a you know trend or no we're seeing like a twenty five percent of the bugs are being you know coming as a refix then we can revisit that Michelle do you have a comment。 
+
+39:31 [说话人A]i do first off，i love the fact that we're trying something different and i and seller what you're encouraging is let's try a different api and let's learn from it and see how to go from there that's the attitude you wanna take as we start to change this way the only thing i just wanted to reemphasize is that。 
+
+39:49 [说话人A]thinking of this bug it's supposed to be and if you think about the ideal agile team is that you have testers and developers on the same team and if a tester test something it's it should feel like it's a tap on the shoulder hey，guess，what you're you need to i found the bug right，so we're trying to make it as lightweight as possible，because it should just be like a peer review kind of thing thank you。 
+
+40:19 [说话人N]and then one more thing that we also discussed salu is that the tester who is testing retesting the test cases need to make sure that there is。 
+
+40:28 [说话人N]some time left from the time developer fixes it and if the fix doesn't go into media right so i know by now each of us should be very familiar when a fix is in today's build or not because now everybody has access to tfs and if it goes into the media or not，but just be we need to be a little bit more careful and not look into testing it too soon than it's made it into the media。 
+
+40:53 [说话人H]yeah that makes sense yeah that makes sense。 
+
+40:59 [说话人B]i think qa，i think they will also check whether that's a check in or not for the bugs。 
+
+41:08 [说话人H]one more thing so probably we discussed about this post development bugs and what states we must be using for our triages and what is that what field we have to use when we're when a post development bug is you know waiting for more details from the customer they。 
+
+41:27 [说话人H]Triage. 
+
+41:28 [说话人N]Discussion triage decision. 
+
+41:29 [说话人H]Yeah triage decision。. 
+
+41:31 [说话人H]so there is a document that Tim has shared i didn't review that he just shared this like this morning，so i've forward this to all and see if that can provide some guidance。 
+
+41:42 [说话人H]for us，but in general anything that is new in defining and of course the customer submitted defects in these states，must be the highest priority in terms of the triage OK，so，and then of course the internal submitted bugs。 
+
+42:02 [说话人H]So. 
+
+42:03 [说话人N]The challenge there is we have less number of fields as than what we did in the past and our list of defects that needs to be reviewed and discussed in triage could grow，quickly right。. 
+
+42:15 [说话人N]Because the team might be in the middle of iteration and if it is not a high priority defect they may not pull it up into an iteration or two further down the road so until then what the state of the defects needs to be and how we can meaningfully manage our triage lists 1. 
+
+42:30 [说话人M]I mean what we are doing on us side is that we review new defects that do not have any owner or owner is null OK。. 
+
+42:41 [说话人M]Those are the only ones that 2. 
+
+42:43 [说话人H]No，that's not the case anymore now they're not setting the default owners to me。. 
+
+42:49 [说话人H]So. 
+
+42:50 [说话人M]Yeah，so basically new ones with no owner and defining is what the we triage the one with the new with assigned to people is in the assigned state as old is what we are trying to do we will see this new document from Tim if it is any better yeah and it helps out but this is what we are doing. 
+
+43:11 [说话人N]Right now。. 
+
+43:12 [说话人N]we are pretty much doing the same thing we are using the defined state as a developer。 
+
+43:18 [说话人N]investigating。 
+
+43:20 [说话人N]and yeah so something similar，but it still has some gaps because if a defect has not been assigned and remains in new state for the next triage it will still need to be filtered out and there is no way to filter it out。 
+
+43:32 [说话人H]yeah。 
+
+43:33 [说话人H]so it's not a document what he share my bad he is still old，so it's something else i mess right that anyway，but yes i will s- i will share more details when we have you know like some clear definition of these states，but until then i think this is what we should do what i recommend is again the box that we commit against iterations one more thing i think i mentioned if i not。 
+
+44:03 [说话人H]please make sure the box the post development box that you're assigned for an iteration the post development box are treated equally with user stories that means。 
+
+44:15 [说话人H]the velocity calculation for the team accounts both user story and the story points coming from the post development bug so please make sure if a developer are a team member is working on a post development bug please make sure that time spent to you know fix plus the time to verify and close that bug have to be accounted a as a story point in that post development bug OK that is taken into account as a team velocity i checked with Tim and he confirmed and that's the。 
+
+44:50 [说话人H]intent moving forward。 
+
+44:51 [说话人H]yes。 
+
+44:52 [说话人H]as of now velocity only accounts the user stories but moving forward yes for post development bug story points are also accounted go ahead。 
+
+44:58 [说话人H]yeah。 
+
+44:58 [说话人N]And we need to be careful here when testing team members who sometimes also inject post development bugs into iteration if they are related to the new feature or a regression that is behind the new feature that's fine，but if they assign post development bugs from their exploratory testing or some other regression testing into a into an iteration in the middle of the iteration，then that will just mess up our loads and other things so low. 
+
+45:27 [说话人H]I will talk to Tim if at all when a new work item is created let me just find out what is the interesting is doing。. 
+
+45:34 [说话人H]Let's say post. 
+
+45:35 [说话人N]To open bug。. 
+
+45:37 [说话人N]but sometimes do set iteration in the middle of the。 
+
+45:40 [说话人H]It is doing to pi two by default，but yes i agree if the tester cherry can you please share this with the team not to set the current iteration as iteration part when they submit a new bug. 
+
+45:54 [说话人N]This has bug. 
+
+45:55 [说话人H]Yeah mean for the new post open bug this has to be set by the Po base of based on the triage。. 
+
+46:03 [说话人H]OK。 
+
+46:04 [说话人H]OK so leave the bug at either，but i'm OK to do it，but i recommend leave it at safe。 
+
+46:12 [说话人H]not even pm。 
+
+46:14 [说话人H]OK。 
+
+46:15 [说话人H]OK。 
+
+46:20 [说话人H]yeah，but going back to that post development bug story points please communicate all the atls and pocs please communicate this to your teams because this is a major activity happens across our team we fix hundreds of bugs within API post development bugs within api please make sure that effort gets captured by the story points in that work item for example picking on one of the feature one of the story here you have the story points again this has it is not ours these are the story points fibonacci use。 
+
+46:59 [说话人H]numbers from one to you know x。 
+
+47:02 [说话人H]a few Archie numbers，but yeah the smallest unity is even a few hours it has to be one and when quality when a quality team when they verify and close it make sure your size is accommodated into this as well you can you know in if it's a one if you spent like a few hours bump it to two。 
+
+47:24 [说话人H]please atls bpos communicate this to your teams aboutyeah using these thirty pointssize for the post development box all right discuss major majorly reviewsthe sorrythe risks and some important discussions here let's quickly go through someupdates let's start with you liqi，John or Brian so this is the dashboard that you have i'll share the way you can search it as well anything quick you want to update。 
+
+47:59 [说话人I]i would say in general，we're on track our primary work is towards crm，so we're working through some of the design and implementation there you know progressing a as expected we don't have any internal bugs we had some in the previous，but they've all been addressed the post development what we realized is consistent with what you said in the migration the kind of distorted things especially for us if we had something that was already implemented。 
+
+48:33 [说话人I]but。 
+
+48:33 [说话人I]the developer didn't quite move it to pending verification it went to the implementing state which。 
+
+48:41 [说话人I]kind of implies that it's not fixed yet so our numbers went up quite a bit because of that in some cases，it mapped it to ready and just other things so we need to clean it up i expect that pretty quickly we could drop our numbers by about twenty or so。 
+
+49:04 [说话人H]not really。 
+
+49:06 [说话人H]a- also a bunch of features from the area part of scm they were moved under the artist art at that time the iteration part was incorrectly set to pa two for a moment that messed up the feature board but i did some cleanup but i think there's still some potential to you know make some changes for the stories sandbox and their iteration part。 
+
+49:33 [说话人H]You gotta go. 
+
+49:34 [说话人I]Through like the list you provided and clean it up even the ones that you moved we might have to still。. 
+
+49:41 [说话人I]evaluate them because the system automatically changed things the area，path and lots of other stuff which is just wrong so we'll reset that i'll meet with Brian today he's flying back from Optimus so this afternoon we'll start looking at this and trying to clean it up。 
+
+50:02 [说话人H]yeah，OK，all right Peter。 
+
+50:09 [说话人K]yeah and good morning everyone and well and this situation and basically focus in finish all the post development bugs race。 
+
+50:21 [说话人K]after the global migration，it's already all almost done we only it miss a couple defects and we use the still working in some minor changes from ux department in will jo- unify workflow integration and we continue in one of the objective that is a create a utility tool it's currently work in two different user stories。 
+
+50:55 [说话人K]well，that's the big pictures we don't have any important stopper or some problem we on track and we prepare for the June release for work that's all。 
+
+51:24 [说话人K]I i continue in theory at once，we have a meeting the last week it to clarify a couple points the team is currently work in theory. 
+
+51:37 [说话人H]That's all thank you。. 
+
+51:38 [说话人H]no and for the June release it's just a month away how are we you know in terms of the technical ready readiness activities how are we tracking those milestones and where are we with those quality metrics？ 
+
+51:55 [说话人K]well，and actually that's part of the work we are doing and define that right now，we don't have a complete day all the qa readiness，but we'll review constantly for the next meeting，we have a complete answer for you。 
+
+52:13 [说话人C]OK。 
+
+52:13 [说话人C]yeah，yeah，so i can give a little bit insight into that so all of our features the two big ones were we wanted to get flowable upgraded to the latest version to get rid of any security concerns so we're on that gilberto has is we've done full regression testing so far。 
+
+52:33 [说话人C]there's just two things we left to put into the media one is a utility，which is not related to global function or functional at all it's just a utility to help walk users through a wizard to create the config file so Gilberto is has done full regression testing on that on the media and he's created a checklist like we didn't need old days to say OK what do you do for code trees？ 
+
+52:57 [说话人C]what do you do for signatures things like that we're gonna review that today in our stand up with him。 
+
+53:06 [说话人C]OK. 
+
+53:06 [说话人B]Sounds good。. 
+
+53:09 [说话人B]i have a question actually for workflow team i think we have one workflow license key included in our enhanced aupa us side license so i think such a feature user story is target for this iteration to complete so i'm not sure when the workflow team will do the test so we can i mean when you they we can close that。 
+
+53:34 [说话人C]yeah，that's already been done Sherry will i'll double check with gilberto，so that is where we test the new license key right what's that j the ga。 
+
+53:45 [说话人C]license for workflow i think we've already we already tested that i know that was escalated to like a high priority thing and we got the license files from Alex phone in and kewei's already tested that but we can do follow up and we'll get you whatever and no justification you need from us。 
+
+54:10 [说话人B]OK，maybe yeah，we can communicate after this meeting。 
+
+54:22 [说话人H]OK，caplin how are the activities in the situation and how in general we are doing against the features in the pa two。 
+
+54:34 [说话人K]Yeah well in our case，and. 
+
+54:40 [说话人D]We don't have identified major risk and our schedule，but on this chart and this chart since we have a risk and is not the real and this is more about our bad practices about to close abuse cases we want to motivate more to the team to close on time。. 
+
+55:00 [说话人D]and that's why we are showing this kind of about the backgraph but in general we are on time we are don't have identify any big risks for the moment。 
+
+55:20 [说话人H]plum anything from you。 
+
+55:21 [说话人E]hi，i'm maybe i from team plum。 
+
+55:30 [说话人E]yeah，go ahead。 
+
+55:32 [说话人E]we have s- we have three ui testing user story rolling over to this iteration they have good price all test case has been passed and we have a few defect coming in we have a medication plan build a defect knowledge base and use ai to review code。 
+
+55:58 [说话人E]reduce the backcounts and we also do peer code review to reduce the defects and other use case also have good price i think our team have no risk this point that's all thank you。 
+
+56:25 [说话人H]alright i'd。 
+
+56:28 [说话人H]Brian anything you want to comment how is the team confidence completing the two Aus features。 
+
+56:36 [说话人F]yes，so related to scripting i think we're on a good track we right now we're testing most of the bugs that we're finding are more related to ui like when like no nothing like to like we should worry about so what we're doing with mvo header bias i think is more complicated。 
+
+57:06 [说话人F]we already implemented some solution，but the solution is failing some test cases in the GitHub like pipeline so that's why we're looking at that part of the code i think it's a little bit complicated so we will see what we can do like we will check one by one we have a strategy right now and yeah i think it's this two days Thursday and Friday will be。 
+
+57:39 [说话人F]crucial for that env header bias，so we just need to be able to check that in without making any trouble to the existing test cases right，that's the update。 
+
+57:59 [说话人H]all right anything quick from mango。 
+
+58:04 [说话人G]for team mango，i think we are do some retesting for the some features that is carry over from last iteration and for now i think the final brand and component for balance pass rate is still low and start an，and also we have a start draft some task a new testing a new test cases for the new feature that not assign to this iteration and i have two questions first one is for some features that both the team tomato and team upcode。 
+
+58:40 [说话人G]has i- identified that we may have some risks。 
+
+58:44 [说话人G]that will be postponed to the next pi，but for now the front end user story is still ongoing，but the testing cannot be complete completely done due to the integration is not ready or so for this kind of situations i want wonder whether we need to keep this user stories open or we need to we can close it just when the ui is done and create some new user story for integration as testing and postpone to the next pi。 
+
+59:18 [说话人G]the other questions for as you has mentioned that like if some oh we will just keep one testing your story and if it's failed and if the test cases are failed，we need to move to the next iteration and just development team will create some new stories for bug fixing，but for testing your story we'll keep the same one for as to check the tasks or the people the team capacity or velocity。 
+
+59:54 [说话人G]should we need to adjust the user story size to yes to check yeah。 
+
+60:00 [说话人H]so，i'll answer the first your second question first yes you need to adjust the you know the story you need to bump up the story size based on additional work that you spend in the next iteration right the retesting。 
+
+60:13 [说话人H]hum。 
+
+60:14 [说话人H]and coming to the first，you need to continue as per the iteration plans OK and once the team makes a decision on you know the strategy when these features are going to be like what is the impact and if is there any additional help you're going to get。 
+
+60:34 [说话人H]to continue with these features that will be determined in the next couple of days，but until then you should continue with the retraction plans。 
+
+60:43 [说话人G]So so is that. 
+
+60:45 [说话人H]Means。. 
+
+60:46 [说话人H]that means the work that you're doing you should continue。 
+
+60:50 [说话人G]so so i'm also for a question for previ and Joseph so so for these features that we want to delay or defer is there any timeline or to make this decision。 
+
+61:09 [说话人H]we have so you know unfortunately Stacy and the pms for out this week right，so we have to align with Stacy and that's what the options that internally we have to look at is there any opportunity that we have that some of the features picked up by other teams can be park them and pick up these features so that we can still stay within the pi that exercise is you know scheduled tomorrow and in the next couple of days early next week。 
+
+61:39 [说话人H]so，i don't expect like an decision within a day or so，but。 
+
+61:44 [说话人H]until you hear back，please continue with your current iteration plans OK。 
+
+61:49 [说话人G]OK，OK，OK，thank you that's all for me thank you。 
+
+61:59 [说话人H]alright，we're slightly over the time but yeah we mostly reviewed the high i mean i don't i'm not going to go any other individual teams here most of the risks and the pool TT bugs discussion covered the updates from you know tomato avocado as well as pineapple and others as well anything quick others have honey do you anything quick from you anything the team should know。 
+
+62:28 [说话人H]please Huang。 
+
+62:29 [说话人J]yep，there was a post from Mario and the dev channel where the unified service monitor it's available so once we move into GitHub all the shared orchestration solution on the main solutions are not gonna be shared anymore，so you're gonna need to use this tool to run unified，so it's better to use for you to get。 
+
+62:59 [说话人J]some familiarity we did so please look into the last pass from marine and dev channel i would say that's like an announcement for all teams for team update well where were we work on the change for ep three for model packages for scaling issue we help them to get validated the fix。 
+
+63:32 [说话人J]we progress on the graph queue for model purgeapi we're validating where we're reviewing before checking and we'll con- and continue with the model corruption issue as well as the drl five implementation that's the general update on our side。 
+
+63:54 [说话人H]all right again we haven't covered all teams，but if you have anything a new issue，a risk identified or a new dependency from others any blocker for your iteration plans please feel free to share here in the team chat。 
+
+64:08 [说话人H]our creator risk item that we will review offline and you know then we can discuss that later OK，that's all for today thank you everyone。 
+
+(豆包AI生成) 
